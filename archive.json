@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-04-12T01:24:21.305549+00:00",
+  "timestamp": "2026-05-28T01:56:07.935031+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -989,6 +989,24 @@
           "updatedAt": "2026-02-27T16:35:06Z"
         }
       ]
+    },
+    {
+      "number": 43,
+      "id": "I_kwDOMSanvs8AAAABDikrJQ",
+      "title": "Add Aihua as contributor",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/43",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-05-27T13:07:54Z",
+      "updatedAt": "2026-05-27T13:07:54Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
