@@ -13,24 +13,24 @@
 <meta content="
        This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1Gbit/s client signals in transport network. 
     " name="description">
-<meta content="xml2rfc 3.31.0" name="generator">
+<meta content="xml2rfc 3.33.0" name="generator">
 <meta content="next generation" name="keyword">
 <meta content="unicorn" name="keyword">
 <meta content="sparkling distributed ledger" name="keyword">
 <meta content="draft-tan-ccamp-fgotn-yang-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.31.0
-    Python 3.12.12
+  xml2rfc 3.33.0
+    Python 3.12.13
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.0.2
-    platformdirs 4.5.1
+    platformdirs 4.9.6
     pycountry 24.6.1
     PyYAML 6.0.3
-    requests 2.32.5
-    wcwidth 0.3.0
+    requests 2.33.1
+    wcwidth 0.7.0
 -->
 <link href="draft-tan-ccamp-fgotn-yang.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -297,16 +297,19 @@ h1, h2, h3, h4, h5, h6 {
   font-size-adjust: 0.5;
   color: var(--title-color);
 }
-h1#title {
-  font-size: 32px;
-  line-height: 40px;
-  clear: both;
-}
-h1#title, h1#rfcnum {
-  margin: 1.5em 0 0.2em;
-}
-h1#rfcnum + h1#title {
-  margin: 0.2em 0;
+h1 {
+  &#title {
+    font-size: 32px;
+    line-height: 40px;
+    clear: both;
+    margin: 1.5em 0 0.2em;
+  }
+  &#rfcnum {
+    margin: 1.5em 0 0.2em;
+    & + h1#title {
+      margin: 0.2em 0;
+    }
+  }
 }
 
 h1, h2, h3 {
@@ -326,10 +329,10 @@ h4, h5, h6 {
 #abstract+p {
   font-size: 18px;
   line-height: 24px;
-}
-#abstract+p code, #abstract+p samp, #abstract+p tt {
-  font-size: 16px;
-  line-height: 0;
+  & code, & samp, & tt {
+    font-size: 16px;
+    line-height: 0;
+  }
 }
 
 p {
@@ -340,59 +343,59 @@ p {
 div {
   margin: 0;
 }
-.alignRight.art-text {
-  background-color: var(--highlight-color);
-  border: 1px solid var(--line-color);
-  border-radius: 3px;
-  padding: 0.5em 1em 0;
-  margin-bottom: 0.5em;
-}
-.alignRight.art-text pre {
-  padding: 0;
-  width: auto;
-}
 .alignRight {
   margin: 1em 0;
-}
-.alignRight > *:first-child {
-  border: none;
-  margin: 0;
-  float: right;
-  clear: both;
-}
-.alignRight > *:nth-child(2) {
-  clear: both;
-  display: block;
-  border: none;
+  &.art-text {
+    background-color: var(--highlight-color);
+    border: 1px solid var(--line-color);
+    border-radius: 3px;
+    padding: 0.5em 1em 0;
+    margin-bottom: 0.5em;
+    & pre {
+      padding: 0;
+      width: auto;
+    }
+  }
+  & > *:first-child {
+    border: none;
+    margin: 0;
+    float: right;
+    clear: both;
+  }
+  & > *:nth-child(2) {
+    clear: both;
+    display: block;
+    border: none;
+  }
 }
 svg {
   display: block;
-}
-/* font-family isn't space-separated, but =~ will have to do */
-svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
-  font-family: var(--font-mono);
-}
-.alignCenter.art-text {
-  background-color: var(--highlight-color);
-  border: 1px solid var(--line-color);
-  border-radius: 3px;
-  padding: 0.5em 1em 0;
-  margin-bottom: 0.5em;
-}
-.alignCenter.art-text pre {
-  padding: 0;
-  width: auto;
+  /* font-family isn't space-separated, but =~ will have to do */
+  &[font-family~="monospace" i], & [font-family~="monospace" i] {
+    font-family: var(--font-mono);
+  }
 }
 .alignCenter {
   margin: 1em 0;
-}
-.alignCenter > *:first-child {
-  border: none;
-  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
-     support flexbox yet.
-  */
-  display: table;
-  margin: 0 auto;
+  &.art-text {
+    background-color: var(--highlight-color);
+    border: 1px solid var(--line-color);
+    border-radius: 3px;
+    padding: 0.5em 1em 0;
+    margin-bottom: 0.5em;
+    & pre {
+      padding: 0;
+      width: auto;
+    }
+  }
+  & > *:first-child {
+    border: none;
+    /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+       support flexbox yet.
+    */
+    display: table;
+    margin: 0 auto;
+  }
 }
 
 /* lists */
@@ -430,26 +433,25 @@ dl {
     --indent: 5ch;
     & > dt {
       min-width: calc(var(--indent) - 2ch);
+      float: none;
     }
-  }
-  &.olPercent > dt {
-    float: none;
   }
 
   dl > dd > & {
     margin-top: 0.5em;
     margin-bottom: 0;
   }
-}
-dl:not(.dlNewline) > dt {
-  float: left;
-  margin-right: 2ch;
-  min-width: 8ch;
-}
-dl > dd {
-  margin-bottom: .8em;
-  margin-left: var(--indent) !important; /* stupid element overrides */
-  min-height: 2ex;
+
+  &:not(.dlNewline) > dt {
+    float: left;
+    margin-right: 2ch;
+    min-width: 8ch;
+  }
+  & > dd {
+    margin-bottom: .8em;
+    margin-left: var(--indent) !important; /* stupid element overrides */
+    min-height: 2ex;
+  }
 }
 :is(dl.compact, .dlCompact) > dd {
   margin-bottom: 0;
@@ -465,20 +467,22 @@ dl > dd {
 }
 
 /* links */
-a, a[href].selfRef:hover {
+a {
   text-decoration: none;
+  &[href] {
+    color: var(--link-color);
+    &:hover { text-decoration: underline; }
+    &.selfRef {
+      color: var(--text-color);
+      &:hover {
+        text-decoration: none;
+        background-color: var(--highlight-color);
+      }
+    }
+  }
 }
-a[href] {
-  color: var(--link-color);
-}
-a[href].selfRef, .iref + a[href].internal {
+.iref + a[href].internal {
   color: var(--text-color);
-}
-a[href]:hover {
-  text-decoration: underline;
-}
-a[href].selfRef:hover {
-  background-color: var(--highlight-color);
 }
 a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
   white-space: nowrap;
@@ -514,9 +518,9 @@ img {
 figure {
   margin: 0.5em 0;
   padding: 0;
-}
-figure blockquote {
-  margin: 0.8em 0.4em 0.4em;
+  & blockquote {
+    margin: 0.8em 0.4em 0.4em;
+  }
 }
 figcaption, caption {
   font-style: italic;
@@ -526,17 +530,19 @@ figcaption, caption {
 }
 @media screen {
   /* Auto-collapse boilerplate. */
-  :is(#status-of-memo, #copyright) p {
-    margin: -2px 0;
-    max-height: 0;
-    transition: max-height 2s ease, margin 0.5s ease 0.5s;
-    overflow: hidden;
-  }
-  :is(#status-of-memo, #copyright):hover p,
-  :is(#status-of-memo, #copyright) h2:target ~ p {
-    margin: 0.5em 0;
-    max-height: 500px;
-    overflow: auto;
+  :is(#status-of-memo, #copyright) {
+    & p {
+      margin: -2px 0;
+      max-height: 0;
+      transition: max-height 2s ease, margin 0.5s ease 0.5s;
+      overflow: hidden;
+    }
+    &:hover p,
+    & h2:target ~ p {
+      margin: 0.5em 0;
+      max-height: 500px;
+      overflow: auto;
+    }
   }
   pre, svg {
     display: inline-block;
@@ -586,25 +592,17 @@ table {
   max-width: 100%;
   margin: 0 0 1em;
   border-collapse: collapse;
-}
-table.right {
-  margin-left: auto;
-}
-table.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-table.left {
-  margin-right: auto;
-}
-table .text-left {
-  text-align: left;
-}
-table .text-center {
-  text-align: center;
-}
-table .text-right {
-  text-align: right;
+  &.right { margin-left: auto; }
+  &.center { margin-left: auto; margin-right: auto; }
+  &.left { margin-right: auto; }
+  & .text-left { text-align: left; }
+  & .text-center { text-align: center; }
+  & .text-right { text-align: right; }
+  & caption {
+    margin: 0;
+    padding: 3px 0 3px 1em;
+  }
+  & p { margin: 0; }
 }
 
 thead, tbody {
@@ -624,13 +622,6 @@ th {
 :is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
   background-color: var(--highlight-color);
 }
-table caption {
-  margin: 0;
-  padding: 3px 0 3px 1em;
-}
-table p {
-  margin: 0;
-}
 
 /* pilcrow */
 a.pilcrow {
@@ -641,18 +632,16 @@ a.pilcrow {
     color: var(--pilcrow-weak);
     &:hover { text-decoration: none; }
   }
-}
-@media not print {
-  :hover > a.pilcrow, a.pilcrow:focus {
-    opacity: 1;
+  @media not print {
+    :hover > &, &:focus {
+      opacity: 1;
+    }
+    &[href]:hover {
+      color: var(--pilcrow-strong);
+      background-color: transparent;
+    }
   }
-  a.pilcrow[href]:hover {
-    color: var(--pilcrow-strong);
-    background-color: transparent;
-  }
-}
-@media print {
-  a.pilcrow {
+  @media print {
     display: none;
   }
 }
@@ -711,9 +700,9 @@ sub, sup {
   font-size: 0.9em;
   font-style: italic;
   margin-top: 2em;
-}
-.docInfo .prepared {
-  float: right;
+  & .prepared {
+    float: right;
+  }
 }
 
 /* table of contents */
@@ -803,23 +792,27 @@ hr.addr {
   max-width: calc(100% - 16px);
 }
 @media (min-width: 500px) {
-  #authors-addresses > section {
-    column-count: 2;
-    column-gap: 20px;
-  }
-  #authors-addresses > section > h2 {
-    column-span: all;
-  }
-  /* hack for break-inside: avoid-column */
-  #authors-addresses address {
-    display: inline-block;
-    break-inside: avoid-column;
+  #authors-addresses {
+    & > section {
+      column-count: 2;
+      column-gap: 20px;
+    }
+    & > section > h2 {
+      column-span: all;
+    }
+    /* hack for break-inside: avoid-column */
+    & address {
+      display: inline-block;
+      break-inside: avoid-column;
+    }
   }
 }
 
 /* Comments */
-.rfcEditorRemove p:first-of-type {
-  font-style: italic;
+.rfcEditorRemove {
+  & p:first-of-type {
+    font-style: italic;
+  }
 }
 .cref {
   background-color: rgba(249, 232, 105, 0.3);
@@ -830,19 +823,21 @@ hr.addr {
 }
 
 @media screen {
-  #toc nav {
-    font-family: var(--font-title);
-    font-weight: 360;
-    & > ul { margin-bottom: 2em; }
-    & ul {
-      margin: 0 0 0 4px;
-      & :is(p, li) {
-        margin: 2px 0;
+  #toc {
+    & nav {
+      font-family: var(--font-title);
+      font-weight: 360;
+      & > ul { margin-bottom: 2em; }
+      & ul {
+        margin: 0 0 0 4px;
+        & :is(p, li) {
+          margin: 2px 0;
+        }
       }
     }
-  }
-  #toc a.toplink {
-    float: right;
+    & a.toplink {
+      float: right;
+    }
   }
 }
 @media not screen {
@@ -863,54 +858,54 @@ hr.addr {
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
-  }
-  #toc h2 {
-    margin: 0;
-    padding: 2px 0 2px 6px;
-    padding-right: 1em;
-    font-size: 18px;
-    line-height: 24px;
-    min-width: 190px;
-    text-align: right;
-    background-color: #444;
-    color: white;
-    cursor: pointer;
-    &::before { /* css hamburger */
-      float: right;
-      position: relative;
-      width: 1em;
-      height: 1px;
-      left: -164px;
-      margin: 8px 0 0 0;
-      background: white none repeat scroll 0 0;
-      box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
-      content: "";
+    & h2 {
+      margin: 0;
+      padding: 2px 0 2px 6px;
+      padding-right: 1em;
+      font-size: 18px;
+      line-height: 24px;
+      min-width: 190px;
+      text-align: right;
+      background-color: #444;
+      color: white;
+      cursor: pointer;
+      &::before { /* css hamburger */
+        float: right;
+        position: relative;
+        width: 1em;
+        height: 1px;
+        left: -164px;
+        margin: 8px 0 0 0;
+        background: white none repeat scroll 0 0;
+        box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+        content: "";
+      }
     }
-  }
-  #toc nav {
-    display: none;
-    background-color: var(--background-color);
-    padding: 0.5em 1em 1em;
-    overflow: auto;
-    overscroll-behavior: contain;
-    height: calc(100vh - 48px);
-    border-left: 1px solid #ddd;
-  }
-  #toc.active {
-    opacity: 1;
-    & nav { display: block; }
-  }
-  /* Make the collapsed ToC header render white on gray also when it's a link */
-  #toc h2 a,
-  #toc h2 a:is(:link, :focus, :hover),
-  #toc a.toplink,
-  #toc a.toplink:hover {
-    color: white;
-    background-color: #444;
-    text-decoration: none;
-  }
-  #toc a.toplink {
-    margin: 2px 0.5em 0;
+    & nav {
+      display: none;
+      background-color: var(--background-color);
+      padding: 0.5em 1em 1em;
+      overflow: auto;
+      overscroll-behavior: contain;
+      height: calc(100vh - 48px);
+      border-left: 1px solid #ddd;
+    }
+    &.active {
+      opacity: 1;
+      & nav { display: block; }
+    }
+    /* Make the collapsed ToC header render white on gray also when it's a link */
+    & h2 a,
+    & h2 a:is(:link, :focus, :hover),
+    & a.toplink,
+    & a.toplink:hover {
+      color: white;
+      background-color: #444;
+      text-decoration: none;
+    }
+    & a.toplink {
+      margin: 2px 0.5em 0;
+    }
   }
 }
 
@@ -929,26 +924,26 @@ hr.addr {
     margin: 0;
     padding: 0;
     z-index: 1;
-  }
-  #toc h2 {
-    margin: 0;
-    padding: 0.25em 1em 1em 0;
-  }
-  #toc nav {
-    display: block;
-    height: calc(90vh - 84px);
-    bottom: 0;
-    padding: 0.5em 0 2em;
-    overflow: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
+    & h2 {
+      margin: 0;
+      padding: 0.25em 1em 1em 0;
+    }
+    & nav {
+      display: block;
+      height: calc(90vh - 84px);
+      bottom: 0;
+      padding: 0.5em 0 2em;
+      overflow: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+    }
+    & a.toplink {
+      margin: 8px 0.5em 0;
+    }
   }
   img { /* future proofing */
     max-width: 100%;
     height: auto;
-  }
-  #toc a.toplink {
-    margin: 8px 0.5em 0;
   }
 }
 
@@ -964,12 +959,13 @@ hr.addr {
   #n-copyright-notice {
     border-bottom: none;
   }
-  #toc, #n-introduction {
-    page-break-before: always;
-  }
   #toc {
+    page-break-before: always;
     border-top: none;
     padding-top: 0;
+  }
+  #n-introduction {
+    page-break-before: always;
   }
   figure, pre, .vcard {
     page-break-inside: avoid;
@@ -1031,17 +1027,19 @@ hr.addr {
 }
 
 /* SVG Trick: a prefix match works because only black and white are allowed */
-svg :is([stroke="black"], [stroke^="#000"]) {
-  stroke: var(--text-color);
-}
-svg :is([stroke="white"], [stroke^="#fff"]) {
-  stroke: var(--background-color);
-}
-svg :is([fill="black"], [fill^="#000"], :not([fill])) {
-  fill: var(--text-color);
-}
-svg :is([fill="white"], [fill^="#fff"]) {
-  fill: var(--background-color);
+svg {
+  & :is([stroke="black"], [stroke^="#000"]) {
+    stroke: var(--text-color);
+  }
+  & :is([stroke="white"], [stroke^="#fff"]) {
+    stroke: var(--background-color);
+  }
+  & :is([fill="black"], [fill^="#000"], :not([fill])) {
+    fill: var(--text-color);
+  }
+  & :is([fill="white"], [fill^="#fff"]) {
+    fill: var(--background-color);
+  }
 }
 </style>
 
@@ -1051,11 +1049,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Fine grain OTN YANG</td>
-<td class="right">February 2026</td>
+<td class="right">June 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tan, et al.</td>
-<td class="center">Expires 31 August 2026</td>
+<td class="center">Expires 12 December 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1068,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tan-ccamp-fgotn-yang-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-02-27" class="published">27 February 2026</time>
+<time datetime="2026-06-10" class="published">10 June 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-08-31">31 August 2026</time></dd>
+<dd class="expires"><time datetime="2026-12-12">12 December 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1139,7 +1137,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 31 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 12 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1237,48 +1235,51 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-yang-tree-for-fgotn-topolog" class="internal xref">YANG Tree for fgOTN topology</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-yang-data-model-for-fgotn-ty" class="internal xref">YANG Data Model for fgOTN types</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-yang-data-model-for-fgotn-to" class="internal xref">YANG Data Model for fgOTN topology</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-yang-tree-for-fgotn-topolog" class="internal xref">YANG Tree for fgOTN topology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-yang-tree-for-fgotn-tunnel" class="internal xref">YANG Tree for fgOTN tunnel</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-yang-data-model-for-fgotn-to" class="internal xref">YANG Data Model for fgOTN topology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-yang-data-model-for-fgotn-tun" class="internal xref">YANG Data Model for fgOTN tunnel</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-yang-tree-for-fgotn-tunnel" class="internal xref">YANG Tree for fgOTN tunnel</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-manageability-consideration" class="internal xref">Manageability Considerations</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-yang-data-model-for-fgotn-tun" class="internal xref">YANG Data Model for fgOTN tunnel</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-manageability-consideration" class="internal xref">Manageability Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-references" class="internal xref">References</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
-                <p id="section-toc.1-1.13.2.1.1"><a href="#section-13.1" class="auto internal xref">13.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
-                <p id="section-toc.1-1.13.2.2.1"><a href="#section-13.2" class="auto internal xref">13.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1">
+                <p id="section-toc.1-1.14.2.1.1"><a href="#section-14.1" class="auto internal xref">14.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2">
+                <p id="section-toc.1-1.14.2.2.1"><a href="#section-14.2" class="auto internal xref">14.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-multi-domain-fgotn-hitless-" class="internal xref">Multi-domain fgOTN Hitless Resizing Process</a></p>
-</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-multi-domain-fgotn-hitless-" class="internal xref">Multi-domain fgOTN Hitless Resizing Process</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+            <p id="section-toc.1-1.16.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
-            <p id="section-toc.1-1.17.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.17.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18">
+            <p id="section-toc.1-1.18.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1354,7 +1355,7 @@ appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">�
         <h3 id="name-tree-diagram">
 <a href="#section-1.3" class="section-number selfRef">1.3. </a><a href="#name-tree-diagram" class="section-name selfRef">Tree Diagram</a>
         </h3>
-<p id="section-1.3-1">A simplified graphical representation of the data model is used in <a href="#fgotn-tree" class="auto internal xref">Section 6</a> of this document. The meaning of the symbols in this diagram is defined in <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
+<p id="section-1.3-1">A simplified graphical representation of the data model is used in <a href="#fgotn-tree" class="auto internal xref">Section 7</a> of this document. The meaning of the symbols in this diagram is defined in <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirements-language">
@@ -1668,7 +1669,7 @@ augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
 <pre>
 augment /nw:networks/tet:te/tet:templates/tet:link-template
         /tet:te-link-attributes/tet:label-restrictions
-        /tet:label-restriction/otnt:otn-label-range:
+        /tet:label-restriction:
    +--rw fgts-range* [odu-type odu-ts-number]
       +--rw odu-type           identityref
       +--rw odu-ts-number?     uint16
@@ -1730,7 +1731,7 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template
 <div class="alignLeft art-ascii-art art-text artwork" id="section-5.2-2">
 <pre>
 augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
-        /otn-tnl:otn:
+        /otn-tnl:otn/otn-tnl:otn-bandwidth:
    +--rw fgoduflex-bandwidth?   string
 </pre><a href="#section-5.2-2" class="pilcrow">¶</a>
 </div>
@@ -1747,15 +1748,96 @@ augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
 </div>
 </section>
 </div>
-<div id="fgotn-tree">
+<div id="yang-data-model-for-fgotn-types">
 <section id="section-6">
-      <h2 id="name-yang-tree-for-fgotn-topolog">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-yang-tree-for-fgotn-topolog" class="section-name selfRef">YANG Tree for fgOTN topology</a>
+      <h2 id="name-yang-data-model-for-fgotn-ty">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-yang-data-model-for-fgotn-ty" class="section-name selfRef">YANG Data Model for fgOTN types</a>
       </h2>
-<p id="section-6-1"><a href="#fig-fgotn-topo-tree" class="auto internal xref">Figure 6</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-topology" (<a href="#fgotn-topology-yang" class="auto internal xref">Figure 7</a>).<a href="#section-6-1" class="pilcrow">¶</a></p>
-<div id="fig-fgotn-topo-tree">
+<span id="name-fgotn-types-yang-module"></span><div id="fgotn-types-yang">
 <figure id="figure-6">
-        <div class="alignLeft art-ascii-art art-text artwork" id="section-6-2.1">
+        <div class="breakable lang-yang sourcecode" id="section-6-1.1">
+<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-types@2026-02-27.yang"
+
+module ietf-fgotn-types {
+  yang-version 1.1;
+  namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-types";
+  prefix fgotn-types;
+
+  import ietf-layer1-types {
+    prefix l1-types;
+    reference
+      "This module defines Layer 1 YANG types.";
+  }
+
+  /* Note: The RFC Editor will replace YYYY with the number assigned
+     to the RFC once draft-ietf-ccamp-layer1-types becomes an RFC.*/
+
+  organization
+    "Internet Engineering Task Force (IETF) CCAMP WG";
+  contact
+    "
+      ID-draft editor:
+        Yanxia Tan (tanyx11@chinaunicom.cn);
+        Yanlei Zheng (zhengyanlei@chinaunicom.cn);
+        Italo Busi (italo.busi@huawei.com);
+        Chaode Yu (yuchaode@huawei.com);
+        Xing Zhao (zhaoxing@caict.ac.cn);
+    ";
+  description
+    "This module contains a collection of YANG data types considered
+     generally useful for fine grain Optical Transport Network
+     (fgOTN) networks.
+
+     Copyright (c) 2026 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Revised BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
+
+  // RFC Ed.: replace XXXX with actual RFC number and remove this
+  // note.
+  // RFC Ed.: update the date below with the date of RFC publication
+  // and remove this note.
+
+  revision 2026-02-27 {
+    description
+      "initial version";
+    reference
+      "RFC XXXX: YANG Data Models for fine grain Optical Transport
+                 Network";
+  }
+
+  identity fgODUflex {
+    base l1-types:odu-type;
+    description
+      "fgODUflex type (fine grain flexible bit rate, resizable).";
+  }
+}
+
+&lt;CODE ENDS&gt;</pre>
+</div>
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
+<a href="#name-fgotn-types-yang-module" class="selfRef">fgOTN types YANG module</a>
+        </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="fgotn-tree">
+<section id="section-7">
+      <h2 id="name-yang-tree-for-fgotn-topolog">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-yang-tree-for-fgotn-topolog" class="section-name selfRef">YANG Tree for fgOTN topology</a>
+      </h2>
+<p id="section-7-1"><a href="#fig-fgotn-topo-tree" class="auto internal xref">Figure 7</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-topology" (<a href="#fgotn-topology-yang" class="auto internal xref">Figure 8</a>).<a href="#section-7-1" class="pilcrow">¶</a></p>
+<div id="fig-fgotn-topo-tree">
+<figure id="figure-7">
+        <div class="alignLeft art-ascii-art art-text artwork" id="section-7-2.1">
 <pre>
 module: ietf-fgotn-topology
 
@@ -1784,19 +1866,19 @@ module: ietf-fgotn-topology
        +--rw fgts-unreserved?   fgotnt:ts-list
 </pre>
 </div>
-<figcaption><a href="#figure-6" class="selfRef">Figure 6</a></figcaption></figure>
+<figcaption><a href="#figure-7" class="selfRef">Figure 7</a></figcaption></figure>
 </div>
 </section>
 </div>
 <div id="yang-data-model-for-fgotn-topology-1">
-<section id="section-7">
+<section id="section-8">
       <h2 id="name-yang-data-model-for-fgotn-to">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-yang-data-model-for-fgotn-to" class="section-name selfRef">YANG Data Model for fgOTN topology</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-yang-data-model-for-fgotn-to" class="section-name selfRef">YANG Data Model for fgOTN topology</a>
       </h2>
 <span id="name-fgotn-topology-yang-module"></span><div id="fgotn-topology-yang">
-<figure id="figure-7">
-        <div class="breakable lang-yang sourcecode" id="section-7-1.1">
-<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-topology@2026-01-28.yang"
+<figure id="figure-8">
+        <div class="breakable lang-yang sourcecode" id="section-8-1.1">
+<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-topology@2026-02-27.yang"
 
 module ietf-fgotn-topology {
   yang-version 1.1;
@@ -1885,7 +1967,7 @@ module ietf-fgotn-topology {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-01-28 {
+  revision 2026-02-27 {
     description
       "initial version";
     reference
@@ -2020,26 +2102,26 @@ module ietf-fgotn-topology {
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
+<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
 <a href="#name-fgotn-topology-yang-module" class="selfRef">fgOTN topology YANG module</a>
         </figcaption></figure>
 </div>
 </section>
 </div>
 <div id="yang-tree-for-fgotn-tunnel">
-<section id="section-8">
+<section id="section-9">
       <h2 id="name-yang-tree-for-fgotn-tunnel">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-yang-tree-for-fgotn-tunnel" class="section-name selfRef">YANG Tree for fgOTN tunnel</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-yang-tree-for-fgotn-tunnel" class="section-name selfRef">YANG Tree for fgOTN tunnel</a>
       </h2>
-<p id="section-8-1"><a href="#fig-fgotn-tunnel-tree" class="auto internal xref">Figure 8</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" (<a href="#fgotn-tunnel-yang" class="auto internal xref">Figure 9</a>).<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-9-1"><a href="#fig-fgotn-tunnel-tree" class="auto internal xref">Figure 9</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" (<a href="#fgotn-tunnel-yang" class="auto internal xref">Figure 10</a>).<a href="#section-9-1" class="pilcrow">¶</a></p>
 <div id="fig-fgotn-tunnel-tree">
-<figure id="figure-8">
-        <div class="alignLeft art-ascii-art art-text artwork" id="section-8-2.1">
+<figure id="figure-9">
+        <div class="alignLeft art-ascii-art art-text artwork" id="section-9-2.1">
 <pre>
 module: ietf-fgotn-tunnel
 
   augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
-            /otn-tnl:otn:
+            /otn-tnl:otn/otn-tnl:otn-bandwidth:
     +--rw fgoduflex-bandwidth?   string
   augment /te:te/te:tunnels/te:tunnel/te:primary-paths
             /te:primary-path/te:explicit-route-objects
@@ -2073,52 +2155,50 @@ module: ietf-fgotn-tunnel
     +--ro fgts-numbers?   string
 </pre>
 </div>
-<figcaption><a href="#figure-8" class="selfRef">Figure 8</a></figcaption></figure>
+<figcaption><a href="#figure-9" class="selfRef">Figure 9</a></figcaption></figure>
 </div>
 </section>
 </div>
 <div id="yang-data-model-for-fgotn-tunnel-1">
-<section id="section-9">
+<section id="section-10">
       <h2 id="name-yang-data-model-for-fgotn-tun">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-yang-data-model-for-fgotn-tun" class="section-name selfRef">YANG Data Model for fgOTN tunnel</a>
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-yang-data-model-for-fgotn-tun" class="section-name selfRef">YANG Data Model for fgOTN tunnel</a>
       </h2>
 <span id="name-fgotn-tunnel-yang-module"></span><div id="fgotn-tunnel-yang">
-<figure id="figure-9">
-        <div class="breakable lang-yang sourcecode" id="section-9-1.1">
-<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-tunnel@2025-06-18.yang"
+<figure id="figure-10">
+        <div class="breakable lang-yang sourcecode" id="section-10-1.1">
+<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-tunnel@2026-02-27.yang"
 
 module ietf-fgotn-tunnel {
-  /* TODO: FIXME */
   yang-version 1.1;
-
   namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel";
-  prefix "fgotn-tnl";
+  prefix fgotn-tnl;
 
   import ietf-te {
-    prefix "te";
+    prefix te;
     reference
       "RFC KKKK: A YANG Data Model for Traffic Engineering Tunnels,
                  Label Switched Paths and Interfaces";
   }
-
-  /* Note: The RFC Editor will replace KKKK with the number assigned
-     to the RFC once draft-ietf-teas-yang-te becomes an RFC.*/
-
-  import ietf-otn-tunnel {
-    prefix "otn-tnl";
-    reference  "RFC JJJJ: OTN Tunnel YANG Model";
-  }
-
-  /* Note: The RFC Editor will replace JJJJ with the number assigned
-     to the RFC once draft-ietf-ccamp-otn-tunnel-model becomes
-     an RFC.*/
-
   import ietf-fgotn-types {
     prefix fgotn-types;
     reference
       "RFC XXXX: YANG Data Models for fine grain Optical Transport
        Network";
   }
+
+  /* Note: The RFC Editor will replace KKKK with the number assigned
+     to the RFC once draft-ietf-teas-yang-te becomes an RFC.*/
+
+  import ietf-otn-tunnel {
+    prefix otn-tnl;
+    reference
+      "RFC JJJJ: OTN Tunnel YANG Model";
+  }
+
+  /* Note: The RFC Editor will replace JJJJ with the number assigned
+     to the RFC once draft-ietf-ccamp-otn-tunnel-model becomes
+     an RFC.*/
 
   organization
     "Internet Engineering Task Force (IETF) CCAMP WG";
@@ -2131,14 +2211,13 @@ module ietf-fgotn-tunnel {
         Chaode Yu (yuchaode@huawei.com);
         Xing Zhao (zhaoxing@caict.ac.cn);
     ";
-
   description
     "This module defines a YANG data model for fgOTN-specific
      extension based on existing network topology models. The model
      fully conforms to the Network Management Datastore Architecture
      (NMDA).
 
-     Copyright (c) 2024 IETF Trust and the persons
+     Copyright (c) 2026 IETF Trust and the persons
      identified as authors of the code.  All rights reserved.
 
      Redistribution and use in source and binary forms, with or
@@ -2156,7 +2235,7 @@ module ietf-fgotn-tunnel {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-02-26 {
+  revision 2026-02-27 {
     description
       "initial version";
     reference
@@ -2165,7 +2244,8 @@ module ietf-fgotn-tunnel {
   }
 
   augment "/te:te/te:tunnels/te:tunnel/"
-        + "te:te-bandwidth/te:technology/otn-tnl:otn/otn-tnl:otn-bandwidth" {
+        + "te:te-bandwidth/te:technology/"
+        + "otn-tnl:otn/otn-tnl:otn-bandwidth" {
     description
       "augmentation of fgOTN tunnel on bandwidth structure";
     leaf fgoduflex-bandwidth {
@@ -2184,8 +2264,8 @@ module ietf-fgotn-tunnel {
         + "te:primary-paths/te:primary-path/"
         + "te:explicit-route-objects/"
         + "te:route-object-include-exclude/te:type/te:label/"
-        + "te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
-          "/otn-tnl:otn-label" {
+        + "te:label-hop/te:te-label/te:technology/otn-tnl:otn"
+        + "/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
@@ -2195,12 +2275,12 @@ module ietf-fgotn-tunnel {
     }
   }
 
-  augment "/te:te/te:tunnels/te:tunnel/te:primary-paths" +
-          "/te:primary-path/te:primary-reverse-path" +
-          "/te:explicit-route-objects" +
-          "/te:route-object-include-exclude/te:type/te:label" +
-          "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
-          "/otn-tnl:otn-label" {
+  augment "/te:te/te:tunnels/te:tunnel/te:primary-paths"
+        + "/te:primary-path/te:primary-reverse-path"
+        + "/te:explicit-route-objects"
+        + "/te:route-object-include-exclude/te:type/te:label"
+        + "/te:label-hop/te:te-label/te:technology/otn-tnl:otn"
+        + "/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
@@ -2210,11 +2290,11 @@ module ietf-fgotn-tunnel {
     }
   }
 
-  augment "/te:te/te:tunnels/te:tunnel/te:secondary-paths" +
-          "/te:secondary-path/te:explicit-route-objects" +
-          "/te:route-object-include-exclude/te:type/te:label" +
-          "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
-          "/otn-tnl:otn-label" {
+  augment "/te:te/te:tunnels/te:tunnel/te:secondary-paths"
+        + "/te:secondary-path/te:explicit-route-objects"
+        + "/te:route-object-include-exclude/te:type/te:label"
+        + "/te:label-hop/te:te-label/te:technology/otn-tnl:otn"
+        + "/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
@@ -2224,11 +2304,11 @@ module ietf-fgotn-tunnel {
     }
   }
 
-  augment "/te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths" +
-          "/te:secondary-reverse-path/te:explicit-route-objects" +
-          "/te:route-object-include-exclude/te:type/te:label" +
-          "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
-          "/otn-tnl:otn-label" {
+  augment "/te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths"
+        + "/te:secondary-reverse-path/te:explicit-route-objects"
+        + "/te:route-object-include-exclude/te:type/te:label"
+        + "/te:label-hop/te:te-label/te:technology/otn-tnl:otn"
+        + "/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
@@ -2238,10 +2318,10 @@ module ietf-fgotn-tunnel {
     }
   }
 
-  augment "/te:te/te:lsps/te:lsp/te:lsp-actual-route-information" +
-          "/te:lsp-actual-route-information/te:type/te:label" +
-          "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
-          "/otn-tnl:otn-label" {
+  augment "/te:te/te:lsps/te:lsp/te:lsp-actual-route-information"
+        + "/te:lsp-actual-route-information/te:type/te:label"
+        + "/te:label-hop/te:te-label/te:technology/otn-tnl:otn"
+        + "/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
@@ -2254,45 +2334,45 @@ module ietf-fgotn-tunnel {
 
 &lt;CODE ENDS&gt;</pre>
 </div>
-<figcaption><a href="#figure-9" class="selfRef">Figure 9</a>:
+<figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
 <a href="#name-fgotn-tunnel-yang-module" class="selfRef">fgOTN tunnel YANG module</a>
         </figcaption></figure>
 </div>
 </section>
 </div>
 <div id="manageability-considerations">
-<section id="section-10">
+<section id="section-11">
       <h2 id="name-manageability-consideration">
-<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-manageability-consideration" class="section-name selfRef">Manageability Considerations</a>
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-manageability-consideration" class="section-name selfRef">Manageability Considerations</a>
       </h2>
-<p id="section-10-1">&lt;Add any manageability considerations&gt;<a href="#section-10-1" class="pilcrow">¶</a></p>
+<p id="section-11-1">&lt;Add any manageability considerations&gt;<a href="#section-11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-11">
+<section id="section-12">
       <h2 id="name-security-considerations">
-<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-11-1">&lt;Add any security considerations&gt;<a href="#section-11-1" class="pilcrow">¶</a></p>
+<p id="section-12-1">&lt;Add any security considerations&gt;<a href="#section-12-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-12">
+<section id="section-13">
       <h2 id="name-iana-considerations">
-<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-12-1">&lt;Add any IANA considerations&gt;<a href="#section-12-1" class="pilcrow">¶</a></p>
+<p id="section-13-1">&lt;Add any IANA considerations&gt;<a href="#section-13-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
-<section id="section-13">
+<section id="section-14">
       <h2 id="name-references">
-<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-14" class="section-number selfRef">14. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-13.1">
+<section id="section-14.1">
         <h3 id="name-normative-references">
-<a href="#section-13.1" class="section-number selfRef">13.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-14.1" class="section-number selfRef">14.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="I-D.ietf-ccamp-layer1-types">[I-D.ietf-ccamp-layer1-types]</dt>
@@ -2305,11 +2385,11 @@ module ietf-fgotn-tunnel {
 <dd class="break"></dd>
 <dt id="I-D.ietf-ccamp-otn-tunnel-model">[I-D.ietf-ccamp-otn-tunnel-model]</dt>
         <dd>
-<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network (OTN) Tunnels and Label Switched Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-24</span>, <time datetime="2025-12-01" class="refDate">1 December 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-24">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-24</a>&gt;</span>. </dd>
+<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network (OTN) Tunnels and Label Switched Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-25</span>, <time datetime="2026-05-27" class="refDate">27 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-25">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-25</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-yang-te">[I-D.ietf-teas-yang-te]</dt>
         <dd>
-<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Gandhi, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Beeram, V. P.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths, and Interfaces"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-yang-te-42</span>, <time datetime="2026-02-24" class="refDate">24 February 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-42">https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-42</a>&gt;</span>. </dd>
+<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Gandhi, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Beeram, V. P.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths, and Interfaces"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-yang-te-44</span>, <time datetime="2026-03-26" class="refDate">26 March 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-44">https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-44</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="ITU-T_G.709">[ITU-T_G.709]</dt>
         <dd>
@@ -2347,14 +2427,14 @@ module ietf-fgotn-tunnel {
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-13.2">
+<section id="section-14.2">
         <h3 id="name-informative-references">
-<a href="#section-13.2" class="section-number selfRef">13.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-14.2" class="section-number selfRef">14.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="I-D.ietf-teas-rfc8776-update">[I-D.ietf-teas-rfc8776-update]</dt>
         <dd>
-<span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-22</span>, <time datetime="2026-02-18" class="refDate">18 February 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-22">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-22</a>&gt;</span>. </dd>
+<span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-23</span>, <time datetime="2026-05-20" class="refDate">20 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-23">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-23</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8345">[RFC8345]</dt>
         <dd>
@@ -2396,6 +2476,16 @@ module ietf-fgotn-tunnel {
       <h2 id="name-contributors">
 <a href="#name-contributors" class="section-name selfRef">Contributors</a>
       </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Zelin Wang</span></div>
+<div dir="auto" class="left"><span class="org">China Unicom</span></div>
+<div dir="auto" class="left"><span class="locality">Beijing</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:wangzl172@chinaunicom.cn" class="email">wangzl172@chinaunicom.cn</a>
+</div>
+</address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Chen Li</span></div>
 <div dir="auto" class="left"><span class="org">Fiberhome Telecommunication Technologies Co.,LTD</span></div>
