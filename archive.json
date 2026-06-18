@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-05-28T01:56:07.935031+00:00",
+  "timestamp": "2026-06-18T02:34:50.372308+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -2155,6 +2155,53 @@
               "body": "```suggestion\n        /tet:label-restriction:\n```",
               "createdAt": "2026-02-28T03:16:48Z",
               "updatedAt": "2026-02-28T03:26:14Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "id": "PR_kwDOMSanvs7na73O",
+      "title": "Update fgotn-topology.json",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/44",
+      "state": "OPEN",
+      "author": "tanyanxia",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Update the JSON example: Under 100G\r\nStep1: No server layer ODUk are setup\r\nStep2: One ODU1 server layer tunnel has been setup to carry fgOTN traffic between NE1 and NE2; Two ODU0 server layer tunnel has been setup to carry fgOTN traffic between NE2 and NE4",
+      "createdAt": "2026-06-17T10:15:27Z",
+      "updatedAt": "2026-06-17T19:52:41Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "2ad47a8c4fdf2af1195b8fbbd41c808ac670d4fe",
+      "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "tanyx11",
+      "headRefOid": "bc5106178f85dfadbe26c0a77e3963ef9581bcd3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs8AAAABDVxsJw",
+          "commit": {
+            "abbreviatedOid": "bc51061"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "I think these changes to the JSON code should be done together with the agreed changes to the YANG model\n\nCan you provide an updated YANG model within this PR?",
+          "createdAt": "2026-06-17T19:51:37Z",
+          "updatedAt": "2026-06-17T19:52:41Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "Error in the original JSON code:\n\n```suggestion\n          \"topology-id\": \"otn-topology-example-2\"\n```",
+              "createdAt": "2026-06-17T19:51:37Z",
+              "updatedAt": "2026-06-17T19:52:41Z"
             }
           ]
         }
