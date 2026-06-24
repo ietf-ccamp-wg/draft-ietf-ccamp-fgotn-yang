@@ -57,10 +57,17 @@ author:
   country: China
 
 contributor:
-  -
-    name: Chen Li
-    org: Fiberhome Telecommunication Technologies Co.,LTD
-    email: lich@fiberhome.com
+-
+  ins: Z. Wang
+  name: Zelin Wang
+  organization: China Unicom
+  email: wangzl172@chinaunicom.cn
+  city: Beijing
+  country: China
+-
+  name: Chen Li
+  org: Fiberhome Telecommunication Technologies Co.,LTD
+  email: lich@fiberhome.com
 
 normative:
   ITU-T_G.709:
@@ -252,7 +259,7 @@ The client needs to know how many bandwidth of a link is allocated for fgOTN. Wh
 
 Another point to note is that when performing bidirectional hitless resizing for fgODUflex service, the adjustment should be initiated by the client side to a single network management system. Specifically, the adjustment is first performed in the Node 1 to Node 6 direction, and then the reverse direction (Node 6 to Node 1) is automatically triggered for adjustment.
 
-Both single domain and multi-domain hitless resizing should be supported. For multi-domain hitless resizing scenario, both the source controller and the destination controller should report the bandwidth adjustment status to the MDSC coordinator upon completion.
+Both single domain and multi-domain hitless resizing should be supported. For single domain and multi-domain hitless resizing scenario, the source controller alone report the bandwidth adjustment status to the MDSC coordinator upon completion.
 
 ~~~~ ascii-art
 
@@ -281,7 +288,13 @@ Both single domain and multi-domain hitless resizing should be supported. For mu
 
 # YANG Data Model for fine grain Optical Transport Network Overview
 
-In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model. The attributes related to fgOTN are augments from OTN topology data model, and fgOTN topology is not treated as a separate hierarchy. The fgOTN tunnel is defined as a separate tunnel hierarchy, and the fgOTN tunnels need to be pre-set and created before the service provisioning process.
+In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model, as defined in [I-D.ietf-ccamp-otn-topo-yang] and [I-D.ietf-ccamp-otn-tunnel-model].
+
+As defined in Annex M of [ITU-T_G.709], fgOTN is defining a new path layer network which complements the existing OTN. Therefore:
+
+* A single network topology instance is used to report both OTN and fgOTN topology information: fgOTN technology-specific attributes are therefore defined in the fgOTN topology model as augmentations of the OTN topology model, but without defining a new network type for fgOTN.
+
+* The OTN tunnel model can be used to setup either an OTN or an fgOTN tunnel: fgOTN technology-specific attributes are therefore defined in the fgOTN tunnel model as augmentations of the OTN tunnel model, which are applicable only when the OTN tunnel is an fgOTN tunnel.
 
 # YANG Data Model for fgOTN Topology
 
@@ -350,7 +363,7 @@ The model augments the label-restriction list with fgOTN technology-specific lab
 ~~~~ ascii-art
 augment /nw:networks/tet:te/tet:templates/tet:link-template
         /tet:te-link-attributes/tet:label-restrictions
-        /tet:label-restriction/otnt:otn-label-range:
+        /tet:label-restriction:
    +--rw fgts-range* [odu-type odu-ts-number]
       +--rw odu-type           identityref
       +--rw odu-ts-number?     uint16
@@ -395,7 +408,7 @@ The model augment TE bandwidth information of fgOTN tunnel.
 
 ~~~~ ascii-art
 augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
-        /otn-tnl:otn:
+        /otn-tnl:otn/otn-tnl:otn-bandwidth:
    +--rw fgoduflex-bandwidth?   string
 ~~~~
 
@@ -405,6 +418,14 @@ The string value fgoduflex-bandwidth is used to indicate the bandwidth of this f
 
 The module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary-paths and secondary-paths using the fgts-numbers. The fgts-numbers is used to specify fgTS information on inter-domain ports of the routing path. When specifying the fgotn time slot in the routing constraint information, the ODU time slot must also be specified. We also augment the TE label-hop for the record route of the LSP using the fgts-numbers.
 
+# YANG Data Model for fgOTN types
+
+~~~~ yang
+{::include yang/ietf-fgotn-types.yang}
+~~~~
+{: #fgotn-types-yang title="fgOTN types YANG module"
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-types@2026-02-27.yang"}
+
 {:#fgotn-tree}
 
 # YANG Tree for fgOTN topology
@@ -412,7 +433,7 @@ The module augments TE label-hop for the explicit route objects included or excl
 {{fig-fgotn-topo-tree}} below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-topology" ({{fgotn-topology-yang}}).
 
 ~~~~ ascii-art
-{::include ./yang/ietf-fgotn-topology.tree}
+{::include-fold yang/ietf-fgotn-topology.tree}
 ~~~~
 {: #fig-fgotn-topo-tree title=fgOTN topology YANG tree diagram"
 artwork-name="ietf-fgotn-topology.tree"}
@@ -420,18 +441,17 @@ artwork-name="ietf-fgotn-topology.tree"}
 # YANG Data Model for fgOTN topology
 
 ~~~~ yang
-{::include ./yang/ietf-fgotn-topology.yang}
+{::include yang/ietf-fgotn-topology.yang}
 ~~~~
 {: #fgotn-topology-yang title="fgOTN topology YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2025-06-18.yang"}
-
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2026-02-27.yang"}
 
 # YANG Tree for fgOTN tunnel
 
 {{fig-fgotn-tunnel-tree}} below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" ({{fgotn-tunnel-yang}}).
 
 ~~~~ ascii-art
-{::include ./yang/ietf-fgotn-tunnel.tree}
+{::include-fold yang/ietf-fgotn-tunnel.tree}
 ~~~~
 {: #fig-fgotn-tunnel-tree title=fgOTN tunnel YANG tree diagram"
 artwork-name="ietf-fgotn-tunnel.tree"}
@@ -439,10 +459,10 @@ artwork-name="ietf-fgotn-tunnel.tree"}
 # YANG Data Model for fgOTN tunnel
 
 ~~~~ yang
-{::include ./yang/ietf-fgotn-tunnel.yang}
+{::include yang/ietf-fgotn-tunnel.yang}
 ~~~~
 {: #fgotn-tunnel-yang title="fgOTN tunnel YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2025-06-18.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-02-27.yang"}
 
 # Manageability Considerations
 
@@ -457,21 +477,25 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2025-06-18.yang"}
 
 --- back
 
+
+# Multi-domain fgOTN Hitless Resizing Process
+
+The process of multi-domain fgOTN hitless resizing include five steps. The source controller alone report the hitless bandwidth adjustment status to the MDSC coordinator. To be noted that, the resizing process is divided into two directions, and the resizing is considered successful when both directions have been adjusted.
+
+Step 1: The MDSC coordinator sends an resizing command to the source node (Node1) via Controller 1.
+
+Step 2: Controller 1 will report a bandwidth adjustment starting status notification, e.g. ietf-te-types:lsp-bandwidth-modifying, to the MDSC.
+
+Step 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of [ITU-T_G.709].
+
+Step 4: At the same time, the reverse direction bandwidth resizing will be triggered auotmatically by the data plane in node 6. Controller 3 needs to report an bandwidth adjustment starting status notification, ietf-te-types:lsp-bandwidth-modifying, to the MDSC.
+
+Step 5: After the reverse direction (Node 6 to Node 1) resizing is completed, Controller 1 will report an ending status notification, ietf-te-types:lsp-bandwidth-modified-ok, to the MDSC.
+
+If the hitless resizing fails, the source controller (i.e., Controller 1) needs to report an bandwidth adjustment failure status notification, ietf-te-types:lsp-bandwidth-modify-failed, to the MDSC coordinator.
+
+During the whole process, all domain controllers, including the intermediate domain Controller 2, need to report the notifications of topology and tunnel resource changes to the MDSC.
+
+{: numbered="false"}
+
 # Acknowledgments
-
-# Appendix A. Multi-domain fgOTN Hitless Resizing Process
-
-The process of cross domain hitless resizing include six steps. Both the source and destination controllers should report the hitless bandwidth adjustment status to the MDSC coordinator.
-
-Step 1: The MDSC coordinator sends an resizing command to the source node (Node1) via Controller 1. The command includes the target bandwidth and the fgODUflex service identifier.
-
-Step 2: Controller 1 reports the bandwidth adjustment status ietf-te-types:lsp-path-modifying to the MDSC via notification.
-
-Step 3: After the resizing in the direction from Node1 to Node6 was completed, Controller 1 reported ietf-te-types:lsp-path-modified to MDSC. This automatically triggered a reverse-direction resizing (Node6 to Node1).
-
-Step 4: Once the reverse resizing begins, Controller 3 reports the bandwidth adjustment status to the MDSC via notification.
-
-Step 5: After the reverse direction  (Node 6 to Node 1) resizing is completed, Controller 3 reports ietf-te-types:lsp-path-modified to MDSC.
-
-Step 6: All domain controllers, including the intermediate domain Controller 2, report notifications of topology and tunnel resource changes to MDSC coordinator.
-

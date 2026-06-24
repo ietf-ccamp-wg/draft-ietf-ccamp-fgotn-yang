@@ -17,7 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: "Checkout"
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
+      with:
+        # Needed for tracing file history for replacement status
+        fetch-depth: 0
+        fetch-tags: true
 
     # See https://github.com/actions/checkout/issues/290
     - name: "Get Tag Annotations"
@@ -50,6 +54,7 @@ jobs:
         make: upload
       env:
         UPLOAD_EMAIL: ${{ inputs.email }}
+        GITHUB_STEP: upload
 
     - name: "Archive Submitted Drafts"
       uses: actions/upload-artifact@v4

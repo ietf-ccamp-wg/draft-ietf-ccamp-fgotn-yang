@@ -9,6 +9,7 @@
 /*-[0-9][0-9].xml
 /.*.mk
 /.gems/
+/.idea/
 /.refcache
 /.venv/
 /.vscode/
@@ -21,3 +22,5 @@ draft-tan-ccamp-fgotn-yang.xml
 package-lock.json
 report.xml
 !requirements.txt
+*.bash
+pretty/

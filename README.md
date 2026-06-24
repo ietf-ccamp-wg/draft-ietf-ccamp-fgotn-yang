@@ -15,9 +15,8 @@ This is the working area for the individual Internet-Draft, "YANG Data Models fo
 See the
 [guidelines for contributions](https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/blob/main/CONTRIBUTING.md).
 
-Contributions can be made by creating pull requests.
-The GitHub interface supports creating pull requests using the Edit (✏) button.
-
+The contributing file also has tips on how to make contributions, if you
+don't already know how to do that.
 
 ## Command Line Usage
 
