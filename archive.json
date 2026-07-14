@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-06-25T02:07:57.669907+00:00",
+  "timestamp": "2026-07-14T01:19:51.776979+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -1041,6 +1041,25 @@
       "body": "Need to add the following attribute to the OTN label hop to report the multi-stage labels:\n\n```\nietf-otn-tunnel:ts-mapping-path\": {ietf-otn-tunnel:ts-mapping-path},       string\n```\nThe ts-mapping-path indicates the timeslot number mapping path used on the port, which is used to indicate the timeslots occupied by each level of mapping during multi-level mapping in cross-domain scenarios. The receiving timeslots at the local end must be consistent with the transmitting timeslots at the peer end.\n\nExample: An ODU2 occupies timeslots 1 to 8 with 1.25G granularity of ODU4, and is further mapped to timeslots 1 to 20 with 5G granularity of ODUCN. The ts-mapping-path is \"ODUCN:1-20/ODU4:1-8\".\n\nOpen issues: \n- Define this attribute (pattern and, if possible, regular expression)\n- Provide some examples of the different use cases\n",
       "createdAt": "2026-06-24T13:30:42Z",
       "updatedAt": "2026-06-24T13:30:42Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 46,
+      "id": "I_kwDOMSanvs8AAAABIrAVtg",
+      "title": "WG adoption",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/46",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "italobusi",
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "- [ ] Update the repository to reflect the draft is now adopted by CCAMP WG\n- [ ] Move the github repository under CCAMP WG\n- [ ] Publish draft-ietf-ccamp-fgotn-yang-00 with no changes other than name and date\n",
+      "createdAt": "2026-07-13T19:29:56Z",
+      "updatedAt": "2026-07-13T19:29:56Z",
       "closedAt": null,
       "comments": []
     }
