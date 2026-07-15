@@ -5,12 +5,12 @@
 Common Control and Measurement Plane                              Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 12 December 2026                                        I. Busi
+Expires: 16 January 2027                                         I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                            10 June 2026
+                                                            15 July 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 December 2026.
+   This Internet-Draft will expire on 16 January 2027.
 
 Copyright Notice
 
@@ -786,78 +786,6 @@ Table of Contents
      }
 
      augment "/nw:networks/nw:network/nt:link/tet:te"
-           + "/tet:te-link-attributes/tet:max-link-bandwidth"
-           + "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
-       description
-         "specific augmentation of fgOTN link on maximum link
-          bandwidth";
-       leaf fgotn-bandwidth {
-         when 'derived-from-or-self(../otnt:odu-type,'
-            + '"fgotn-types:fgODUflex")' {
-           description
-             "Applicable when odu-type is fgODUflex.";
-         }
-         type uint16;
-         units "megabits per second";
-         description
-           "It is used to indicate how much of the bandwidth has been
-            allocated for the usage of fgOTN.";
-       }
-     }
-
-     augment "/nw:networks/nw:network/nt:link/tet:te"
-           + "/tet:te-link-attributes/tet:unreserved-bandwidth"
-           + "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
-       description
-         "specific augmentation of fgOTN link on unreserved link
-          bandwidth";
-       leaf fgotn-bandwidth {
-         when 'derived-from-or-self(../otnt:odu-type,'
-            + '"fgotn-types:fgODUflex")' {
-           description
-             "Applicable when odu-type is fgODUflex.";
-         }
-         type uint16;
-         units "megabits per second";
-         description
-           "The unreserved bandwidth of fgOTN before the server ODUk
-            is set up";
-       }
-     }
-
-     augment "/nw:networks/nw:network/nt:link/tet:te"
-           + "/tet:te-link-attributes/tet:unreserved-bandwidth"
-           + "/tet:te-bandwidth/otnt:otn-bandwidth" {
-       description
-         "specific augmentation of fgOTN link on unreserved link
-          bandwidth";
-       list fgotnlist {
-         key "odu-type odu-ts-number";
-         description
-           "This structure is used to describe the unsreserved
-            bandwidth of fgOTN in the server ODUk";
-         leaf odu-type {
-           type identityref {
-             base l1-types:odu-type;
-           }
-           description
-             "The granularity of server ODUk";
-         }
-         leaf odu-ts-number {
-           type fgotnt:ts-list;
-           description
-             "The index of server ODUk channel";
-         }
-         leaf fgotn-bandwidth {
-           type uint16;
-           units "megabits per second";
-           description
-             "The unreserved bandwidth of fgOTN in this server ODUk";
-         }
-       }
-     }
-
-     augment "/nw:networks/nw:network/nt:link/tet:te"
            + "/tet:te-link-attributes/tet:label-restrictions"
            + "/tet:label-restriction" {
        description
@@ -1127,17 +1055,17 @@ Table of Contents
    [I-D.ietf-ccamp-layer1-types]
               Zheng, H. and I. Busi, "Common YANG Data Types for Layer 1
               Networks", Work in Progress, Internet-Draft, draft-ietf-
-              ccamp-layer1-types-18, 23 February 2024,
+              ccamp-layer1-types-19, 16 June 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
-              layer1-types-18>.
+              layer1-types-19>.
 
    [I-D.ietf-ccamp-otn-topo-yang]
               Zheng, H., Busi, I., Liu, X., Belotti, S., and O. G. de
               Dios, "A YANG Data Model for Optical Transport Network
               Topology", Work in Progress, Internet-Draft, draft-ietf-
-              ccamp-otn-topo-yang-20, 7 November 2024,
+              ccamp-otn-topo-yang-21, 16 June 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
-              otn-topo-yang-20>.
+              otn-topo-yang-21>.
 
    [I-D.ietf-ccamp-otn-tunnel-model]
               Zheng, H., Busi, I., Belotti, S., Lopez, V., and Y. Xu, "A
@@ -1199,8 +1127,8 @@ Table of Contents
               Busi, I., Guo, A., Liu, X., Saad, T., and I. Bryskin,
               "Common YANG Data Types for Traffic Engineering", Work in
               Progress, Internet-Draft, draft-ietf-teas-rfc8776-update-
-              23, 20 May 2026, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-teas-rfc8776-update-23>.
+              24, 12 June 2026, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-teas-rfc8776-update-24>.
 
    [RFC8345]  Clemm, A., Medved, J., Varga, R., Bahadur, N.,
               Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
