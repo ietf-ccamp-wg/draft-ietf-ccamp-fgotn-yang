@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-14T01:19:51.776979+00:00",
+  "timestamp": "2026-07-16T01:26:53.925516+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -197,11 +197,15 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [
+        "agreed"
+      ],
       "body": "Need to discuss whether the same switching and LSP encoding types can be used for ODUk and fgODUflex and therefore only a new odu-type value shall be defined for fgODUflex.\n\nThe text describing the fgOTN topology and tunnel models can be updated accordingly.\n\n_Originally posted by @italobusi in https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3#discussion_r2025703759_\n            ",
       "createdAt": "2025-04-08T06:26:55Z",
-      "updatedAt": "2026-02-27T16:36:28Z",
+      "updatedAt": "2026-07-15T12:34:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -795,15 +799,15 @@
       ],
       "body": "Check how the definition of the unreserved-bandwidth can be updated for fgOTN over ODUCn links.\n\nNote: pending resolution of how the unreserved-bandwidth is defined for ODUCn links.\n",
       "createdAt": "2025-11-19T13:40:30Z",
-      "updatedAt": "2026-06-24T13:23:04Z",
+      "updatedAt": "2026-07-15T12:32:32Z",
       "closedAt": null,
       "comments": [
         {
           "author": "italobusi",
           "authorAssociation": "COLLABORATOR",
-          "body": "**2026-06-17 Bi-weekly Call**\n\n**max-link-bandwidth:** Delete leaf fgotn-bandwidth.\n\n```\n\"ietf-otn-topology:odulist\": [{\n   \"odu-type\": \"ietf-layer1-types\",    \"ietf-fgotn-types:fgODUflex\"\n   \"number\": {number}    119*8   952\n}]\n```\n\n**unreserved-bandwidth:** Delete leaf fgotn-bandwidth and ietf-fgotn-topology:fgotnlist structure, and use the odulist structure to describe the available bandwidth of fgOTN.\n\n```\n\"ietf-otn-topology:odulist\": [{\n   \"odu-type\": \"ietf-layer1-types\",     \"ietf-fgotn-types:fgODUflex\"\n   \"number\": {number}     119*8     952\n}]\n```\n\nWhy: If an OTU2 port supports fgOTN, the entire port fully enables fgOTN. It does not adopt the planning idea in previous models where only one or two ODU0 time slots are planned to support fgOTN\n\n- [ ] Update the YANG model",
+          "body": "**2026-06-17 Bi-weekly Call**\n\n**max-link-bandwidth:** Delete leaf fgotn-bandwidth.\n\n```\n\"ietf-otn-topology:odulist\": [{\n   \"odu-type\": \"ietf-layer1-types\",    \"ietf-fgotn-types:fgODUflex\"\n   \"number\": {number}    119*8   952\n}]\n```\n\n**unreserved-bandwidth:** Delete leaf fgotn-bandwidth and ietf-fgotn-topology:fgotnlist structure, and use the odulist structure to describe the available bandwidth of fgOTN.\n\n```\n\"ietf-otn-topology:odulist\": [{\n   \"odu-type\": \"ietf-layer1-types\",     \"ietf-fgotn-types:fgODUflex\"\n   \"number\": {number}     119*8     952\n}]\n```\n\nWhy: If an OTU2 port supports fgOTN, the entire port fully enables fgOTN. It does not adopt the planning idea in previous models where only one or two ODU0 time slots are planned to support fgOTN\n\n- [x] Update the YANG model",
           "createdAt": "2026-06-24T13:22:35Z",
-          "updatedAt": "2026-06-24T13:22:56Z"
+          "updatedAt": "2026-07-15T12:32:32Z"
         }
       ]
     },
@@ -916,14 +920,22 @@
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
-        "italobusi"
+        "tanyanxia"
       ],
       "labels": [],
       "body": "Prepare a JSON topology example for step 3: an fgOTN tunnel is setup\n\nSee reference network in issue #29 \n\nNote: wait for resolution of issue #31 ",
       "createdAt": "2025-11-19T14:00:03Z",
-      "updatedAt": "2026-02-04T14:09:40Z",
+      "updatedAt": "2026-07-15T12:30:30Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed in PR #44 ",
+          "createdAt": "2026-07-15T12:30:22Z",
+          "updatedAt": "2026-07-15T12:30:22Z"
+        }
+      ]
     },
     {
       "number": 37,
@@ -974,11 +986,14 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "italobusi",
+        "tanyanxia"
+      ],
       "labels": [],
       "body": "Provide a description of the JSON examples and include the JSON code in an appendix",
       "createdAt": "2026-02-27T16:32:46Z",
-      "updatedAt": "2026-02-27T16:32:46Z",
+      "updatedAt": "2026-07-15T12:29:42Z",
       "closedAt": null,
       "comments": []
     },
@@ -2227,13 +2242,13 @@
       "labels": [],
       "body": "Update the JSON example: Under 100G\r\nStep1: No server layer ODUk are setup\r\nStep2: One ODU1 server layer tunnel has been setup to carry fgOTN traffic between NE1 and NE2; Two ODU0 server layer tunnel has been setup to carry fgOTN traffic between NE2 and NE4",
       "createdAt": "2026-06-17T10:15:27Z",
-      "updatedAt": "2026-06-24T13:33:28Z",
+      "updatedAt": "2026-07-15T16:35:42Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "develop",
       "baseRefOid": "2ad47a8c4fdf2af1195b8fbbd41c808ac670d4fe",
       "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "headRefName": "tanyx11",
-      "headRefOid": "bc5106178f85dfadbe26c0a77e3963ef9581bcd3",
+      "headRefOid": "268f6e338375374945427448fd0b4282f792af8f",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -2257,6 +2272,46 @@
               "body": "Error in the original JSON code:\n\n```suggestion\n          \"topology-id\": \"otn-topology-example-2\"\n```",
               "createdAt": "2026-06-17T19:51:37Z",
               "updatedAt": "2026-06-17T19:52:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABGGFwkw",
+          "commit": {
+            "abbreviatedOid": "268f6e3"
+          },
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-07-15T12:23:54Z",
+          "updatedAt": "2026-07-15T12:23:55Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "Delete import ietf-fgotn-types",
+              "createdAt": "2026-07-15T12:23:54Z",
+              "updatedAt": "2026-07-15T12:23:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABGGGRiQ",
+          "commit": {
+            "abbreviatedOid": "268f6e3"
+          },
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-07-15T12:25:07Z",
+          "updatedAt": "2026-07-15T12:25:07Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "The date need to change",
+              "createdAt": "2026-07-15T12:25:07Z",
+              "updatedAt": "2026-07-15T12:25:07Z"
             }
           ]
         }
