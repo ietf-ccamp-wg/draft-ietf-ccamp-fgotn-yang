@@ -2,19 +2,19 @@
 
 
 
-Common Control and Measurement Plane                              Y. Tan
+CCAMP Working Group                                               Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 2 September 2026                                        I. Busi
+Expires: 22 January 2027                                         I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                            1 March 2026
+                                                            21 July 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
-                   draft-tan-ccamp-fgotn-yang-latest
+                   draft-ietf-ccamp-fgotn-yang-latest
 
 Abstract
 
@@ -31,13 +31,13 @@ About This Document
    The latest revision of this draft can be found at
    https://YuChaode.github.io/draft-tan-ccamp-fgotn-yang/draft-tan-
    ccamp-fgotn-yang.html.  Status information for this document may be
-   found at https://datatracker.ietf.org/doc/draft-tan-ccamp-fgotn-
+   found at https://datatracker.ietf.org/doc/draft-ietf-ccamp-fgotn-
    yang/.
 
-   Discussion of this document takes place on the Common Control and
-   Measurement Plane Working Group mailing list (mailto:ccamp@ietf.org),
-   which is archived at https://mailarchive.ietf.org/arch/browse/ccamp/.
-   Subscribe at https://www.ietf.org/mailman/listinfo/ccamp/.
+   Discussion of this document takes place on the CCAMP Working Group
+   Working Group mailing list (mailto:ccamp@ietf.org), which is archived
+   at https://mailarchive.ietf.org/arch/browse/ccamp/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/ccamp/.
 
    Source for this draft and an issue tracker can be found at
    https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang.
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 September 2026.
+   This Internet-Draft will expire on 22 January 2027.
 
 Copyright Notice
 
@@ -1127,33 +1127,33 @@ Table of Contents
    [I-D.ietf-ccamp-layer1-types]
               Zheng, H. and I. Busi, "Common YANG Data Types for Layer 1
               Networks", Work in Progress, Internet-Draft, draft-ietf-
-              ccamp-layer1-types-18, 23 February 2024,
+              ccamp-layer1-types-19, 16 June 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
-              layer1-types-18>.
+              layer1-types-19>.
 
    [I-D.ietf-ccamp-otn-topo-yang]
               Zheng, H., Busi, I., Liu, X., Belotti, S., and O. G. de
               Dios, "A YANG Data Model for Optical Transport Network
               Topology", Work in Progress, Internet-Draft, draft-ietf-
-              ccamp-otn-topo-yang-20, 7 November 2024,
+              ccamp-otn-topo-yang-21, 16 June 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
-              otn-topo-yang-20>.
+              otn-topo-yang-21>.
 
    [I-D.ietf-ccamp-otn-tunnel-model]
               Zheng, H., Busi, I., Belotti, S., Lopez, V., and Y. Xu, "A
               YANG Data Model for Optical Transport Network (OTN)
               Tunnels and Label Switched Paths", Work in Progress,
-              Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-24, 1
-              December 2025, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-ccamp-otn-tunnel-model-24>.
+              Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-25, 27
+              May 2026, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-ccamp-otn-tunnel-model-25>.
 
    [I-D.ietf-teas-yang-te]
               Saad, T., Gandhi, R., Liu, X., Beeram, V. P., and I.
               Bryskin, "A YANG Data Model for Traffic Engineering
               Tunnels, Label Switched Paths, and Interfaces", Work in
-              Progress, Internet-Draft, draft-ietf-teas-yang-te-43, 28
-              February 2026, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-teas-yang-te-43>.
+              Progress, Internet-Draft, draft-ietf-teas-yang-te-44, 26
+              March 2026, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-teas-yang-te-44>.
 
    [ITU-T_G.709]
               International Telecommunication Union, "Interfaces for the
@@ -1199,9 +1199,8 @@ Table of Contents
               Busi, I., Guo, A., Liu, X., Saad, T., and I. Bryskin,
               "Common YANG Data Types for Traffic Engineering", Work in
               Progress, Internet-Draft, draft-ietf-teas-rfc8776-update-
-              22, 18 February 2026,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              rfc8776-update-22>.
+              24, 12 June 2026, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-teas-rfc8776-update-24>.
 
    [RFC8345]  Clemm, A., Medved, J., Varga, R., Bahadur, N.,
               Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
