@@ -1,4 +1,4 @@
 # License
 
 See the
-[guidelines for contributions](https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/blob/main/CONTRIBUTING.md).
