@@ -79,8 +79,8 @@
                           "number": 8
                         },
                         {
-                           "odu-type": "ietf-fgotn-types:fgODUflex",
-                           "number": 952
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
                         }
                       ]
                     }
@@ -182,7 +182,7 @@
                         },
                         {
                           "odu-type": "ietf-fgotn-types:fgODUflex",
-                          "number":952
+                          "number": 952
                         }
                       ]
                     }
@@ -821,7 +821,7 @@
         "node": [
           {
             "node-id": "example:NE1",
-            "ietf-te-topology:te-node-id": "0.9.9.1",
+            "ietf-te-topology:te-node-id": "192.0.0.1",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE1"
@@ -872,7 +872,7 @@
           },
           {
             "node-id": "example:NE2",
-            "ietf-te-topology:te-node-id": "0.9.9.2",
+            "ietf-te-topology:te-node-id": "192.0.0.2",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE2"
@@ -909,7 +909,7 @@
           },
           {
             "node-id": "example:NE3",
-            "ietf-te-topology:te-node-id": "0.9.9.3",
+            "ietf-te-topology:te-node-id": "192.0.0.3",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE3"
@@ -946,7 +946,7 @@
           },
           {
             "node-id": "example:NE4",
-            "ietf-te-topology:te-node-id": "0.9.9.4",
+            "ietf-te-topology:te-node-id": "192.0.0.4",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE4"
@@ -1877,7 +1877,7 @@
         "node": [
           {
             "node-id": "example:NE1",
-            "ietf-te-topology:te-node-id": "0.9.9.1",
+            "ietf-te-topology:te-node-id": "192.0.0.1",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE1"
@@ -1928,7 +1928,7 @@
           },
           {
             "node-id": "example:NE2",
-            "ietf-te-topology:te-node-id": "0.9.9.2",
+            "ietf-te-topology:te-node-id": "192.0.0.2",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE2"
@@ -1965,7 +1965,7 @@
           },
           {
             "node-id": "example:NE3",
-            "ietf-te-topology:te-node-id": "0.9.9.3",
+            "ietf-te-topology:te-node-id": "192.0.0.3",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE3"
@@ -2002,7 +2002,7 @@
           },
           {
             "node-id": "example:NE4",
-            "ietf-te-topology:te-node-id": "0.9.9.4",
+            "ietf-te-topology:te-node-id": "192.0.0.4",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE4"
@@ -2335,8 +2335,8 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
                           "odu-ts-number": "1-2",
-                          "fgts-reserved": "",
-                          "fgts-unreserved": "1-238"
+                          "fgts-reserved": "4-5",
+                          "fgts-unreserved": "1-3,6-238"
                         }
                       ]
                     }
@@ -2539,8 +2539,8 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "odu-ts-number": "1",
-                          "fgts-reserved": "1-4",
-                          "fgts-unreserved": "5-119"
+                          "fgts-reserved": "2-4,20",
+                          "fgts-unreserved": "1,5-19,21-119"
                         },
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
@@ -2655,8 +2655,8 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "odu-ts-number": "1",
-                          "fgts-reserved": "1-4",
-                          "fgts-unreserved": "5-119"
+                          "fgts-reserved": "2-4,20",
+                          "fgts-unreserved": "1,5-19,21-119"
                         },
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
@@ -2773,8 +2773,8 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
                           "odu-ts-number": "1-2",
-                          "fgts-reserved": "",
-                          "fgts-unreserved": "1-238"
+                          "fgts-reserved": "4-5",
+                          "fgts-unreserved": "1-3,6-238"
                         }
                       ]
                     }
@@ -2933,7 +2933,7 @@
         "node": [
           {
             "node-id": "example:NE1",
-            "ietf-te-topology:te-node-id": "0.9.9.1",
+            "ietf-te-topology:te-node-id": "192.0.0.1",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE1"
@@ -2984,7 +2984,7 @@
           },
           {
             "node-id": "example:NE2",
-            "ietf-te-topology:te-node-id": "0.9.9.2",
+            "ietf-te-topology:te-node-id": "192.0.0.2",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE2"
@@ -3021,7 +3021,7 @@
           },
           {
             "node-id": "example:NE3",
-            "ietf-te-topology:te-node-id": "0.9.9.3",
+            "ietf-te-topology:te-node-id": "192.0.0.3",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE3"
@@ -3058,7 +3058,7 @@
           },
           {
             "node-id": "example:NE4",
-            "ietf-te-topology:te-node-id": "0.9.9.4",
+            "ietf-te-topology:te-node-id": "192.0.0.4",
             "ietf-te-topology:te": {
               "te-node-attributes": {
                 "name": "Node NE4"
