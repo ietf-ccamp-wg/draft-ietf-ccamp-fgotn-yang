@@ -24,25 +24,9 @@ module ietf-fgotn-topology {
     reference
       "RFC YYYY: A YANG Data Model for Layer 1 Types";
   }
-  import ietf-fgotn-types {
-    prefix fgotn-types;
-    reference
-      "RFC XXXX: YANG Data Models for fine grain Optical Transport
-       Network";
-  }
 
   /* Note: The RFC Editor will replace YYYY with the number assigned
      to the RFC once draft-ietf-ccamp-layer1-types becomes an RFC.*/
-
-  import ietf-otn-topology {
-    prefix otnt;
-    reference
-      "RFC ZZZZ: A YANG Data Model for Optical Transport Network
-                 Topology";
-  }
-
-  /* Note: The RFC Editor will replace ZZZZ with the number assigned
-     to the RFC once draft-ietf-ccamp-otn-topo-yang becomes an RFC.*/
 
   organization
     "Internet Engineering Task Force (IETF) CCAMP WG";
@@ -85,7 +69,7 @@ module ietf-fgotn-topology {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-02-27 {
+  revision 2026-07-23 {
     description
       "initial version";
     reference
