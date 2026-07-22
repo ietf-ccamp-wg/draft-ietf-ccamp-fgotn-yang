@@ -1,5 +1,7 @@
 module: ietf-fgotn-topology
 
+  typedef ts-list
+
   augment /nw:networks/nw:network/nt:link/tet:te
             /tet:te-link-attributes/tet:label-restrictions
             /tet:label-restriction:
