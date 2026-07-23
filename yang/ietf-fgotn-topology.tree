@@ -1,21 +1,6 @@
 module: ietf-fgotn-topology
 
   augment /nw:networks/nw:network/nt:link/tet:te
-            /tet:te-link-attributes/tet:max-link-bandwidth
-            /tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist:
-    +--rw fgotn-bandwidth?   uint16
-  augment /nw:networks/nw:network/nt:link/tet:te
-            /tet:te-link-attributes/tet:unreserved-bandwidth
-            /tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist:
-    +--rw fgotn-bandwidth?   uint16
-  augment /nw:networks/nw:network/nt:link/tet:te
-            /tet:te-link-attributes/tet:unreserved-bandwidth
-            /tet:te-bandwidth/otnt:otn-bandwidth:
-    +--rw fgotnlist* [odu-type odu-ts-number]
-       +--rw odu-type           identityref
-       +--rw odu-ts-number      fgotnt:ts-list
-       +--rw fgotn-bandwidth?   uint16
-  augment /nw:networks/nw:network/nt:link/tet:te
             /tet:te-link-attributes/tet:label-restrictions
             /tet:label-restriction:
     +--rw fgts-range* [odu-type odu-ts-number]
