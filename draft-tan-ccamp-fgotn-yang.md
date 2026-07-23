@@ -57,21 +57,21 @@ author:
   country: China
 
 contributor:
--
+ -
   ins: Z. Wang
   name: Zelin Wang
   organization: China Unicom
   email: wangzl172@chinaunicom.cn
   city: Beijing
   country: China
-  -
+ -
   ins: A. Guo
   name: Aihua Guo
   organization: Huawei Technologiesicom
   email: aihuaguo.ietf@gmail.com
--
+ -
   name: Chen Li
-  org: Fiberhome Telecommunication Technologies Co.,LTD
+  organization: Fiberhome Telecommunication Technologies Co.,LTD
   email: lich@fiberhome.com
 
 normative:
@@ -374,7 +374,7 @@ This document aims to describe the data model for fgOTN tunnel. The fgOTN tunnel
 
 It's also worth noting that the fgOTN tunnel provisioning is usually based on the fgOTN topology. Therefore the fgOTN tunnel model is usually used together with fgOTN topology model specified in this document. The OTN tunnel model also imports a few type modules, including ietf-layer1-types and ietf-te-types.
 
-A new identity based on odu-type should be defined in {{?I-D.ietf-ccamp-layer1-types}} to indicate the fgODUflex tunnel.
+A new identity based on odu-type should be defined in fgotn-types yang module to indicate the fgODUflex tunnel.
 
 ## Bandwidth Augmentation
 
