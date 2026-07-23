@@ -3,7 +3,7 @@ title: "YANG Data Models for fine grain Optical Transport Network"
 abbrev: "Fine grain OTN YANG"
 category: std
 
-docname: draft-ietf-ccamp-fgotn-yang-latest
+docname: draft-tan-ccamp-fgotn-yang-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
