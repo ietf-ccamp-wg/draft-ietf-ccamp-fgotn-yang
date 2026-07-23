@@ -1054,7 +1054,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -1164,7 +1164,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -1274,7 +1274,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -1384,7 +1384,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f"
+                      "range-bitmap": "fc"
                     }
                   ]
                 },
@@ -1478,7 +1478,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
@@ -1594,7 +1594,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
@@ -1712,7 +1712,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -1822,7 +1822,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f"
+                      "range-bitmap": "fc"
                     }
                   ]
                 },
@@ -2110,7 +2110,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -2220,7 +2220,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -2330,7 +2330,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -2440,7 +2440,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f"
+                      "range-bitmap": "fc"
                     }
                   ]
                 },
@@ -2534,7 +2534,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
@@ -2650,7 +2650,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
@@ -2768,7 +2768,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f",
+                      "range-bitmap": "fc",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -2878,7 +2878,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "3f"
+                      "range-bitmap": "fc"
                     }
                   ]
                 },
