@@ -28,6 +28,16 @@ module ietf-fgotn-topology {
   /* Note: The RFC Editor will replace YYYY with the number assigned
      to the RFC once draft-ietf-ccamp-layer1-types becomes an RFC.*/
 
+  import ietf-otn-topology {
+    prefix otnt;
+    reference
+      "RFC ZZZZ: A YANG Data Model for Optical Transport Network
+                 Topology";
+  }
+
+  /* Note: The RFC Editor will replace ZZZZ with the number assigned
+     to the RFC once draft-ietf-ccamp-otn-topo-yang becomes an RFC.*/
+
   organization
     "Internet Engineering Task Force (IETF) CCAMP WG";
   contact
