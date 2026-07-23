@@ -3,20 +3,20 @@ title: "YANG Data Models for fine grain Optical Transport Network"
 abbrev: "Fine grain OTN YANG"
 category: std
 
-docname: draft-tan-ccamp-fgotn-yang-latest
+docname: draft-ietf-ccamp-fgotn-yang-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
 consensus: true
 v: 3
 area: "Routing"
-workgroup: "Common Control and Measurement Plane"
+workgroup: "CCAMP Working Group"
 keyword:
  - next generation
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: "Common Control and Measurement Plane"
+  group: "CCAMP Working Group"
   type: "Working Group"
   mail: "ccamp@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/ccamp/"
