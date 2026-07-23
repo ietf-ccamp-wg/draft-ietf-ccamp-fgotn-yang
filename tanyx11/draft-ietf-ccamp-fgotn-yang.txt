@@ -2,7 +2,7 @@
 
 
 
-Common Control and Measurement Plane                              Y. Tan
+CCAMP Working Group                                               Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
 Expires: 24 January 2027                                         I. Busi
@@ -14,7 +14,7 @@ Expires: 24 January 2027                                         I. Busi
 
 
        YANG Data Models for fine grain Optical Transport Network
-                   draft-tan-ccamp-fgotn-yang-latest
+                   draft-ietf-ccamp-fgotn-yang-latest
 
 Abstract
 
@@ -31,12 +31,12 @@ About This Document
    The latest revision of this draft can be found at https://ietf-ccamp-
    wg.github.io/draft-ietf-ccamp-fgotn-yang/draft-ietf-ccamp-fgotn-
    yang.html.  Status information for this document may be found at
-   https://datatracker.ietf.org/doc/draft-tan-ccamp-fgotn-yang/.
+   https://datatracker.ietf.org/doc/draft-ietf-ccamp-fgotn-yang/.
 
-   Discussion of this document takes place on the Common Control and
-   Measurement Plane Working Group mailing list (mailto:ccamp@ietf.org),
-   which is archived at https://mailarchive.ietf.org/arch/browse/ccamp/.
-   Subscribe at https://www.ietf.org/mailman/listinfo/ccamp/.
+   Discussion of this document takes place on the CCAMP Working Group
+   Working Group mailing list (mailto:ccamp@ietf.org), which is archived
+   at https://mailarchive.ietf.org/arch/browse/ccamp/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/ccamp/.
 
    Source for this draft and an issue tracker can be found at
    https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang.
