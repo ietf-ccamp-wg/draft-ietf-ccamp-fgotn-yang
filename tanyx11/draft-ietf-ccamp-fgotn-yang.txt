@@ -756,6 +756,10 @@ Table of Contents
      augment "/nw:networks/nw:network/nt:link/tet:te"
            + "/tet:te-link-attributes/tet:label-restrictions"
            + "/tet:label-restriction" {
+       when "./otnt:otn-label-range/otnt:range-type = 'trib-slot'" {
+         description
+           "Valid only when range-type represented by trib-slot.";
+       }
        description
          "specific augmentation of fgOTN label";
        list fgts-range {
