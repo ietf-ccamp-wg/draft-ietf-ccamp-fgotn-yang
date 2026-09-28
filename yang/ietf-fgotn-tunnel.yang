@@ -100,9 +100,9 @@ module ietf-fgotn-tunnel {
         description
           "Applicable when odu-type is fgODUflex.";
       }
-      type uint8{
-            range "1 .. 119";
-        };
+      type uint8 {
+        range "1 .. 119";
+      };
       description
         "Augment TE bandwidth of the fgOTN tunnel, it represent themultiplier of 10Mbit/s (as per definition in Table M.3 of ITU-T G.709)";
     }
