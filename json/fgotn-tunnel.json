@@ -1,0 +1,452 @@
+{
+  "ietf-te:te": {
+    "tunnels": {
+      "tunnel": [
+        {
+          "name": "fgOTN Tunnel Example 1",
+          "encoding": "ietf-te-types:lsp-encoding-oduk",
+          "switching-type": "ietf-te-types:switching-otn",
+          "source": {
+            "node-id": "example:NE1",
+            "te-node-id": "192.0.0.1"
+          },
+          "destination": {
+            "node-id": "example:NE4",
+            "te-node-id": "192.0.0.4"
+          },
+          "bidirectional": true,
+          "protection": {
+            "protection-type": "ietf-te-types:lsp-protection-unidir-1-plus-1"
+          },
+          "network-id": "example:otn-topology-example-2",
+          "te-topology-identifier": {
+            "topology-id": "otn-topology-example-2"
+          },
+          "te-bandwidth": {
+            "ietf-otn-tunnel:otn-bandwidth": {
+              "odu-type": "ietf-fgotn-types:fgODUflex";
+			  "ietf-fgotn-tunnel:fgoduflex-bandwidth": "20"
+            }
+          },
+		  "dependency-tunnels": { 
+            "dependency-tunnel": [
+			  {
+				"name": "ODU1 tunnel between NE1 and NE2",
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-type": "ietf-te-types:switching-otn",
+				"working-role": "primary"
+			  },
+			  {
+				"name": "ODU0 tunnel 1 between NE2 and NE4",
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-type": "ietf-te-types:switching-otn",
+				"working-role": "primary" 
+			  },
+			  {
+				"name": "ODU1 tunnel from NE1 to NE3 to NE4",
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-type": "ietf-te-types:switching-otn",
+				"working-role": "secondary" 
+			  }
+			] 
+          }, 
+          "primary-paths": {
+            "primary-path": [
+              {
+                "name": "primary-path-1",
+                "path-scope": "ietf-te-types:path-scope-end-to-end",
+                "co-routed": true,
+                "computed-paths-properties": {
+                  "computed-path-properties": [
+                    {
+                      "k-index": 1,
+                      "path-properties": {
+                        "path-route-objects": {
+                          "path-route-object": [
+                            {
+                              "index": 1,
+                              "unnumbered-link-hop": {
+                                "node-id": "192.0.0.1",
+                                "link-tp-id": 2,
+                                "node-id-uri": "example:NE1",
+                                "link-tp-id-uri": "example:NE1-2",
+                                "hop-type": "strict",
+								"direction":"outgoing"
+                              }
+                            },
+                            {
+                              "index": 2,
+                              "label-hop": {
+                                "te-label": {
+                                  "ietf-otn-tunnel:otn-label": {
+                                    "tsg": "ietf-layer1-types:tsg-1.25G",
+                                    "ts-list": "1-2",
+									"fgts-numbers":"1-2"
+                                  }
+                                }
+                              }
+                            },
+							{
+                              "index": 3,
+                              "unnumbered-link-hop": {
+                                "node-id": "192.0.0.2",
+                                "link-tp-id": 2,
+                                "node-id-uri": "example:NE2",
+                                "link-tp-id-uri": "example:NE2-2",
+                                "hop-type": "strict",
+								"direction":"outgoing"
+                              }
+                            },
+                            {
+                              "index": 4,
+                              "label-hop": {
+                                "te-label": {
+                                  "ietf-otn-tunnel:otn-label": {
+                                    "tsg": "ietf-layer1-types:tsg-1.25G",
+                                    "ts-list": "1",
+									"fgts-numbers":"2-3"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "lsps": {
+                  "lsp": [
+                    {
+                      "tunnel-name": "fgOTN Tunnel Example 1",
+                      "node": "192.0.0.1",
+                      "lsp-id": 1
+                    }
+                  ]
+                },
+                "candidate-secondary-paths": {
+                  "candidate-secondary-path": [
+                    {
+                      "secondary-path": "secondary-path-1"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "secondary-paths": {
+            "secondary-path": [
+              {
+                "name": "secondary-path-1",
+                "path-scope": "ietf-te-types:path-scope-end-to-end",
+                "computed-paths-properties": {
+                  "computed-path-properties": [
+                    {
+                      "k-index": 1,
+                      "path-properties": {
+                        "path-route-objects": {
+                          "path-route-object": [
+                            {
+                              "index": 1,
+                              "unnumbered-link-hop": {
+                                "node-id": "192.0.0.1",
+                                "link-tp-id": 3,
+                                "node-id-uri": "example:NE1",
+                                "link-tp-id-uri": "example:NE1-3",
+                                "hop-type": "strict",
+                                "direction": "outgoing"
+                              }
+                            },
+                            {
+                              "index": 2,
+                              "label-hop": {
+                                "te-label": {
+                                  "ietf-otn-tunnel:otn-label": {
+                                    "tsg": "ietf-layer1-types:tsg-1.25G",
+                                    "ts-list": "1-2",
+									"fgts-numbers":"4-5"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "index": 3,
+                              "unnumbered-link-hop": {
+                                "node-id": "192.0.0.3",
+                                "link-tp-id": 2,
+                                "node-id-uri": "example:NE3",
+                                "link-tp-id-uri": "example:NE3-2",
+                                "hop-type": "strict",
+                                "direction": "outgoing"
+                              }
+                            },
+                            {
+                              "index": 4,
+                              "label-hop": {
+                                "te-label": {
+                                  "ietf-otn-tunnel:otn-label": {
+                                    "tsg": "ietf-layer1-types:tsg-1.25G",
+                                    "ts-list": "1-2"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "lsps": {
+                  "lsp": [
+                    {
+                      "tunnel-name": "fgOTN Tunnel Example 1",
+                      "node": "192.0.0.1",
+                      "lsp-id": 2
+                    }
+                  ]
+                }
+			  }
+            ]
+          }
+        },
+		{
+          "name": "fgOTN Tunnel Example 2",
+          "encoding": "ietf-te-types:lsp-encoding-oduk",
+          "switching-type": "ietf-te-types:switching-otn",
+          "source": {
+            "node-id": "example:NE2",
+            "te-node-id": "192.0.0.2"
+          },
+          "destination": {
+            "node-id": "example:NE4",
+            "te-node-id": "192.0.0.4"
+          },
+          "bidirectional": true,
+          "protection": {
+            "protection-type": "ietf-te-types:lsp-protection-unprotected"
+          },
+          "network-id": "example:otn-topology-example-2",
+          "te-topology-identifier": {
+            "topology-id": "otn-topology-example-2"
+          },
+          "te-bandwidth": {
+            "ietf-otn-tunnel:otn-bandwidth": {
+              "odu-type": "ietf-fgotn-types:fgODUflex";
+			  "ietf-fgotn-tunnel:fgoduflex-bandwidth": "20"
+            }
+          },
+		  "dependency-tunnels": { 
+            "dependency-tunnel": [
+			  {
+				"name": "ODU0 tunnel 1 between NE2 and NE4",
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-type": "ietf-te-types:switching-otn",
+				"working-role": "primary" 
+			  }
+			] 
+          }, 
+          "primary-paths": {
+            "primary-path": [
+              {
+                "name": "primary-path-1",
+                "path-scope": "ietf-te-types:path-scope-end-to-end",
+                "co-routed": true,
+                "computed-paths-properties": {
+                  "computed-path-properties": [
+                    {
+                      "k-index": 1,
+                      "path-properties": {
+                        "path-route-objects": {
+                          "path-route-object": [
+                            {
+                              "index": 1,
+                              "unnumbered-link-hop": {
+                                "node-id": "192.0.0.2",
+                                "link-tp-id": 2,
+                                "node-id-uri": "example:NE2",
+                                "link-tp-id-uri": "example:NE2-2",
+                                "hop-type": "strict",
+								"direction":"outgoing"
+                              }
+                            },
+                            {
+                              "index": 2,
+                              "label-hop": {
+                                "te-label": {
+                                  "ietf-otn-tunnel:otn-label": {
+                                    "tsg": "ietf-layer1-types:tsg-1.25G",
+                                    "ts-list": "1",
+									"fgts-numbers":"4,20"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "lsps": {
+                  "lsp": [
+                    {
+                      "tunnel-name": "fgOTN Tunnel Example 2",
+                      "node": "192.0.0.2",
+                      "lsp-id": 3
+                    }
+                  ]
+                },
+                "candidate-secondary-paths": {
+                  "candidate-secondary-path": [
+                    {
+                      "secondary-path": "secondary-path-1"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "lsps": {
+      "lsp": [
+        {
+          "tunnel-name": "fgOTN Tunnel Example 1",
+          "lsp-id": 1,
+          "node": "192.0.0.1",
+          "origin-type": "ingress",
+          "lsp-actual-route-information": {
+            "lsp-actual-route-information": [
+              {
+                "index": 1,
+                "unnumbered-link-hop": {
+                  "node-id": "192.0.0.1",
+                  "link-tp-id": 2,
+                  "node-id-uri": "example:NE1",
+                  "link-tp-id-uri": "example:NE1-2"
+                }
+              },
+              {
+                "index": 2,
+                "label-hop": {
+                  "te-label": {
+                    "ietf-otn-tunnel:otn-label": {
+                      "tsg": "ietf-layer1-types:tsg-1.25G",
+                      "ts-list": "1-2",
+					  "fgts-numbers":"1-2"
+                    }
+                  }
+                }
+              },
+			  {
+                "index": 3,
+                "unnumbered-link-hop": {
+                  "node-id": "192.0.0.2",
+                  "link-tp-id": 2,
+                  "node-id-uri": "example:NE2",
+                  "link-tp-id-uri": "example:NE2-2"
+                }
+              },
+              {
+                "index": 4,
+                "label-hop": {
+                  "te-label": {
+                    "ietf-otn-tunnel:otn-label": {
+                      "tsg": "ietf-layer1-types:tsg-1.25G",
+                      "ts-list": "1",
+					  "fgts-numbers":"2-3"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tunnel-name": "fgOTN Tunnel Example 1",
+          "lsp-id": 2,
+          "node": "192.0.0.1",
+          "origin-type": "ingress",
+          "lsp-actual-route-information": {
+            "lsp-actual-route-information": [
+              {
+                "index": 1,
+                "unnumbered-link-hop": {
+                  "node-id": "192.0.0.1",
+                  "link-tp-id": 3,
+                  "node-id-uri": "example:NE1",
+                  "link-tp-id-uri": "example:NE1-3"
+                }
+              },
+              {
+                "index": 2,
+                "label-hop": {
+                  "te-label": {
+                    "ietf-otn-tunnel:otn-label": {
+                      "tsg": "ietf-layer1-types:tsg-1.25G",
+                      "ts-list": "1-2",
+					  "fgts-numbers":"4-5"
+                    }
+                  }
+                }
+              },
+              {
+                "index": 3,
+                "unnumbered-link-hop": {
+                  "node-id": "192.0.0.3",
+                  "link-tp-id": 2,
+                  "node-id-uri": "example:NE3",
+                  "link-tp-id-uri": "example:NE3-2"
+                }
+              },
+              {
+                "index": 4,
+                "label-hop": {
+                  "te-label": {
+                    "ietf-otn-tunnel:otn-label": {
+                      "tsg": "ietf-layer1-types:tsg-1.25G",
+                      "ts-list": "1-2"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+		{
+          "tunnel-name": "fgOTN Tunnel Example 2",
+          "lsp-id": 3,
+          "node": "192.0.0.2",
+          "origin-type": "ingress",
+          "lsp-actual-route-information": {
+            "lsp-actual-route-information": [
+              {
+                "index": 1,
+                "unnumbered-link-hop": {
+                  "node-id": "192.0.0.2",
+                  "link-tp-id": 2,
+                  "node-id-uri": "example:NE2",
+                  "link-tp-id-uri": "example:NE2-2"
+                }
+              },
+              {
+                "index": 2,
+                "label-hop": {
+                  "te-label": {
+                    "ietf-otn-tunnel:otn-label": {
+                      "tsg": "ietf-layer1-types:tsg-1.25G",
+                      "ts-list": "1",
+					  "fgts-numbers":"4,20"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
