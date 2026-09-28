@@ -2369,7 +2369,11 @@ module ietf-fgotn-tunnel {
         range "1 .. 119";
       };
       description
-        "Augment TE bandwidth of the fgOTN tunnel, it represent themultiplier of 10Mbit/s (as per definition in Table M.3 of ITU-T G.709)";
+        "The TE bandwidth of the fgOTN tunnel expressed as the
+         multiplier of 10Mbit/s.";
+      reference
+        "ITU-T G.709 v6.5 (03/2024): Interfaces for the Optical
+                   Transport Network (OTN), Table M.3";
     }
   }
 
