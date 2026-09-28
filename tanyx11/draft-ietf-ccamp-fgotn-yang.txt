@@ -5,12 +5,12 @@
 CCAMP Working Group                                               Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 6 March 2027                                            I. Busi
+Expires: 1 April 2027                                            I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                        2 September 2026
+                                                       28 September 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 March 2027.
+   This Internet-Draft will expire on 1 April 2027.
 
 Copyright Notice
 
@@ -740,7 +740,7 @@ Table of Contents
      // RFC Ed.: update the date below with the date of RFC publication
      // and remove this note.
 
-     revision 2026-07-23 {
+     revision 2026-09-09 {
        description
          "initial version";
        reference
@@ -1058,9 +1058,9 @@ Table of Contents
    [I-D.ietf-ccamp-layer1-types]
               Zheng, H. and I. Busi, "Common YANG Data Types for Layer 1
               Networks", Work in Progress, Internet-Draft, draft-ietf-
-              ccamp-layer1-types-19, 16 June 2026,
+              ccamp-layer1-types-20, 15 September 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
-              layer1-types-19>.
+              layer1-types-20>.
 
    [I-D.ietf-ccamp-otn-topo-yang]
               Zheng, H., Busi, I., Liu, X., Belotti, S., and O. G. de
