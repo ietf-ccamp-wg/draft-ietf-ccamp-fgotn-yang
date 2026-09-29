@@ -107,13 +107,13 @@ In the latest version of OTN, ITU-T G.709/Y.1331 Edition 6.5 {{ITU-T_G.709}}, th
 
 This document presents the control interface requirements of fgOTN, and defines three YANG data models for fgOTN topology, fgOTN tunnel, and fgOTN types. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels and Label Switched Paths (LSPs). The fgOTN types model contains a collection of YANG data types considered generally useful for fgOTN networks.
 
-Furthermore, this document also imports the generic Layer 1 types defined in {{?I-D.ietf-ccamp-layer1-types}}.
+Furthermore, this document also imports the generic Layer 1 types defined in {{!I-D.ietf-ccamp-layer1-types}}.
 
 The YANG data models defined in this document conform to the Network Management Datastore Architecture (NMDA) defined in {{!RFC8342}}.
 
 ## Terminology and Notations
 
-The following terms are defined in [ITU-T_G.709] and in [ITU-T_G.709.20] and are not redefined here:
+The following terms are defined in {{ITU-T_G.709}} and in {{ITU-T_G.709.20}} and are not redefined here:
 
   *  fgTS: fine grain Tributary Slot.
 
@@ -275,15 +275,15 @@ Both single domain and multi-domain hitless resizing should be supported. For si
 
 # YANG Data Model for fine grain Optical Transport Network Overview
 
-In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model, as defined in [I-D.ietf-ccamp-otn-topo-yang] and [I-D.ietf-ccamp-otn-tunnel-model].
+In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model, as defined in {{!I-D.ietf-ccamp-otn-topo-yang}} and {{!I-D.ietf-ccamp-otn-tunnel-model}}.
 
-As defined in Annex M of [ITU-T_G.709], fgOTN is defining a new path layer network which complements the existing OTN. Therefore:
+As defined in Annex M of {{ITU-T_G.709}}, fgOTN is defining a new path layer network which complements the existing OTN. Therefore:
 
 * A single network topology instance is used to report both OTN and fgOTN topology information: fgOTN technology-specific attributes are therefore defined in the fgOTN topology model as augmentations of the OTN topology model, but without defining a new network type for fgOTN.
 
 * The OTN tunnel model can be used to setup either an OTN or an fgOTN tunnel: fgOTN technology-specific attributes are therefore defined in the fgOTN tunnel model as augmentations of the OTN tunnel model, which are applicable only when the OTN tunnel is an fgOTN tunnel.
 
-In other words, the same switching-capability and encoding types can be used for ODUk and fgODUflex. Accordingly, additional parameters are required to identify fgODUflex tunnels. This document defines a new YANG module ietf-fgotn-types containing fgOTN-specific type definitions. In order to identify the fgODUflex tunnel, a new identity fgODUflex based on the odu-type in {{?I-D.ietf-ccamp-layer1-types}} is defined in ietf-fgotn-types YANG module.
+In other words, the same switching-capability and encoding types can be used for ODUk and fgODUflex. Accordingly, additional parameters are required to identify fgODUflex tunnels. This document defines a new YANG module ietf-fgotn-types containing fgOTN-specific type definitions. In order to identify the fgODUflex tunnel, a new identity fgODUflex based on the odu-type in {{!I-D.ietf-ccamp-layer1-types}} is defined in ietf-fgotn-types YANG module.
 
 # YANG Data Model for fgOTN Topology
 
@@ -291,7 +291,7 @@ In other words, the same switching-capability and encoding types can be used for
 
 This document aims to describe the data model for fine grain OTN topology. The YANG module presented in this document augments from OTN topology data model, i.e., the ietf-otn-topology, as specified in {{?I-D.ietf-ccamp-otn-topo-yang}}. In section 6 of {{?I-D.ietf-ccamp-otn-topo-yang}}, the guideline for augmenting OTN topology model was provided, and in this draft, we augment the OTN topology model to describe the topology characteristics of fgOTN.
 
-Common types, identities and groupings defined in {{?I-D.ietf-ccamp-layer1-types}} is reused in this document.
+Common types, identities and groupings defined in {{!I-D.ietf-ccamp-layer1-types}} is reused in this document.
 
 {{?RFC8345}} defines an abstract (generic, or base) YANG data model for network/service topologies and inventories, and provides the fundamental model for {{?RFC8795}}. OTN topology module in {{?I-D.ietf-ccamp-otn-topo-yang}} augments from the TE topology YANG model defined in {{?RFC8795}}. {{fig-fgotn-topology-relationship}} shows the augmentation relationship.
 
@@ -335,7 +335,8 @@ Building upon the OTN topology model, the odu-list structure within the OTN topo
 ~~~~
 
 ## Label Augmentation
-The model augments the label-restriction list with fgOTN technology-specific label information using the otn-label-range-info grouping defined in {{?I-D.ietf-ccamp-layer1-types}}.
+
+The model augments the label-restriction list with fgOTN technology-specific label information using the otn-label-range-info grouping defined in {{!I-D.ietf-ccamp-layer1-types}}.
 
 ~~~~ yangtree
   augment /nw:networks/tet:te/tet:templates/tet:link-template
@@ -395,7 +396,13 @@ The string value fgoduflex-bandwidth is used to indicate the bandwidth of this f
 
 The module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary-paths and secondary-paths using the fgts-numbers. The fgts-numbers is used to specify fgTS information on inter-domain ports of the routing path. When specifying the fgotn time slot in the routing constraint information, the ODU time slot must also be specified. We also augment the TE label-hop for the record route of the LSP using the fgts-numbers.
 
-# YANG Data Model for fgOTN types
+# YANG Data Model for fgOTN types {#yang-types}
+
+The "ietf-fgotn-types" module imports the following modules:
+
+- "ietf-layer1-types" as defined in {{!I-D.ietf-ccamp-layer1-types}}
+
+In addition to importing {{!I-D.ietf-ccamp-layer1-types}}, this module references the following documents in defining its types: {{!RFC7139}}.
 
 ~~~~ yang
 {::include yang/ietf-fgotn-types.yang}
@@ -417,6 +424,15 @@ artwork-name="ietf-fgotn-topology.tree"}
 
 # YANG Data Model for fgOTN topology
 
+The "ietf-fgotn-topology" module imports the following modules:
+
+- "ietf-network" as defined in {{!RFC8345}}
+- "ietf-network-topology" as defined in {{!RFC8345}}
+- "ietf-te-topology" as defined in {{!RFC8795}}
+- "ietf-layer1-types" as defined in {{!I-D.ietf-ccamp-layer1-types}}
+- "ietf-otn-topology" as defined in {{!I-D.ietf-ccamp-otn-topo-yang}}
+- "ietf-fgotn-types" as defined in {{yang-types}} of this document
+
 ~~~~ yang
 {::include yang/ietf-fgotn-topology.yang}
 ~~~~
@@ -434,6 +450,14 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2026-07-23.yang"}
 artwork-name="ietf-fgotn-tunnel.tree"}
 
 # YANG Data Model for fgOTN tunnel
+
+The "ietf-fgotn-tunnel" module imports the following modules:
+
+- "ietf-te" as defined in {{!I-D.ietf-teas-yang-te}}
+- "ietf-otn-tunnel" as defined in {{!I-D.ietf-ccamp-otn-tunnel-model}}
+- "ietf-fgotn-types" as defined in {{yang-types}} of this document
+
+In addition to importing {{!I-D.ietf-teas-yang-te}} and {{!I-D.ietf-ccamp-otn-tunnel-model}}, this module references the following documents: {{ITU-T_G.709}}.
 
 ~~~~ yang
 {::include yang/ietf-fgotn-tunnel.yang}
@@ -463,7 +487,7 @@ Step 1: The MDSC coordinator sends an resizing command to the source node (Node1
 
 Step 2: Controller 1 will report a bandwidth adjustment starting status notification, e.g. ietf-te-types:lsp-bandwidth-modifying, to the MDSC.
 
-Step 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of [ITU-T_G.709].
+Step 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of {{ITU-T_G.709}}.
 
 Step 4: At the same time, the reverse direction bandwidth resizing will be triggered auotmatically by the data plane in node 6. Controller 3 needs to report an bandwidth adjustment starting status notification, ietf-te-types:lsp-bandwidth-modifying, to the MDSC.
 
