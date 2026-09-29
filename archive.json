@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-10T01:56:31.764725+00:00",
+  "timestamp": "2026-09-29T03:08:36.046937+00:00",
   "repo": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
   "labels": [
     {
@@ -2802,13 +2802,13 @@
       "labels": [],
       "body": "Update draft according to Adrain's comments.\r\nI did not fix the normative references issue because I am not sure how to fix the normative references on github. ",
       "createdAt": "2026-08-28T03:16:33Z",
-      "updatedAt": "2026-09-09T13:26:47Z",
+      "updatedAt": "2026-09-28T07:19:35Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "2dddcffcbce222ff48ab52036549db08415a85db",
       "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "headRefName": "tanyx11",
-      "headRefOid": "4f8d7c419b2d2422857053f98bd42679c143501f",
+      "headRefOid": "0d02ee73c84482f18f5fbde7eeb77344de8da7fc",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -2870,8 +2870,54 @@
               "updatedAt": "2026-09-09T13:26:47Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABPf-LGg",
+          "commit": {
+            "abbreviatedOid": "e7882a2"
+          },
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-09-28T07:17:02Z",
+          "updatedAt": "2026-09-28T07:17:02Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "This list cannot be empty. At least one item shall be contained.",
+              "createdAt": "2026-09-28T07:17:02Z",
+              "updatedAt": "2026-09-28T07:17:02Z"
+            }
+          ]
         }
       ]
+    },
+    {
+      "number": 56,
+      "id": "PR_kwDOMSanvs8AAAABFcsePg",
+      "title": "Creat a JSON example the fgOTN tunnel",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/56",
+      "state": "OPEN",
+      "author": "tanyanxia",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This appendix contains an example of an instance data tree in JSON encoding [RFC7951].\r\n\r\nThe example instantiates the \"ietf-fgotn-tunnel\" model to setup two fgOTN tunnel within the fgOTN topology shown in Figure 11 of Appendix B of [I-D.ietf-ccamp-fgotn-yang].\r\n\r\n - an 20M protected fgOTN tunnel between NE1 and NE4. The protected fgODUflex tunnel has a primary LSP, instatiating the NE1-NE2-NE4 primary TE and a secondary LSP, instantiating the NE1-NE3-NE4 secondary TE path.\r\n\r\n - an 20M unprotected fgOTN tunnel between NE2-NE4. The unprotected fgODUflex tunnel has a primary LSP, instatiating the NE2-NE4 primary TE path.",
+      "createdAt": "2026-09-28T07:29:31Z",
+      "updatedAt": "2026-09-28T07:35:39Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "2dddcffcbce222ff48ab52036549db08415a85db",
+      "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "headRefName": "tanyanxia-patch-1",
+      "headRefOid": "76e3b56756022b8209defff18aa62b13975dfc95",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
