@@ -5,6 +5,6 @@ module: ietf-fgotn-topology
             /tet:label-restriction:
     +--rw fgts-range* [odu-type odu-ts-number]
        +--rw odu-type           identityref
-       +--rw odu-ts-number      fgotnt:ts-list
-       +--rw fgts-reserved?     fgotnt:ts-list
-       +--rw fgts-unreserved?   fgotnt:ts-list
+       +--rw odu-ts-number      fgotn-types:ts-list
+       +--rw fgts-reserved?     fgotn-types:ts-list-or-empty
+       +--rw fgts-unreserved?   fgotn-types:ts-list-or-empty
