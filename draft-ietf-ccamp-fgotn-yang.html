@@ -11,27 +11,28 @@
 <meta content="Chaode Yu" name="author">
 <meta content="Xing Zhao" name="author">
 <meta content="
-       This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1Gbit/s client signals in transport network. 
+       Fine grain Optical Transport Network (fgOTN) is a data plane technology, specified in ITU-T Recommendation G.709/Y.1331 (2020) Amd. 3, which complements existing OTN by providing bandwidth efficient support for sub-1Gbit/s services. 
+       This document defines YANG data models to describe the topology and tunnel information of an fgOTN network. 
     " name="description">
-<meta content="xml2rfc 3.34.0" name="generator">
+<meta content="xml2rfc 3.34.1" name="generator">
 <meta content="next generation" name="keyword">
 <meta content="unicorn" name="keyword">
 <meta content="sparkling distributed ledger" name="keyword">
 <meta content="draft-ietf-ccamp-fgotn-yang-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.34.0
-    Python 3.14.5
-    ConfigArgParse 1.7.5
+  xml2rfc 3.34.1
+    Python 3.14.7
+    ConfigArgParse 1.7.7
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.10.1
+    platformdirs 4.11.10
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.8.2
+    wcwidth 0.8.4
 -->
 <link href="draft-ietf-ccamp-fgotn-yang.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1047,11 +1048,11 @@ svg {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Fine grain OTN YANG</td>
-<td class="right">July 2026</td>
+<td class="right">September 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tan, et al.</td>
-<td class="center">Expires 30 January 2027</td>
+<td class="center">Expires 3 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1064,12 +1065,12 @@ svg {
 <dd class="internet-draft">draft-ietf-ccamp-fgotn-yang-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-29" class="published">29 July 2026</time>
+<time datetime="2026-09-30" class="published">30 September 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-30">30 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-03">3 April 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1098,7 +1099,8 @@ svg {
 <h1 id="title">YANG Data Models for fine grain Optical Transport Network</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1Gbit/s client signals in transport network.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Fine grain Optical Transport Network (fgOTN) is a data plane technology, specified in ITU-T Recommendation G.709/Y.1331 (2020) Amd. 3, which complements existing OTN by providing bandwidth efficient support for sub-1Gbit/s services.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This document defines YANG data models to describe the topology and tunnel information of an fgOTN network.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1135,7 +1137,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 30 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1295,7 +1297,7 @@ svg {
         <h3 id="name-terminology-and-notations">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-terminology-and-notations" class="section-name selfRef">Terminology and Notations</a>
         </h3>
-<p id="section-1.1-1">Some of the key terms used in this document are listed as follow.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<p id="section-1.1-1">The following terms are defined in <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span> and in <span>[<a href="#ITU-T_G.709.20" class="cite xref">ITU-T_G.709.20</a>]</span> and are not redefined here:<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1.1-2.1">
             <p id="section-1.1-2.1.1">fgTS: fine grain Tributary Slot.<a href="#section-1.1-2.1.1" class="pilcrow">¶</a></p>
@@ -1622,98 +1624,98 @@ All link bandwidth information that supports fgOTN should be reported to MDSC by
 <figure id="figure-3">
           <div id="section-2.3-7.1">
             <div class="alignLeft art-svg artwork" id="section-2.3-7.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="368" width="592" viewBox="0 0 592 368" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="384" width="568" viewBox="0 0 568 384" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
                 <path d="M 8,240 L 8,288" fill="none" stroke="black"></path>
-                <path d="M 48,128 L 48,176" fill="none" stroke="black"></path>
+                <path d="M 40,128 L 40,176" fill="none" stroke="black"></path>
                 <path d="M 64,240 L 64,288" fill="none" stroke="black"></path>
-                <path d="M 112,240 L 112,288" fill="none" stroke="black"></path>
-                <path d="M 152,128 L 152,176" fill="none" stroke="black"></path>
-                <path d="M 168,240 L 168,288" fill="none" stroke="black"></path>
-                <path d="M 192,280 L 192,336" fill="none" stroke="black"></path>
-                <path d="M 216,240 L 216,288" fill="none" stroke="black"></path>
-                <path d="M 240,128 L 240,176" fill="none" stroke="black"></path>
-                <path d="M 248,32 L 248,80" fill="none" stroke="black"></path>
-                <path d="M 272,240 L 272,288" fill="none" stroke="black"></path>
-                <path d="M 288,80 L 288,128" fill="none" stroke="black"></path>
-                <path d="M 320,240 L 320,288" fill="none" stroke="black"></path>
-                <path d="M 336,32 L 336,80" fill="none" stroke="black"></path>
-                <path d="M 344,128 L 344,176" fill="none" stroke="black"></path>
-                <path d="M 376,240 L 376,288" fill="none" stroke="black"></path>
-                <path d="M 408,280 L 408,336" fill="none" stroke="black"></path>
-                <path d="M 424,240 L 424,288" fill="none" stroke="black"></path>
-                <path d="M 432,128 L 432,176" fill="none" stroke="black"></path>
-                <path d="M 480,240 L 480,288" fill="none" stroke="black"></path>
-                <path d="M 528,240 L 528,288" fill="none" stroke="black"></path>
-                <path d="M 536,128 L 536,176" fill="none" stroke="black"></path>
-                <path d="M 584,240 L 584,288" fill="none" stroke="black"></path>
-                <path d="M 248,32 L 336,32" fill="none" stroke="black"></path>
-                <path d="M 128,48 L 248,48" fill="none" stroke="black"></path>
-                <path d="M 336,48 L 448,48" fill="none" stroke="black"></path>
-                <path d="M 248,80 L 336,80" fill="none" stroke="black"></path>
-                <path d="M 48,128 L 152,128" fill="none" stroke="black"></path>
-                <path d="M 240,128 L 344,128" fill="none" stroke="black"></path>
-                <path d="M 432,128 L 536,128" fill="none" stroke="black"></path>
-                <path d="M 48,176 L 152,176" fill="none" stroke="black"></path>
-                <path d="M 240,176 L 344,176" fill="none" stroke="black"></path>
-                <path d="M 432,176 L 536,176" fill="none" stroke="black"></path>
-                <path d="M 16,224 L 576,224" fill="none" stroke="black"></path>
+                <path d="M 104,240 L 104,288" fill="none" stroke="black"></path>
+                <path d="M 144,128 L 144,176" fill="none" stroke="black"></path>
+                <path d="M 160,240 L 160,288" fill="none" stroke="black"></path>
+                <path d="M 184,280 L 184,336" fill="none" stroke="black"></path>
+                <path d="M 208,240 L 208,288" fill="none" stroke="black"></path>
+                <path d="M 232,128 L 232,176" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 240,80" fill="none" stroke="black"></path>
+                <path d="M 264,240 L 264,288" fill="none" stroke="black"></path>
+                <path d="M 280,80 L 280,128" fill="none" stroke="black"></path>
+                <path d="M 304,240 L 304,288" fill="none" stroke="black"></path>
+                <path d="M 328,32 L 328,80" fill="none" stroke="black"></path>
+                <path d="M 336,128 L 336,176" fill="none" stroke="black"></path>
+                <path d="M 360,240 L 360,288" fill="none" stroke="black"></path>
+                <path d="M 384,280 L 384,336" fill="none" stroke="black"></path>
+                <path d="M 408,240 L 408,288" fill="none" stroke="black"></path>
+                <path d="M 424,128 L 424,176" fill="none" stroke="black"></path>
+                <path d="M 464,240 L 464,288" fill="none" stroke="black"></path>
+                <path d="M 504,240 L 504,288" fill="none" stroke="black"></path>
+                <path d="M 528,128 L 528,176" fill="none" stroke="black"></path>
+                <path d="M 560,240 L 560,288" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 328,32" fill="none" stroke="black"></path>
+                <path d="M 120,48 L 240,48" fill="none" stroke="black"></path>
+                <path d="M 328,48 L 440,48" fill="none" stroke="black"></path>
+                <path d="M 240,80 L 328,80" fill="none" stroke="black"></path>
+                <path d="M 40,128 L 144,128" fill="none" stroke="black"></path>
+                <path d="M 232,128 L 336,128" fill="none" stroke="black"></path>
+                <path d="M 424,128 L 528,128" fill="none" stroke="black"></path>
+                <path d="M 40,176 L 144,176" fill="none" stroke="black"></path>
+                <path d="M 232,176 L 336,176" fill="none" stroke="black"></path>
+                <path d="M 424,176 L 528,176" fill="none" stroke="black"></path>
+                <path d="M 16,224 L 552,224" fill="none" stroke="black"></path>
                 <path d="M 8,240 L 64,240" fill="none" stroke="black"></path>
-                <path d="M 112,240 L 168,240" fill="none" stroke="black"></path>
-                <path d="M 216,240 L 272,240" fill="none" stroke="black"></path>
-                <path d="M 320,240 L 376,240" fill="none" stroke="black"></path>
-                <path d="M 424,240 L 480,240" fill="none" stroke="black"></path>
-                <path d="M 528,240 L 584,240" fill="none" stroke="black"></path>
-                <path d="M 64,256 L 112,256" fill="none" stroke="black"></path>
-                <path d="M 168,256 L 216,256" fill="none" stroke="black"></path>
-                <path d="M 272,256 L 320,256" fill="none" stroke="black"></path>
-                <path d="M 376,256 L 424,256" fill="none" stroke="black"></path>
-                <path d="M 480,256 L 528,256" fill="none" stroke="black"></path>
-                <path d="M 64,272 L 112,272" fill="none" stroke="black"></path>
-                <path d="M 168,272 L 216,272" fill="none" stroke="black"></path>
-                <path d="M 272,272 L 320,272" fill="none" stroke="black"></path>
-                <path d="M 376,272 L 424,272" fill="none" stroke="black"></path>
-                <path d="M 480,272 L 528,272" fill="none" stroke="black"></path>
+                <path d="M 104,240 L 160,240" fill="none" stroke="black"></path>
+                <path d="M 208,240 L 264,240" fill="none" stroke="black"></path>
+                <path d="M 304,240 L 360,240" fill="none" stroke="black"></path>
+                <path d="M 408,240 L 464,240" fill="none" stroke="black"></path>
+                <path d="M 504,240 L 560,240" fill="none" stroke="black"></path>
+                <path d="M 64,256 L 104,256" fill="none" stroke="black"></path>
+                <path d="M 160,256 L 208,256" fill="none" stroke="black"></path>
+                <path d="M 264,256 L 304,256" fill="none" stroke="black"></path>
+                <path d="M 360,256 L 408,256" fill="none" stroke="black"></path>
+                <path d="M 464,256 L 504,256" fill="none" stroke="black"></path>
+                <path d="M 64,272 L 104,272" fill="none" stroke="black"></path>
+                <path d="M 160,272 L 208,272" fill="none" stroke="black"></path>
+                <path d="M 264,272 L 304,272" fill="none" stroke="black"></path>
+                <path d="M 360,272 L 408,272" fill="none" stroke="black"></path>
+                <path d="M 464,272 L 504,272" fill="none" stroke="black"></path>
                 <path d="M 8,288 L 64,288" fill="none" stroke="black"></path>
-                <path d="M 112,288 L 168,288" fill="none" stroke="black"></path>
-                <path d="M 216,288 L 272,288" fill="none" stroke="black"></path>
-                <path d="M 320,288 L 376,288" fill="none" stroke="black"></path>
-                <path d="M 424,288 L 480,288" fill="none" stroke="black"></path>
-                <path d="M 528,288 L 584,288" fill="none" stroke="black"></path>
-                <path d="M 448,48 L 484,120" fill="none" stroke="black"></path>
-                <path d="M 88,128 L 128,48" fill="none" stroke="black"></path>
-                <polygon class="arrowhead" points="584,224 572,218.4 572,229.6" fill="black" transform="rotate(0,576,224)"></polygon>
+                <path d="M 104,288 L 160,288" fill="none" stroke="black"></path>
+                <path d="M 208,288 L 264,288" fill="none" stroke="black"></path>
+                <path d="M 304,288 L 360,288" fill="none" stroke="black"></path>
+                <path d="M 408,288 L 464,288" fill="none" stroke="black"></path>
+                <path d="M 504,288 L 560,288" fill="none" stroke="black"></path>
+                <path d="M 440,48 L 476,120" fill="none" stroke="black"></path>
+                <path d="M 80,128 L 120,48" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="560,224 548,218.4 548,229.6" fill="black" transform="rotate(0,552,224)"></polygon>
                 <polygon class="arrowhead" points="24,224 12,218.4 12,229.6" fill="black" transform="rotate(180,16,224)"></polygon>
                 <g class="text">
-                  <text x="292" y="52">MDSC</text>
-                  <text x="100" y="148">Controller</text>
-                  <text x="292" y="148">Controller</text>
-                  <text x="484" y="148">Controller</text>
-                  <text x="96" y="164">1</text>
-                  <text x="288" y="164">2</text>
-                  <text x="480" y="164">3</text>
-                  <text x="284" y="212">End-to-end</text>
-                  <text x="352" y="212">fgOTN</text>
-                  <text x="408" y="212">service</text>
+                  <text x="284" y="52">MDSC</text>
+                  <text x="92" y="148">Controller</text>
+                  <text x="284" y="148">Controller</text>
+                  <text x="476" y="148">Controller</text>
+                  <text x="88" y="164">1</text>
+                  <text x="280" y="164">2</text>
+                  <text x="472" y="164">3</text>
+                  <text x="212" y="212">End-to-end</text>
+                  <text x="280" y="212">fgOTN</text>
+                  <text x="336" y="212">service</text>
                   <text x="36" y="260">node</text>
-                  <text x="140" y="260">node</text>
-                  <text x="244" y="260">node</text>
-                  <text x="348" y="260">node</text>
-                  <text x="452" y="260">node</text>
-                  <text x="556" y="260">node</text>
+                  <text x="132" y="260">node</text>
+                  <text x="236" y="260">node</text>
+                  <text x="332" y="260">node</text>
+                  <text x="436" y="260">node</text>
+                  <text x="532" y="260">node</text>
                   <text x="32" y="276">1</text>
-                  <text x="136" y="276">2</text>
-                  <text x="240" y="276">3</text>
-                  <text x="344" y="276">4</text>
-                  <text x="448" y="276">5</text>
-                  <text x="552" y="276">6</text>
-                  <text x="36" y="308">source</text>
-                  <text x="536" y="308">destination</text>
-                  <text x="84" y="324">Domain</text>
-                  <text x="120" y="324">1</text>
-                  <text x="292" y="324">Domain</text>
-                  <text x="328" y="324">2</text>
-                  <text x="492" y="324">Domain</text>
-                  <text x="528" y="324">3</text>
+                  <text x="128" y="276">2</text>
+                  <text x="232" y="276">3</text>
+                  <text x="328" y="276">4</text>
+                  <text x="432" y="276">5</text>
+                  <text x="528" y="276">6</text>
+                  <text x="28" y="308">source</text>
+                  <text x="520" y="308">destination</text>
+                  <text x="76" y="324">Domain</text>
+                  <text x="112" y="324">1</text>
+                  <text x="284" y="324">Domain</text>
+                  <text x="320" y="324">2</text>
+                  <text x="468" y="324">Domain</text>
+                  <text x="504" y="324">3</text>
                 </g>
               </svg><a href="#section-2.3-7.1.1" class="pilcrow">¶</a>
 </div>
@@ -1929,14 +1931,21 @@ All link bandwidth information that supports fgOTN should be reported to MDSC by
 </div>
 </section>
 </div>
-<div id="yang-data-model-for-fgotn-types">
+<div id="yang-types">
 <section id="section-6">
       <h2 id="name-yang-data-model-for-fgotn-ty">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-yang-data-model-for-fgotn-ty" class="section-name selfRef">YANG Data Model for fgOTN types</a>
       </h2>
+<p id="section-6-1">The "ietf-fgotn-types" module imports the following modules:<a href="#section-6-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6-2.1">
+          <p id="section-6-2.1.1">"ietf-layer1-types" as defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span><a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-6-3">In addition to importing <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span>, this module references the following documents in defining its types: <span>[<a href="#RFC7139" class="cite xref">RFC7139</a>]</span>.<a href="#section-6-3" class="pilcrow">¶</a></p>
 <span id="name-fgotn-types-yang-module"></span><div id="fgotn-types-yang">
 <figure id="figure-6">
-        <div class="breakable lang-yang sourcecode" id="section-6-1.1">
+        <div class="breakable lang-yang sourcecode" id="section-6-4.1">
 <pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-types@2026-02-27.yang"
 
 module ietf-fgotn-types {
@@ -1947,7 +1956,7 @@ module ietf-fgotn-types {
   import ietf-layer1-types {
     prefix l1-types;
     reference
-      "This module defines Layer 1 YANG types.";
+      "RFC YYYY: A YANG Data Model for Layer 1 Types.";
   }
 
   /* Note: The RFC Editor will replace YYYY with the number assigned
@@ -1980,14 +1989,20 @@ module ietf-fgotn-types {
      (https://trustee.ietf.org/license-info).
 
      This version of this YANG module is part of RFC XXXX; see
-     the RFC itself for full legal notices.";
+     the RFC itself for full legal notices.
+
+     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
+     NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',
+     'MAY', and 'OPTIONAL' in this document are to be interpreted as
+     described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,
+     they appear in all capitals, as shown here.";
 
   // RFC Ed.: replace XXXX with actual RFC number and remove this
   // note.
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-02-27 {
+  revision 2026-09-29 {
     description
       "initial version";
     reference
@@ -1999,6 +2014,40 @@ module ietf-fgotn-types {
     base l1-types:odu-type;
     description
       "fgODUflex type (fine grain flexible bit rate, resizable).";
+  }
+
+  typedef ts-list {
+    type string {
+      pattern '([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?'
+            + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)?';
+    }
+    description
+      "A list of Tributary Slots (TS) ranging between 1 and 4095.
+
+       If multiple values or ranges are given, they all MUST be
+       disjoint and MUST be in ascending order.
+
+       For example 1-20,25,50-1000.";
+    reference
+      "RFC 7139: GMPLS Signaling Extensions for Control
+                 of Evolving G.709 Optical Transport Networks";
+  }
+
+  typedef ts-list-or-empty {
+    type string {
+      pattern '([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?'
+            + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)?';
+    }
+    description
+      "A list of Tributary Slots (TS) ranging between 1 and 4095.
+
+       If multiple values or ranges are given, they all MUST be
+       disjoint and MUST be in ascending order.
+
+       For example 1-20,25,50-1000.";
+    reference
+      "RFC 7139: GMPLS Signaling Extensions for Control
+                 of Evolving G.709 Optical Transport Networks";
   }
 }
 
@@ -2027,9 +2076,9 @@ module: ietf-fgotn-topology
             /tet:label-restriction:
     +--rw fgts-range* [odu-type odu-ts-number]
        +--rw odu-type           identityref
-       +--rw odu-ts-number      fgotnt:ts-list
-       +--rw fgts-reserved?     fgotnt:ts-list
-       +--rw fgts-unreserved?   fgotnt:ts-list
+       +--rw odu-ts-number      fgotn-types:ts-list
+       +--rw fgts-reserved?     fgotn-types:ts-list-or-empty
+       +--rw fgts-unreserved?   fgotn-types:ts-list-or-empty
 </pre>
 </div>
 <figcaption><a href="#figure-7" class="selfRef">Figure 7</a></figcaption></figure>
@@ -2041,9 +2090,30 @@ module: ietf-fgotn-topology
       <h2 id="name-yang-data-model-for-fgotn-to">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-yang-data-model-for-fgotn-to" class="section-name selfRef">YANG Data Model for fgOTN topology</a>
       </h2>
+<p id="section-8-1">The "ietf-fgotn-topology" module imports the following modules:<a href="#section-8-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8-2.1">
+          <p id="section-8-2.1.1">"ietf-network" as defined in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span><a href="#section-8-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-8-2.2">
+          <p id="section-8-2.2.1">"ietf-network-topology" as defined in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span><a href="#section-8-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-8-2.3">
+          <p id="section-8-2.3.1">"ietf-te-topology" as defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span><a href="#section-8-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-8-2.4">
+          <p id="section-8-2.4.1">"ietf-layer1-types" as defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span><a href="#section-8-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-8-2.5">
+          <p id="section-8-2.5.1">"ietf-otn-topology" as defined in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span><a href="#section-8-2.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-8-2.6">
+          <p id="section-8-2.6.1">"ietf-fgotn-types" as defined in <a href="#yang-types" class="auto internal xref">Section 6</a> of this document<a href="#section-8-2.6.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
 <span id="name-fgotn-topology-yang-module"></span><div id="fgotn-topology-yang">
 <figure id="figure-8">
-        <div class="breakable lang-yang sourcecode" id="section-8-1.1">
+        <div class="breakable lang-yang sourcecode" id="section-8-3.1">
 <pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-topology@2026-07-23.yang"
 
 module ietf-fgotn-topology {
@@ -2086,192 +2156,6 @@ module ietf-fgotn-topology {
   /* Note: The RFC Editor will replace ZZZZ with the number assigned
      to the RFC once draft-ietf-ccamp-otn-topo-yang becomes an RFC.*/
 
-  organization
-    "Internet Engineering Task Force (IETF) CCAMP WG";
-  contact
-    "
-      ID-draft editor:
-        Yanxia Tan (tanyx11@chinaunicom.cn);
-        Yanlei Zheng (zhengyanlei@chinaunicom.cn);
-        Italo Busi (italo.busi@huawei.com);
-        Chaode Yu (yuchaode@huawei.com);
-        Xing Zhao (zhaoxing@caict.ac.cn);
-    ";
-  description
-    "This module defines a YANG data model for fgOTN-specific
-     extension based on existing network topology models. The model
-     fully conforms to the Network Management Datastore Architecture
-     (NMDA).
-
-     Copyright (c) 2026 IETF Trust and the persons
-     identified as authors of the code.  All rights reserved.
-
-     Redistribution and use in source and binary forms, with or
-     without modification, is permitted pursuant to, and subject
-     to the license terms contained in, the Revised BSD License
-     set forth in Section 4.c of the IETF Trust's Legal Provisions
-     Relating to IETF Documents
-     (https://trustee.ietf.org/license-info).
-
-     This version of this YANG module is part of RFC XXXX; see
-     the RFC itself for full legal notices.
-
-     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
-     NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',
-     'MAY', and 'OPTIONAL' in this document are to be interpreted as
-     described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,
-     they appear in all capitals, as shown here.";
-
-  // RFC Ed.: replace XXXX with actual RFC number and remove this
-  // note.
-  // RFC Ed.: update the date below with the date of RFC publication
-  // and remove this note.
-
-  revision 2026-07-23 {
-    description
-      "initial version";
-    reference
-      "RFC XXXX: YANG Data Models for fine grain Optical Transport
-                 Network";
-  }
-
-  typedef ts-list {
-    type string {
-      pattern '([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?'
-            + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)?';
-    }
-    description
-      "A list of Tributary Slots (TS) ranging between 1 and 4095.
-
-       If multiple values or ranges are given, they all MUST be
-       disjoint and MUST be in ascending order.
-
-       For example 1-20,25,50-1000.";
-    reference
-      "RFC 7139: GMPLS Signaling Extensions for Control
-                 of Evolving G.709 Optical Transport Networks";
-  }
-
-  augment "/nw:networks/nw:network/nt:link/tet:te"
-        + "/tet:te-link-attributes/tet:label-restrictions"
-        + "/tet:label-restriction" {
-    when "./otnt:otn-label-range/otnt:range-type = 'trib-slot'" {
-      description
-        "Valid only when range-type represented by trib-slot.";
-    }
-    description
-      "specific augmentation of fgOTN label";
-    list fgts-range {
-      key "odu-type odu-ts-number";
-      description
-        "This structure is used to describe the availability of
-         fgOTN timeslot in the server ODUk";
-      leaf odu-type {
-        type identityref {
-          base l1-types:odu-type;
-        }
-        description
-          "The granularity of server ODUk";
-      }
-      leaf odu-ts-number {
-        type fgotnt:ts-list;
-        description
-          "The index of server ODUk channel";
-      }
-      leaf fgts-reserved {
-        type fgotnt:ts-list;
-        description
-          "The reserved fgOTN timeslot in this server ODUk";
-      }
-      leaf fgts-unreserved {
-        type fgotnt:ts-list;
-        description
-          "The unreserved fgOTN timeslot in this server ODUk";
-      }
-    }
-  }
-}
-
-&lt;CODE ENDS&gt;</pre>
-</div>
-<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
-<a href="#name-fgotn-topology-yang-module" class="selfRef">fgOTN topology YANG module</a>
-        </figcaption></figure>
-</div>
-</section>
-</div>
-<div id="yang-tree-for-fgotn-tunnel">
-<section id="section-9">
-      <h2 id="name-yang-tree-for-fgotn-tunnel">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-yang-tree-for-fgotn-tunnel" class="section-name selfRef">YANG Tree for fgOTN tunnel</a>
-      </h2>
-<p id="section-9-1"><a href="#fig-fgotn-tunnel-tree" class="auto internal xref">Figure 9</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" (<a href="#fgotn-tunnel-yang" class="auto internal xref">Figure 10</a>).<a href="#section-9-1" class="pilcrow">¶</a></p>
-<div id="fig-fgotn-tunnel-tree">
-<figure id="figure-9">
-        <div class="lang-yangtree sourcecode" id="section-9-2.1">
-<pre>
-module: ietf-fgotn-tunnel
-
-  augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
-            /otn-tnl:otn/otn-tnl:otn-bandwidth:
-    +--rw fgoduflex-bandwidth?   string
-  augment /te:te/te:tunnels/te:tunnel/te:primary-paths
-            /te:primary-path/te:explicit-route-objects
-            /te:route-object-include-exclude/te:type/te:label
-            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
-            /otn-tnl:otn-label:
-    +--rw fgts-numbers?   string
-  augment /te:te/te:tunnels/te:tunnel/te:primary-paths
-            /te:primary-path/te:primary-reverse-path
-            /te:explicit-route-objects
-            /te:route-object-include-exclude/te:type/te:label
-            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
-            /otn-tnl:otn-label:
-    +--rw fgts-numbers?   string
-  augment /te:te/te:tunnels/te:tunnel/te:secondary-paths
-            /te:secondary-path/te:explicit-route-objects
-            /te:route-object-include-exclude/te:type/te:label
-            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
-            /otn-tnl:otn-label:
-    +--rw fgts-numbers?   string
-  augment /te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths
-            /te:secondary-reverse-path/te:explicit-route-objects
-            /te:route-object-include-exclude/te:type/te:label
-            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
-            /otn-tnl:otn-label:
-    +--rw fgts-numbers?   string
-  augment /te:te/te:lsps/te:lsp/te:lsp-actual-route-information
-            /te:lsp-actual-route-information/te:type/te:label
-            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
-            /otn-tnl:otn-label:
-    +--ro fgts-numbers?   string
-</pre>
-</div>
-<figcaption><a href="#figure-9" class="selfRef">Figure 9</a></figcaption></figure>
-</div>
-</section>
-</div>
-<div id="yang-data-model-for-fgotn-tunnel-1">
-<section id="section-10">
-      <h2 id="name-yang-data-model-for-fgotn-tun">
-<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-yang-data-model-for-fgotn-tun" class="section-name selfRef">YANG Data Model for fgOTN tunnel</a>
-      </h2>
-<span id="name-fgotn-tunnel-yang-module"></span><div id="fgotn-tunnel-yang">
-<figure id="figure-10">
-        <div class="breakable lang-yang sourcecode" id="section-10-1.1">
-<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-tunnel@2026-02-27.yang"
-
-module ietf-fgotn-tunnel {
-  yang-version 1.1;
-  namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel";
-  prefix fgotn-tnl;
-
-  import ietf-te {
-    prefix te;
-    reference
-      "RFC KKKK: A YANG Data Model for Traffic Engineering Tunnels,
-                 Label Switched Paths and Interfaces";
-  }
   import ietf-fgotn-types {
     prefix fgotn-types;
     reference
@@ -2279,18 +2163,8 @@ module ietf-fgotn-tunnel {
        Network";
   }
 
-  /* Note: The RFC Editor will replace KKKK with the number assigned
-     to the RFC once draft-ietf-teas-yang-te becomes an RFC.*/
-
-  import ietf-otn-tunnel {
-    prefix otn-tnl;
-    reference
-      "RFC JJJJ: OTN Tunnel YANG Model";
-  }
-
-  /* Note: The RFC Editor will replace JJJJ with the number assigned
-     to the RFC once draft-ietf-ccamp-otn-tunnel-model becomes
-     an RFC.*/
+  /* Note: The RFC Editor will replace XXXX with the number assigned
+     to the RFC once this document becomes an RFC.*/
 
   organization
     "Internet Engineering Task Force (IETF) CCAMP WG";
@@ -2327,7 +2201,207 @@ module ietf-fgotn-tunnel {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-02-27 {
+  revision 2026-09-29 {
+    description
+      "initial version";
+    reference
+      "RFC XXXX: YANG Data Models for fine grain Optical Transport
+                 Network";
+  }
+
+  augment "/nw:networks/nw:network/nt:link/tet:te"
+        + "/tet:te-link-attributes/tet:label-restrictions"
+        + "/tet:label-restriction" {
+    when "./otnt:otn-label-range/otnt:range-type = 'trib-slot'" {
+      description
+        "Valid only when range-type represented by trib-slot.";
+    }
+    description
+      "specific augmentation of fgOTN label";
+    list fgts-range {
+      key "odu-type odu-ts-number";
+      description
+        "This structure is used to describe the availability of
+         fgOTN timeslot in the server ODUk";
+      leaf odu-type {
+        type identityref {
+          base l1-types:odu-type;
+        }
+        description
+          "The granularity of server ODUk";
+      }
+      leaf odu-ts-number {
+        type fgotn-types:ts-list;
+        description
+          "The index of server ODUk channel";
+      }
+      leaf fgts-reserved {
+        type fgotn-types:ts-list-or-empty;
+        description
+          "The reserved fgOTN timeslot in this server ODUk";
+      }
+      leaf fgts-unreserved {
+        type fgotn-types:ts-list-or-empty;
+        description
+          "The unreserved fgOTN timeslot in this server ODUk";
+      }
+    }
+  }
+}
+
+&lt;CODE ENDS&gt;</pre>
+</div>
+<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
+<a href="#name-fgotn-topology-yang-module" class="selfRef">fgOTN topology YANG module</a>
+        </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="yang-tree-for-fgotn-tunnel">
+<section id="section-9">
+      <h2 id="name-yang-tree-for-fgotn-tunnel">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-yang-tree-for-fgotn-tunnel" class="section-name selfRef">YANG Tree for fgOTN tunnel</a>
+      </h2>
+<p id="section-9-1"><a href="#fig-fgotn-tunnel-tree" class="auto internal xref">Figure 9</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" (<a href="#fgotn-tunnel-yang" class="auto internal xref">Figure 10</a>).<a href="#section-9-1" class="pilcrow">¶</a></p>
+<div id="fig-fgotn-tunnel-tree">
+<figure id="figure-9">
+        <div class="lang-yangtree sourcecode" id="section-9-2.1">
+<pre>
+module: ietf-fgotn-tunnel
+
+  augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
+            /otn-tnl:otn/otn-tnl:otn-bandwidth:
+    +--rw fgoduflex-bandwidth?   uint8
+  augment /te:te/te:tunnels/te:tunnel/te:primary-paths
+            /te:primary-path/te:explicit-route-objects
+            /te:route-object-include-exclude/te:type/te:label
+            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+            /otn-tnl:otn-label:
+    +--rw fgts-numbers?   fgotn-types:ts-list
+  augment /te:te/te:tunnels/te:tunnel/te:primary-paths
+            /te:primary-path/te:primary-reverse-path
+            /te:explicit-route-objects
+            /te:route-object-include-exclude/te:type/te:label
+            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+            /otn-tnl:otn-label:
+    +--rw fgts-numbers?   fgotn-types:ts-list
+  augment /te:te/te:tunnels/te:tunnel/te:secondary-paths
+            /te:secondary-path/te:explicit-route-objects
+            /te:route-object-include-exclude/te:type/te:label
+            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+            /otn-tnl:otn-label:
+    +--rw fgts-numbers?   fgotn-types:ts-list
+  augment /te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths
+            /te:secondary-reverse-path/te:explicit-route-objects
+            /te:route-object-include-exclude/te:type/te:label
+            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+            /otn-tnl:otn-label:
+    +--rw fgts-numbers?   fgotn-types:ts-list
+  augment /te:te/te:lsps/te:lsp/te:lsp-actual-route-information
+            /te:lsp-actual-route-information/te:type/te:label
+            /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+            /otn-tnl:otn-label:
+    +--ro fgts-numbers?   fgotn-types:ts-list
+</pre>
+</div>
+<figcaption><a href="#figure-9" class="selfRef">Figure 9</a></figcaption></figure>
+</div>
+</section>
+</div>
+<div id="yang-data-model-for-fgotn-tunnel-1">
+<section id="section-10">
+      <h2 id="name-yang-data-model-for-fgotn-tun">
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-yang-data-model-for-fgotn-tun" class="section-name selfRef">YANG Data Model for fgOTN tunnel</a>
+      </h2>
+<p id="section-10-1">The "ietf-fgotn-tunnel" module imports the following modules:<a href="#section-10-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-10-2.1">
+          <p id="section-10-2.1.1">"ietf-te" as defined in <span>[<a href="#I-D.ietf-teas-yang-te" class="cite xref">I-D.ietf-teas-yang-te</a>]</span><a href="#section-10-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.2">
+          <p id="section-10-2.2.1">"ietf-otn-tunnel" as defined in <span>[<a href="#I-D.ietf-ccamp-otn-tunnel-model" class="cite xref">I-D.ietf-ccamp-otn-tunnel-model</a>]</span><a href="#section-10-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.3">
+          <p id="section-10-2.3.1">"ietf-fgotn-types" as defined in <a href="#yang-types" class="auto internal xref">Section 6</a> of this document<a href="#section-10-2.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-10-3">In addition to importing <span>[<a href="#I-D.ietf-teas-yang-te" class="cite xref">I-D.ietf-teas-yang-te</a>]</span> and <span>[<a href="#I-D.ietf-ccamp-otn-tunnel-model" class="cite xref">I-D.ietf-ccamp-otn-tunnel-model</a>]</span>, this module references the following documents: <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span>.<a href="#section-10-3" class="pilcrow">¶</a></p>
+<span id="name-fgotn-tunnel-yang-module"></span><div id="fgotn-tunnel-yang">
+<figure id="figure-10">
+        <div class="breakable lang-yang sourcecode" id="section-10-4.1">
+<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-tunnel@2026-02-27.yang"
+
+module ietf-fgotn-tunnel {
+  yang-version 1.1;
+  namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel";
+  prefix fgotn-tnl;
+
+  import ietf-te {
+    prefix te;
+    reference
+      "RFC KKKK: A YANG Data Model for Traffic Engineering Tunnels,
+                 Label Switched Paths and Interfaces";
+  }
+
+  /* Note: The RFC Editor will replace KKKK with the number assigned
+     to the RFC once draft-ietf-teas-yang-te becomes an RFC.*/
+
+  import ietf-otn-tunnel {
+    prefix otn-tnl;
+    reference
+      "RFC JJJJ: OTN Tunnel YANG Model";
+  }
+
+  /* Note: The RFC Editor will replace JJJJ with the number assigned
+     to the RFC once draft-ietf-ccamp-otn-tunnel-model becomes
+     an RFC.*/
+
+  import ietf-fgotn-types {
+    prefix fgotn-types;
+    reference
+      "RFC XXXX: YANG Data Models for fine grain Optical Transport
+       Network";
+  }
+
+  /* Note: The RFC Editor will replace XXXX with the number assigned
+     to the RFC once this document becomes an RFC.*/
+
+  organization
+    "Internet Engineering Task Force (IETF) CCAMP WG";
+  contact
+    "
+      ID-draft editor:
+        Yanxia Tan (tanyx11@chinaunicom.cn);
+        Yanlei Zheng (zhengyanlei@chinaunicom.cn);
+        Italo Busi (italo.busi@huawei.com);
+        Chaode Yu (yuchaode@huawei.com);
+        Xing Zhao (zhaoxing@caict.ac.cn);
+    ";
+  description
+    "This module defines a YANG data model for fgOTN-specific
+     extension based on existing network topology models. The model
+     fully conforms to the Network Management Datastore Architecture
+     (NMDA).
+
+     Copyright (c) 2026 IETF Trust and the persons
+     identified as authors of the code.  All rights reserved.
+
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Revised BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (https://trustee.ietf.org/license-info).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
+
+  // RFC Ed.: replace XXXX with actual RFC number and remove this
+  // note.
+  // RFC Ed.: update the date below with the date of RFC publication
+  // and remove this note.
+
+  revision 2026-09-29 {
     description
       "initial version";
     reference
@@ -2346,9 +2420,15 @@ module ietf-fgotn-tunnel {
         description
           "Applicable when odu-type is fgODUflex.";
       }
-      type string;
+      type uint8 {
+        range "1 .. 119";
+      }
       description
-        "Augment TE bandwidth of the fgOTN tunnel";
+        "The TE bandwidth of the fgOTN tunnel expressed as the
+         multiplier of 10Mbit/s.";
+      reference
+        "ITU-T G.709 v6.5 (03/2024): Interfaces for the Optical
+                   Transport Network (OTN), Table M.3";
     }
   }
 
@@ -2361,7 +2441,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-types:ts-list;
       description
         "Augment fgOTN timeslot information of this label hop";
     }
@@ -2376,7 +2456,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-types:ts-list;
       description
         "Augment fgOTN timeslot information of this label hop";
     }
@@ -2390,7 +2470,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-types:ts-list;
       description
         "fgOTN timeslot information of this label hop";
     }
@@ -2404,7 +2484,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-types:ts-list;
       description
         "fgOTN timeslot information of this label hop";
     }
@@ -2417,7 +2497,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-types:ts-list;
       description
         "fgOTN timeslot information of this label hop";
     }
@@ -2469,7 +2549,7 @@ module ietf-fgotn-tunnel {
 <dl class="references">
 <dt id="I-D.ietf-ccamp-layer1-types">[I-D.ietf-ccamp-layer1-types]</dt>
         <dd>
-<span class="refAuthor">Zheng, H.</span> and <span class="refAuthor">I. Busi</span>, <span class="refTitle">"Common YANG Data Types for Layer 1 Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-layer1-types-19</span>, <time datetime="2026-06-16" class="refDate">16 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-layer1-types-19">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-layer1-types-19</a>&gt;</span>. </dd>
+<span class="refAuthor">Zheng, H.</span> and <span class="refAuthor">I. Busi</span>, <span class="refTitle">"Common YANG Data Types for Layer 1 Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-layer1-types-20</span>, <time datetime="2026-09-15" class="refDate">15 September 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-layer1-types-20">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-layer1-types-20</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-ccamp-otn-topo-yang">[I-D.ietf-ccamp-otn-topo-yang]</dt>
         <dd>
@@ -2477,7 +2557,7 @@ module ietf-fgotn-tunnel {
 <dd class="break"></dd>
 <dt id="I-D.ietf-ccamp-otn-tunnel-model">[I-D.ietf-ccamp-otn-tunnel-model]</dt>
         <dd>
-<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network (OTN) Tunnels and Label Switched Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-25</span>, <time datetime="2026-05-27" class="refDate">27 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-25">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-25</a>&gt;</span>. </dd>
+<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network (OTN) Tunnels and Label Switched Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-26</span>, <time datetime="2026-08-13" class="refDate">13 August 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-26">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-26</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-yang-te">[I-D.ietf-teas-yang-te]</dt>
         <dd>
@@ -2499,6 +2579,10 @@ module ietf-fgotn-tunnel {
         <dd>
 <span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6241">https://www.rfc-editor.org/rfc/rfc6241</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC7139">[RFC7139]</dt>
+        <dd>
+<span class="refAuthor">Zhang, F., Ed.</span>, <span class="refAuthor">Zhang, G.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Ceccarelli, D.</span>, and <span class="refAuthor">K. Pithewan</span>, <span class="refTitle">"GMPLS Signaling Extensions for Control of Evolving G.709 Optical Transport Networks"</span>, <span class="seriesInfo">RFC 7139</span>, <span class="seriesInfo">DOI 10.17487/RFC7139</span>, <time datetime="2014-03" class="refDate">March 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7139">https://www.rfc-editor.org/rfc/rfc7139</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC7950">[RFC7950]</dt>
         <dd>
 <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"The YANG 1.1 Data Modeling Language"</span>, <span class="seriesInfo">RFC 7950</span>, <span class="seriesInfo">DOI 10.17487/RFC7950</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7950">https://www.rfc-editor.org/rfc/rfc7950</a>&gt;</span>. </dd>
@@ -2512,8 +2596,16 @@ module ietf-fgotn-tunnel {
 <span class="refAuthor">Bjorklund, M.</span> and <span class="refAuthor">L. Berger, Ed.</span>, <span class="refTitle">"YANG Tree Diagrams"</span>, <span class="seriesInfo">BCP 215</span>, <span class="seriesInfo">RFC 8340</span>, <span class="seriesInfo">DOI 10.17487/RFC8340</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8340">https://www.rfc-editor.org/rfc/rfc8340</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8342">[RFC8342]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Bjorklund, M.</span>, <span class="refAuthor">Schoenwaelder, J.</span>, <span class="refAuthor">Shafer, P.</span>, <span class="refAuthor">Watsen, K.</span>, and <span class="refAuthor">R. Wilton</span>, <span class="refTitle">"Network Management Datastore Architecture (NMDA)"</span>, <span class="seriesInfo">RFC 8342</span>, <span class="seriesInfo">DOI 10.17487/RFC8342</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8342">https://www.rfc-editor.org/rfc/rfc8342</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8345">[RFC8345]</dt>
+        <dd>
+<span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Medved, J.</span>, <span class="refAuthor">Varga, R.</span>, <span class="refAuthor">Bahadur, N.</span>, <span class="refAuthor">Ananthakrishnan, H.</span>, and <span class="refAuthor">X. Liu</span>, <span class="refTitle">"A YANG Data Model for Network Topologies"</span>, <span class="seriesInfo">RFC 8345</span>, <span class="seriesInfo">DOI 10.17487/RFC8345</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8345">https://www.rfc-editor.org/rfc/rfc8345</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8795">[RFC8795]</dt>
+      <dd>
+<span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Bryskin, I.</span>, <span class="refAuthor">Beeram, V.</span>, <span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Shah, H.</span>, and <span class="refAuthor">O. Gonzalez de Dios</span>, <span class="refTitle">"YANG Data Model for Traffic Engineering (TE) Topologies"</span>, <span class="seriesInfo">RFC 8795</span>, <span class="seriesInfo">DOI 10.17487/RFC8795</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8795">https://www.rfc-editor.org/rfc/rfc8795</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -2529,16 +2621,8 @@ module ietf-fgotn-tunnel {
 <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-24</span>, <time datetime="2026-06-12" class="refDate">12 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-24">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-24</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7951">[RFC7951]</dt>
-        <dd>
-<span class="refAuthor">Lhotka, L.</span>, <span class="refTitle">"JSON Encoding of Data Modeled with YANG"</span>, <span class="seriesInfo">RFC 7951</span>, <span class="seriesInfo">DOI 10.17487/RFC7951</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7951">https://www.rfc-editor.org/rfc/rfc7951</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8345">[RFC8345]</dt>
-        <dd>
-<span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Medved, J.</span>, <span class="refAuthor">Varga, R.</span>, <span class="refAuthor">Bahadur, N.</span>, <span class="refAuthor">Ananthakrishnan, H.</span>, and <span class="refAuthor">X. Liu</span>, <span class="refTitle">"A YANG Data Model for Network Topologies"</span>, <span class="seriesInfo">RFC 8345</span>, <span class="seriesInfo">DOI 10.17487/RFC8345</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8345">https://www.rfc-editor.org/rfc/rfc8345</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8795">[RFC8795]</dt>
       <dd>
-<span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Bryskin, I.</span>, <span class="refAuthor">Beeram, V.</span>, <span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Shah, H.</span>, and <span class="refAuthor">O. Gonzalez de Dios</span>, <span class="refTitle">"YANG Data Model for Traffic Engineering (TE) Topologies"</span>, <span class="seriesInfo">RFC 8795</span>, <span class="seriesInfo">DOI 10.17487/RFC8795</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8795">https://www.rfc-editor.org/rfc/rfc8795</a>&gt;</span>. </dd>
+<span class="refAuthor">Lhotka, L.</span>, <span class="refTitle">"JSON Encoding of Data Modeled with YANG"</span>, <span class="seriesInfo">RFC 7951</span>, <span class="seriesInfo">DOI 10.17487/RFC7951</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7951">https://www.rfc-editor.org/rfc/rfc7951</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
