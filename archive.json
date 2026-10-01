@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-29T03:08:36.046937+00:00",
+  "timestamp": "2026-10-01T02:56:55.198386+00:00",
   "repo": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
   "labels": [
     {
@@ -325,7 +325,7 @@
       "labels": [],
       "body": "On the meeting 20250430, we discussed the scenario of inter-domain fgOTN service bandwidth modification. We have a concern on the scenario that there could be a failure on the single direction while it is successful on the other direction. There should be some rollback on the device perspective and the orchestrator needs to send a bandiwidth modification to change it back.\nwe suggested to solidate it at first on our draft, and write a contribution to ITU-T SG15 Q11 & Q14, to check whether our solution is acceptable in ITU-T. So that we can have a same understanding on this scenario.",
       "createdAt": "2025-04-30T07:45:02Z",
-      "updatedAt": "2026-09-02T12:40:36Z",
+      "updatedAt": "2026-09-30T07:12:16Z",
       "closedAt": null,
       "comments": [
         {
@@ -334,6 +334,13 @@
           "body": "**2026-09-02 Bi-weekly Call**\n\nCheck offline with Q11/15 about the ITU-T viewpoint on this issue",
           "createdAt": "2026-09-02T12:40:32Z",
           "updatedAt": "2026-09-02T12:40:32Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-30 Bi-weekly Call**\n\nThe text in the draft can be improved to be more liberal about how the required behavior at the MPI interface is achieved within a PNC domain (i.e., how the work is split between the PNC and NE implementations), not to require any further work in ITU-T Q11/15 or ITU-T Q14/15\n\nFor example, the draft says that the resizing procedure is automatically started by the tail-end: there is no need, for the scope of our draft, to mandate whether this procedure is actually started by the NE or by the PNC\n\n- [ ] Review the text and provide some proposed text update to clarify this point",
+          "createdAt": "2026-09-30T07:12:16Z",
+          "updatedAt": "2026-09-30T07:12:16Z"
         }
       ]
     },
@@ -1168,11 +1175,11 @@
       "id": "I_kwDOMSanvs8AAAABKt6JCQ",
       "title": "Adrian WG adoption comments",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/48",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
-        "tanyanxia"
+        "italobusi"
       ],
       "labels": [
         "bug",
@@ -1180,8 +1187,8 @@
       ],
       "body": "> Hi chairs,\n> \n> Thanks for this adoption poll.\n> \n> Yes, the WG should have a document on this topic. And, yes, this draft is a\n> good starting point. Please adopt it.\n> \n> Cheers,\n> \n> Adrian\n> \n> ===\n> \n> Attention that is needed (*after* adoption).\n> \n> Some problems with line lengths in Figure 3. This is easily fixed.\n> \n\n[Authors] We will fix the line lengths of Figure 3 in the next draft update\n\nSee: #49 \n\n> ---\n> \n> Obviously, the empty sections (11, 12, 13) need work.\n> \n\n[Authors] We are tracking these as open issues in github with the target to complete these sections before WG LC\n\n> ---\n> \n> The Abstract could us a short sentence to say what fine grain optical\n> transport networks are.\n> \n\n[Authors] We would propose the following NEW abstract:\n\n```\n   Fine grain Optical Transport Network (fgOTN) is a data plane\n   technology, specified in ITU-T Recommendation G.709/Y.1331 (2020)\n   Amd. 3, which complements existing OTN by providing bandwidth\n   efficient support for sub-1Gbit/s services.\n  \n   This document defines YANG data models to describe the topology and\n   tunnel information of an fgOTN network.\n```\n\n- [x] Update the abstract as proposed\n\n> ---\n> \n> In 1.1, can you add references for fgTS and fgODUflex?\n> \n\n[Authors]\n\nOLD\n\n```\n   Some of the key terms used in this document are listed as follow.\n```\n\nNEW\n\n```\n   The following terms are defined in [ITU-T_G.709] and in\n   [ITU-T_G.709.20] and are not redefined here:\n```\n\n[\\Authors]\n\n- [x] Update the text in section 1.1 as proposed\n\n> ---\n> \n> Section 1.4 enthusiastically repeats section 1.2.\n> \n\n[Authors] Fixed in draft-ietf-ccamp-fgotn-yang-01\n\n> ---\n> \n> Section 1.6 overlaps with section 1.3\n> \n\n[Authors] Fixed in draft-ietf-ccamp-fgotn-yang-01\n\n> ---\n> \n> Watch out for \"OTN network\". The N in OTN already means network.\n> \n\n[Authors]\n\nThere has been a similar comment from Dhruv on the OTN Tunnel model: https://mailarchive.ietf.org/arch/msg/ccamp/yIz26ZDNZN_Jg-ou9mcq26pNXYw/\n\nWhile you are correct regarding the literal acronym, 'OTN' in this document is treated as a proper noun, in line with standard practice in ITU-T (e.g., ITU-T G.709) and other IETF documents (e.g., RFC 7138).\n\nTherefore we would propose to keep the terms \"OTN network\" and, for consistency, also the term \"fgOTN network\".\n\n[\\Authors]\n\n> ---\n> \n> I'm pretty sure that the pattern in ts-list is wrong, but my brain is\n> sitting outside sipping mojitos at the moment, and won't help me sort it\n> out.\n\n[Authors]\n\nThe current regular expression pattern does not fully align with the node description because it fails to 1) enforce the 1-4095 range: The current pattern accepts values up to 9999, making out-of-range inputs syntactically valid and 2) enforce sorting rules: It cannot programmatically verify that the values are disjoint and listed in strictly ascending order.\n\nWhile the regular expression can be updated to strictly enforce the numeric range, standard YANG syntactic constraints cannot evaluate relative mathematical logic like disjointness or ascending order. Enforcing these sequential rules relies entirely on compliance with the text in the description statement.\n\nSince updating the regex pattern to restrict the range makes the expression significantly more complex and less readable and considering that 1) the backend application must already parse the string to validate the sorting and disjointness constraints and 2) that the maximum value of 4095 is defined for consistency with the length of the TPN field in RFC7139, although the actual maximum value depends on the type of the server layer OPU and TSG, we would prefer to rely on the description statement to govern the numeric range as well. This keeps the YANG model clean and maintainable while centralizing all numerical logic within the backend implementation.\n\n[\\Authors]\n\n> ---\n> \n>  \n> \n> I think that the \"augments\" relationship defines the need for a normative\n> reference. Further, this is a transitive relationship.\n> \n> So, because the model in this draft augments ietf-otn-topology,\n> I-D.ietf-ccamp-otn-topo-yang is a normative relationship.\n> \n> And, because ietf-otn-topology augments, ietf-te-topology, RFC8795 should be\n> a normative reference.\n> \n> And, because ietf-te-topology augments ietf-network and\n> ietf-network-topology, RFC8345 should be a normative reference.\n> \n\n[Authors] We will fix the normative references in the next draft update\n\n- [x] Fix normative references\n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/jkLVyWvkKtZD1wJ_TGSuZRAx8NU/",
       "createdAt": "2026-07-29T22:44:09Z",
-      "updatedAt": "2026-09-09T13:27:21Z",
-      "closedAt": null,
+      "updatedAt": "2026-09-30T07:20:24Z",
+      "closedAt": "2026-09-30T07:20:24Z",
       "comments": [
         {
           "author": "italobusi",
@@ -1189,6 +1196,20 @@
           "body": "**2026-07-29 Call**\n\nThis is the pattern to enforce the 1-4095 value range:\n\n```\npattern '((([1-9][0-9]{0,2}|[1-3][0-9]{3}|40[0-8][0-9]|409[0-5])(-([1-9][0-9]{0,2}|[1-3][0-9]{3}|40[0-8][0-9]|409[0-5]))?)(,(([1-9][0-9]{0,2}|[1-3][0-9]{3}|40[0-8][0-9]|409[0-5])(-([1-9][0-9]{0,2}|[1-3][0-9]{3}|40[0-8][0-9]|409[0-5]))?))*)?';\n```\n\n\nValid test strings:\n- 1\n- 4095\n- 1-20,25,50-1000\n- 2,4-10,15,16-2048,4000-4095\n- empty string\n\nInvalid Test Strings (Caught by the Regex Pattern):\n- 0\n- 4096\n- 1-5000\n- 1,2,\n- 1-,20\n- 1-2-3\n\nInvalid Test Strings (Missed by Regex, Needs Application/XPath Logic):\n- 20-1\n- 10,5\n- 1-20,15-30\n- 1-20,20-30\n- 10,10\n",
           "createdAt": "2026-07-29T23:16:41Z",
           "updatedAt": "2026-07-29T23:16:41Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "- [x] Reply to Adrian pointing to the new version of the draft",
+          "createdAt": "2026-09-30T06:31:26Z",
+          "updatedAt": "2026-09-30T07:20:18Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "> * [x]  Reply to Adrian pointing to the new version of the draft\n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/ajPne_AZZHgAHMjf7zZdt0Bddng/",
+          "createdAt": "2026-09-30T07:20:24Z",
+          "updatedAt": "2026-09-30T07:20:24Z"
         }
       ]
     },
@@ -1197,7 +1218,7 @@
       "id": "I_kwDOMSanvs8AAAABKt6tUg",
       "title": "Fix line lengths in Figure 3",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/49",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -1208,9 +1229,17 @@
       ],
       "body": "NEW\n\n```\n                                 +----------+\n                  +--------------+   MDSC   +-------------+\n                 /               |          |              \\\n                /                +----+-----+               \\\n               /                      |                      \\\n              /                       |                       \\\n        +----+-------+          +-----+------+          +-----+------+\n        | Controller |          | Controller |          | Controller |\n        |     1      |          |     2      |          |     3      |\n        +------------+          +------------+          +------------+\n\n                                 End-to-end fgOTN service\n   <------------------------------------------------------------------>\n  +------+    +------+     +------+    +------+     +------+    +------+\n  | node +----+ node +-----+ node +----+ node +-----+ node +----+ node |\n  |  1   +----+  2   +-----+  3   +----+  4   +-----+  5   +----+  6   |\n  +------+    +------+  |  +------+    +------+  |  +------+    +------+\n  source                |                        |           destination\n        Domain 1        |         Domain 2       |       Domain 3\n                        |                        |\n\n```",
       "createdAt": "2026-07-29T22:45:57Z",
-      "updatedAt": "2026-07-30T10:24:47Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-09-30T07:04:22Z",
+      "closedAt": "2026-09-30T07:04:22Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "Closed with PR #54 ",
+          "createdAt": "2026-09-30T07:04:22Z",
+          "updatedAt": "2026-09-30T07:04:22Z"
+        }
+      ]
     },
     {
       "number": 50,
@@ -1226,9 +1255,9 @@
       "labels": [
         "documentation"
       ],
-      "body": "",
+      "body": "The guidelines for manageability considerations are outlined in [draft-ietf-opsawg-rfc5706bis](https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-rfc5706bis)",
       "createdAt": "2026-07-29T22:48:05Z",
-      "updatedAt": "2026-09-02T13:49:44Z",
+      "updatedAt": "2026-09-30T06:39:35Z",
       "closedAt": null,
       "comments": []
     },
@@ -1241,14 +1270,15 @@
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
-        "italobusi"
+        "italobusi",
+        "tanyanxia"
       ],
       "labels": [
         "documentation"
       ],
-      "body": "",
+      "body": "The template for security considerations are outlined in [YANG module security considerations](https://wiki.ietf.org/group/ops/yang-security-guidelines)",
       "createdAt": "2026-07-29T22:48:26Z",
-      "updatedAt": "2026-09-02T13:50:37Z",
+      "updatedAt": "2026-09-30T07:03:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -1274,9 +1304,9 @@
       "labels": [
         "documentation"
       ],
-      "body": "",
+      "body": "The template for IANA considerations are outlined in section 3.8.3 of [RFC9907](https://datatracker.ietf.org/doc/html/rfc9907)",
       "createdAt": "2026-07-29T22:48:46Z",
-      "updatedAt": "2026-09-02T13:49:52Z",
+      "updatedAt": "2026-09-30T06:45:53Z",
       "closedAt": null,
       "comments": []
     },
@@ -1285,20 +1315,35 @@
       "id": "I_kwDOMSanvs8AAAABKuETgA",
       "title": "Daniel WG adoption comments",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/53",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
-        "tanyanxia"
+        "italobusi"
       ],
       "labels": [
         "documentation"
       ],
       "body": "> Hi WG, and authors. \n> \n> I support adoption of draft-tan-ccamp-fgotn-yang. \n> \n> >From an industry perspective, fgOTN is clearly gathering pace and part of\n> OTN technology stack so it makes sense to progress the work in CCAMP. \n> \n> The draft addresses a useful YANG-based management and control need for\n> topology/resource reporting and tunnel provisioning. \n> \n> Overall, the modeling direction is appropriate: the draft builds on the\n> existing CCAMP/TEAS OTN topology and tunnel work, rather than introducing a\n> separate framework, which is great. \n> \n> The draft has more than enough technical substance for WG adoption, but\n> there are several threads that will need attention, assuming the WG adopts\n> the work. These include:\n> \n> - Ensuring alignment with the latest CCAMP/TEAS base YANG model revisions.\n> \n\n[Author] We think that this draft is already aligned with the latest CCAMP/TEAS base YANG model revisions and plan to keep alignment with any future updates to those models.\n\n- [x] @italobusi check alignment\n\n> - Bandwidth and timeslot-related attributes: some leaves are currently plain\n> string, easy to have incompatible implementations. Maybe use explicit\n> typedefs, numeric ranges/units based on current industry agreement to help\n> interoperability\n> \n\n[Authors]\n\nWe will change the type of the `fgoduflex-bandwidth` leaf from string to uint8 (range 1..119) to represent the the multiplier of 10Mbit/s (as per definition in Table M.3 of ITU-T G.709)\n\nWe will split the current `ts-list` data type into two data types:\n- one data type (`ts-list`) which does not allow empty strings\n- another data type (`ts-list-or-empty`) which allows an empty string\n\nThe former `ts-list` data type will be used for the label hops in the tunnel model and the `ts-list-or-empty` will be used reserved/available ranges in the topology model.\n\n[/Authors]\n\n- [x] Update type and description of the `fgoduflex-bandwidth` leaf as proposed above\n- [x] Update the `ts-list` data type and the associated leafs as proposed above\n\n> - Clarification of config versus operational state: we just need to be clear\n> about which data is configuration and which data is operational. For\n> example, available bandwidth and reserved timeslots is that really\n> configuration (current rw nodes), or is it operational.\n> \n\n[Author] They are defined as RW in order to support the customized topologies use cases for consistency with RFC8795.\n\n> - Usual expansion/detail in/of Manageability, Security, and IANA\n> considerations.\n> \n\n[Authors] We are tracking these as open issues in github with the target to complete these sections before WG LC\n\n> \n> BR, Dan.  \n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/CApuyikZmOC1QoFFD0ZXqxS4ElM/",
       "createdAt": "2026-07-29T23:14:16Z",
-      "updatedAt": "2026-09-02T12:16:17Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-09-30T07:20:57Z",
+      "closedAt": "2026-09-30T07:20:57Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "- [x] Reply to Daniel pointing to the new version of the draft",
+          "createdAt": "2026-09-30T06:30:52Z",
+          "updatedAt": "2026-09-30T07:20:39Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "> * [x]  Reply to Daniel pointing to the new version of the draft\n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/RDfgGMMffTRuq1pqHVUAD_8oLYI/",
+          "createdAt": "2026-09-30T07:20:57Z",
+          "updatedAt": "2026-09-30T07:20:57Z"
+        }
+      ]
     },
     {
       "number": 55,
@@ -2795,25 +2840,35 @@
       "id": "PR_kwDOMSanvs8AAAABBSfohg",
       "title": "Update draft-ietf-ccamp-fgotn-yang.md",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/54",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "tanyanxia",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Update draft according to Adrain's comments.\r\nI did not fix the normative references issue because I am not sure how to fix the normative references on github. ",
       "createdAt": "2026-08-28T03:16:33Z",
-      "updatedAt": "2026-09-28T07:19:35Z",
+      "updatedAt": "2026-09-30T06:29:30Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "2dddcffcbce222ff48ab52036549db08415a85db",
       "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "headRefName": "tanyx11",
-      "headRefOid": "0d02ee73c84482f18f5fbde7eeb77344de8da7fc",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "7f6054c7a9f04527e806edfd3389045c8f3b7511",
+      "closedAt": "2026-09-30T06:29:30Z",
+      "mergedAt": "2026-09-30T06:29:30Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "161337bd6548737e2a3f13a94f1e84724e3de3af"
+      },
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "> See review comments in details\r\n> \r\n> I will submit a new PR to fix the normative references comment\r\n\r\nDone in https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/57",
+          "createdAt": "2026-09-30T06:28:36Z",
+          "updatedAt": "2026-09-30T06:28:36Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOMSanvs8AAAABL1sR1A",
@@ -2890,6 +2945,66 @@
               "updatedAt": "2026-09-28T07:17:02Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABP53M5g",
+          "commit": {
+            "abbreviatedOid": "4f8d7c4"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-09-30T06:27:58Z",
+          "updatedAt": "2026-09-30T06:27:58Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "Fixed in https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/57",
+              "createdAt": "2026-09-30T06:27:58Z",
+              "updatedAt": "2026-09-30T06:27:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABP53Rpw",
+          "commit": {
+            "abbreviatedOid": "4f8d7c4"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-09-30T06:28:05Z",
+          "updatedAt": "2026-09-30T06:28:05Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "Fixed in https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/57",
+              "createdAt": "2026-09-30T06:28:05Z",
+              "updatedAt": "2026-09-30T06:28:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABP53XpQ",
+          "commit": {
+            "abbreviatedOid": "4f8d7c4"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-09-30T06:28:14Z",
+          "updatedAt": "2026-09-30T06:28:14Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "Fixed in https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/57",
+              "createdAt": "2026-09-30T06:28:14Z",
+              "updatedAt": "2026-09-30T06:28:14Z"
+            }
+          ]
         }
       ]
     },
@@ -2912,6 +3027,60 @@
       "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "headRefName": "tanyanxia-patch-1",
       "headRefOid": "76e3b56756022b8209defff18aa62b13975dfc95",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 57,
+      "id": "PR_kwDOMSanvs8AAAABFvpZJg",
+      "title": "Added references and other fixes to PR #54",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/57",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-09-29T17:33:10Z",
+      "updatedAt": "2026-09-30T06:27:21Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "tanyx11",
+      "baseRefOid": "0d02ee73c84482f18f5fbde7eeb77344de8da7fc",
+      "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "fix-ref-tanyx11",
+      "headRefOid": "2655ae4fe64d2234186c641e9ce38254808ab6a2",
+      "closedAt": "2026-09-30T06:27:21Z",
+      "mergedAt": "2026-09-30T06:27:21Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "7f6054c7a9f04527e806edfd3389045c8f3b7511"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 58,
+      "id": "PR_kwDOMSanvs8AAAABF1yp8A",
+      "title": "Security Considerations",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/58",
+      "state": "OPEN",
+      "author": "tanyanxia",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-09-30T06:46:24Z",
+      "updatedAt": "2026-09-30T06:46:24Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "161337bd6548737e2a3f13a94f1e84724e3de3af",
+      "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "headRefName": "tanyanxia-patch-2",
+      "headRefOid": "d10d8e7f55bcb9028dc1f17571a4d34bbf2ecc6a",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
