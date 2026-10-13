@@ -5,12 +5,12 @@
 CCAMP Working Group                                               Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 3 April 2027                                            I. Busi
+Expires: 16 April 2027                                           I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                       30 September 2026
+                                                         13 October 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 April 2027.
+   This Internet-Draft will expire on 16 April 2027.
 
 Copyright Notice
 
