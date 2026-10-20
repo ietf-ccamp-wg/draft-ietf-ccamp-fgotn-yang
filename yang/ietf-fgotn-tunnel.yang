@@ -68,7 +68,7 @@ module ietf-fgotn-tunnel {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-09-29 {
+  revision 2026-10-28 {
     description
       "initial version";
     reference
@@ -114,6 +114,22 @@ module ietf-fgotn-tunnel {
     }
   }
 
+  augment "/te:te/te:tunnels/te:tunnel/"
+        + "te:primary-paths/te:primary-path/"
+        + "te:computed-paths-properties/"
+        + "te:computed-path-properties/te:path-properties/"
+        + "te:path-route-objects/te:path-route-object/te:type/"
+        + "te:label/te:label-hop/te:te-label/te:technology/"
+        + "otn-tnl:otn/otn-tnl:otn-label" {
+    description
+      "augmentation of fgOTN label";
+    leaf fgts-numbers {
+      type string;
+      description
+        "Augment fgOTN timeslot information of this label hop";
+    }
+  }
+
   augment "/te:te/te:tunnels/te:tunnel/te:primary-paths"
         + "/te:primary-path/te:primary-reverse-path"
         + "/te:explicit-route-objects"
@@ -124,6 +140,22 @@ module ietf-fgotn-tunnel {
       "augmentation of fgOTN label";
     leaf fgts-numbers {
       type fgotn-types:ts-list;
+      description
+        "Augment fgOTN timeslot information of this label hop";
+    }
+  }
+
+  augment "/te:te/te:tunnels/te:tunnel/"
+        + "te:primary-paths/te:primary-path/"
+        + "te:primary-reverse-path/te:computed-paths-properties/"
+        + "te:computed-path-properties/te:path-properties/"
+        + "te:path-route-objects/te:path-route-object/te:type/"
+        + "te:label/te:label-hop/te:te-label/te:technology/"
+        + "otn-tnl:otn/otn-tnl:otn-label" {
+    description
+      "augmentation of fgOTN label";
+    leaf fgts-numbers {
+      type string;
       description
         "Augment fgOTN timeslot information of this label hop";
     }
@@ -143,6 +175,21 @@ module ietf-fgotn-tunnel {
     }
   }
 
+  augment "/te:te/te:tunnels/te:tunnel/te:secondary-paths"
+        + "/te:secondary-path/te:computed-paths-properties/"
+        + "te:computed-path-properties/te:path-properties/"
+        + "te:path-route-objects/te:path-route-object/te:type/"
+        + "te:label/te:label-hop/te:te-label/te:technology/"
+        + "otn-tnl:otn/otn-tnl:otn-label" {
+    description
+      "augmentation of fgOTN label";
+    leaf fgts-numbers {
+      type string;
+      description
+        "Augment fgOTN timeslot information of this label hop";
+    }
+  }
+
   augment "/te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths"
         + "/te:secondary-reverse-path/te:explicit-route-objects"
         + "/te:route-object-include-exclude/te:type/te:label"
@@ -154,6 +201,22 @@ module ietf-fgotn-tunnel {
       type fgotn-types:ts-list;
       description
         "fgOTN timeslot information of this label hop";
+    }
+  }
+
+  augment "/te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths"
+        + "/te:secondary-reverse-path/"
+        + "te:computed-paths-properties/"
+        + "te:computed-path-properties/te:path-properties/"
+        + "te:path-route-objects/te:path-route-object/te:type/"
+        + "te:label/te:label-hop/te:te-label/te:technology/"
+        + "otn-tnl:otn/otn-tnl:otn-label" {
+    description
+      "augmentation of fgOTN label";
+    leaf fgts-numbers {
+      type string;
+      description
+        "Augment fgOTN timeslot information of this label hop";
     }
   }
 

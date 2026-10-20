@@ -463,7 +463,7 @@ In addition to importing {{!I-D.ietf-teas-yang-te}} and {{!I-D.ietf-ccamp-otn-tu
 {::include yang/ietf-fgotn-tunnel.yang}
 ~~~~
 {: #fgotn-tunnel-yang title="fgOTN tunnel YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-02-27.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-10-20.yang"}
 
 # Manageability Considerations
 
