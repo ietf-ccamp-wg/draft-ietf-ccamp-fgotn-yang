@@ -584,3 +584,9 @@ The topology examples, show how the topology changes in three different steps:
 {: numbered="false"}
 
 # Acknowledgments
+
+The authors would like to thank
+Adrian Farrel
+and
+Daniel King
+for their valuable comments and suggestions on this document.
