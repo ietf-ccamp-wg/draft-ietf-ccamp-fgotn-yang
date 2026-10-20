@@ -24,32 +24,31 @@
           },
           "te-bandwidth": {
             "ietf-otn-tunnel:otn-bandwidth": {
-              "odu-type": "ietf-fgotn-types:fgODUflex";
-			  "ietf-fgotn-tunnel:fgoduflex-bandwidth": "20"
+              "odu-type": "ietf-fgotn-types:fgODUflex",
+			        "ietf-fgotn-tunnel:fgoduflex-bandwidth": "20"
             }
           },
-		  "dependency-tunnels": { 
-            "dependency-tunnel": [
-			  {
-				"name": "ODU1 tunnel between NE1 and NE2",
-                "encoding": "ietf-te-types:lsp-encoding-oduk",
-                "switching-type": "ietf-te-types:switching-otn",
-				"working-role": "primary"
-			  },
-			  {
-				"name": "ODU0 tunnel 1 between NE2 and NE4",
-                "encoding": "ietf-te-types:lsp-encoding-oduk",
-                "switching-type": "ietf-te-types:switching-otn",
-				"working-role": "primary" 
-			  },
-			  {
-				"name": "ODU1 tunnel from NE1 to NE3 to NE4",
-                "encoding": "ietf-te-types:lsp-encoding-oduk",
-                "switching-type": "ietf-te-types:switching-otn",
-				"working-role": "secondary" 
-			  }
-			] 
-          }, 
+          "hierarchy": {
+            "dependency-tunnels": { 
+              "dependency-tunnel": [
+                {
+                  "name": "ODU1 tunnel between NE1 and NE2",
+                  "encoding": "ietf-te-types:lsp-encoding-oduk",
+                  "switching-type": "ietf-te-types:switching-otn"
+                },
+                {
+                  "name": "ODU0 tunnel 1 between NE2 and NE4",
+                  "encoding": "ietf-te-types:lsp-encoding-oduk",
+                  "switching-type": "ietf-te-types:switching-otn"
+                },
+                {
+                  "name": "ODU1 tunnel from NE1 to NE3 to NE4",
+                  "encoding": "ietf-te-types:lsp-encoding-oduk",
+                  "switching-type": "ietf-te-types:switching-otn"
+                }
+              ] 
+            }
+          },
           "primary-paths": {
             "primary-path": [
               {
@@ -71,7 +70,7 @@
                                 "node-id-uri": "example:NE1",
                                 "link-tp-id-uri": "example:NE1-2",
                                 "hop-type": "strict",
-								"direction":"outgoing"
+								                "direction":"outgoing"
                               }
                             },
                             {
@@ -81,12 +80,12 @@
                                   "ietf-otn-tunnel:otn-label": {
                                     "tsg": "ietf-layer1-types:tsg-1.25G",
                                     "ts-list": "1-2",
-									"fgts-numbers":"1-2"
+									                  "ietf-fgotn-tunnel:fgts-numbers":"1-2"
                                   }
                                 }
                               }
                             },
-							{
+							              {
                               "index": 3,
                               "unnumbered-link-hop": {
                                 "node-id": "192.0.0.2",
@@ -94,7 +93,7 @@
                                 "node-id-uri": "example:NE2",
                                 "link-tp-id-uri": "example:NE2-2",
                                 "hop-type": "strict",
-								"direction":"outgoing"
+								                "direction":"outgoing"
                               }
                             },
                             {
@@ -104,7 +103,7 @@
                                   "ietf-otn-tunnel:otn-label": {
                                     "tsg": "ietf-layer1-types:tsg-1.25G",
                                     "ts-list": "1",
-									"fgts-numbers":"2-3"
+									                  "ietf-fgotn-tunnel:fgts-numbers":"2-3"
                                   }
                                 }
                               }
@@ -164,7 +163,7 @@
                                   "ietf-otn-tunnel:otn-label": {
                                     "tsg": "ietf-layer1-types:tsg-1.25G",
                                     "ts-list": "1-2",
-									"fgts-numbers":"4-5"
+									                  "ietf-fgotn-tunnel:fgts-numbers":"4-5"
                                   }
                                 }
                               }
@@ -206,11 +205,11 @@
                     }
                   ]
                 }
-			  }
+			        }
             ]
           }
         },
-		{
+		    {
           "name": "fgOTN Tunnel Example 2",
           "encoding": "ietf-te-types:lsp-encoding-oduk",
           "switching-type": "ietf-te-types:switching-otn",
@@ -232,19 +231,20 @@
           },
           "te-bandwidth": {
             "ietf-otn-tunnel:otn-bandwidth": {
-              "odu-type": "ietf-fgotn-types:fgODUflex";
-			  "ietf-fgotn-tunnel:fgoduflex-bandwidth": "20"
+              "odu-type": "ietf-fgotn-types:fgODUflex",
+			        "ietf-fgotn-tunnel:fgoduflex-bandwidth": "20"
             }
           },
-		  "dependency-tunnels": { 
-            "dependency-tunnel": [
-			  {
-				"name": "ODU0 tunnel 1 between NE2 and NE4",
-                "encoding": "ietf-te-types:lsp-encoding-oduk",
-                "switching-type": "ietf-te-types:switching-otn",
-				"working-role": "primary" 
-			  }
-			] 
+          "hierarchy": {
+            "dependency-tunnels": { 
+              "dependency-tunnel": [
+                {
+                  "name": "ODU0 tunnel 1 between NE2 and NE4",
+                  "encoding": "ietf-te-types:lsp-encoding-oduk",
+                  "switching-type": "ietf-te-types:switching-otn"
+                }
+              ] 
+            }
           }, 
           "primary-paths": {
             "primary-path": [
@@ -267,7 +267,7 @@
                                 "node-id-uri": "example:NE2",
                                 "link-tp-id-uri": "example:NE2-2",
                                 "hop-type": "strict",
-								"direction":"outgoing"
+                                "direction":"outgoing"
                               }
                             },
                             {
@@ -277,7 +277,7 @@
                                   "ietf-otn-tunnel:otn-label": {
                                     "tsg": "ietf-layer1-types:tsg-1.25G",
                                     "ts-list": "1",
-									"fgts-numbers":"4,20"
+                                    "ietf-fgotn-tunnel:fgts-numbers":"4,20"
                                   }
                                 }
                               }
@@ -294,13 +294,6 @@
                       "tunnel-name": "fgOTN Tunnel Example 2",
                       "node": "192.0.0.2",
                       "lsp-id": 3
-                    }
-                  ]
-                },
-                "candidate-secondary-paths": {
-                  "candidate-secondary-path": [
-                    {
-                      "secondary-path": "secondary-path-1"
                     }
                   ]
                 }
@@ -335,12 +328,12 @@
                     "ietf-otn-tunnel:otn-label": {
                       "tsg": "ietf-layer1-types:tsg-1.25G",
                       "ts-list": "1-2",
-					  "fgts-numbers":"1-2"
+					            "ietf-fgotn-tunnel:fgts-numbers":"1-2"
                     }
                   }
                 }
               },
-			  {
+			        {
                 "index": 3,
                 "unnumbered-link-hop": {
                   "node-id": "192.0.0.2",
@@ -356,7 +349,7 @@
                     "ietf-otn-tunnel:otn-label": {
                       "tsg": "ietf-layer1-types:tsg-1.25G",
                       "ts-list": "1",
-					  "fgts-numbers":"2-3"
+					            "ietf-fgotn-tunnel:fgts-numbers":"2-3"
                     }
                   }
                 }
@@ -387,7 +380,7 @@
                     "ietf-otn-tunnel:otn-label": {
                       "tsg": "ietf-layer1-types:tsg-1.25G",
                       "ts-list": "1-2",
-					  "fgts-numbers":"4-5"
+					            "ietf-fgotn-tunnel:fgts-numbers":"4-5"
                     }
                   }
                 }
@@ -415,7 +408,7 @@
             ]
           }
         },
-		{
+		    {
           "tunnel-name": "fgOTN Tunnel Example 2",
           "lsp-id": 3,
           "node": "192.0.0.2",
@@ -438,7 +431,7 @@
                     "ietf-otn-tunnel:otn-label": {
                       "tsg": "ietf-layer1-types:tsg-1.25G",
                       "ts-list": "1",
-					  "fgts-numbers":"4,20"
+					            "ietf-fgotn-tunnel:fgts-numbers":"4,20"
                     }
                   }
                 }

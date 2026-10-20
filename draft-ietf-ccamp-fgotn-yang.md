@@ -436,7 +436,7 @@ artwork-name="ietf-fgotn-tunnel.tree"}
 {::include yang/ietf-fgotn-tunnel.yang}
 ~~~~
 {: #fgotn-tunnel-yang title="fgOTN tunnel YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-02-27.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-10-20.yang"}
 
 # Manageability Considerations
 
