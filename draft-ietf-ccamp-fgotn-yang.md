@@ -475,7 +475,7 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-02-27.yang"}
 # IANA Considerations
 
 IANA is requested to register the following URI in the "ns"
-registry within the "IETF XML Registry" group {{?RFC3688}}:
+registry within the "IETF XML Registry" group {{!RFC3688}}:
 
 ~~~~
     URI: urn:ietf:params:xml:ns:yang:ietf-fgotn-types
