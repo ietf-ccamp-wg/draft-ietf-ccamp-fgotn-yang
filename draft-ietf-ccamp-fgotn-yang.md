@@ -474,7 +474,46 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-02-27.yang"}
 
 # IANA Considerations
 
-  \<Add any IANA considerations>
+IANA is requested to register the following URI in the "ns"
+registry within the "IETF XML Registry" group {{!RFC3688}}:
+
+~~~~
+    URI: urn:ietf:params:xml:ns:yang:ietf-fgotn-types
+    Registrant Contact:  The IESG.
+    XML: N/A, the requested URI is an XML namespace.
+
+    URI: urn:ietf:params:xml:ns:yang:ietf-fgotn-topology
+    Registrant Contact:  The IESG.
+    XML: N/A, the requested URI is an XML namespace.
+
+    URI: urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel
+    Registrant Contact:  The IESG.
+    XML: N/A, the requested URI is an XML namespace.
+~~~~
+
+IANA is requested to register the following YANG module in the "YANG
+Module Names" registry {{!RFC6020}} within the "YANG Parameters"
+registry group.
+
+~~~~
+    name:      ietf-fgotn-types
+    Maintained by IANA?  N
+    namespace: urn:ietf:params:xml:ns:yang:ietf-fgotn-types
+    prefix:    fgotn-types
+    reference: RFC XXXX
+
+    name:      ietf-fgotn-topology
+    Maintained by IANA?  N
+    namespace: urn:ietf:params:xml:ns:yang:ietf-fgotn-topology
+    prefix:    fgotnt
+    reference: RFC XXXX
+
+    name:      ietf-fgotn-tunnel
+    Maintained by IANA?  N
+    namespace: urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel
+    prefix:    fgotn-tnl
+    reference: RFC XXXX
+~~~~
 
 --- back
 
@@ -545,3 +584,9 @@ The topology examples, show how the topology changes in three different steps:
 {: numbered="false"}
 
 # Acknowledgments
+
+The authors would like to thank
+Adrian Farrel
+and
+Daniel King
+for their valuable comments and suggestions on this document.
