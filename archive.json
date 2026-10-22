@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-15T02:13:38.070278+00:00",
+  "timestamp": "2026-10-22T02:23:28.768699+00:00",
   "repo": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
   "labels": [
     {
@@ -1073,14 +1073,12 @@
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
-        "italobusi"
+        "tanyanxia"
       ],
-      "labels": [
-        "agreed"
-      ],
+      "labels": [],
       "body": "The complete OTN label hop would be:\n \n```\n          +--rw otn-tnl:otn-label\n             +--rw otn-tnl:tpn?              otn-tpn\n             +--rw otn-tnl:tsg?              identityref\n             +--rw otn-tnl:ts-list?          string\n             +--rw fgotn-tnl:fgts-numbers?   string\n``` \n\nMy doubt is whether we cannot reuse the existing ts-list with a new 10M tsg to be defined in the ietf-fgotn-types model.\n",
       "createdAt": "2026-02-27T16:34:44Z",
-      "updatedAt": "2026-09-02T13:46:39Z",
+      "updatedAt": "2026-10-21T13:00:43Z",
       "closedAt": null,
       "comments": [
         {
@@ -1096,6 +1094,20 @@
           "body": "**2026-09-02 Call**\n\nThe use of `ts-list` is and of `fgts-numbers` is mutually exclusive\n\nWe can add a must statement to ensure that the `ts-list` and the 'tsg' attributes are not instantiated when the `fgts-numbers` is instantiated.\n",
           "createdAt": "2026-09-02T13:46:31Z",
           "updatedAt": "2026-09-02T13:46:31Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "From PR #56, it seems that the use of `ts-list` is and of `fgts-numbers` is **NOT** mutually exclusive: the `ts-list` (together with the `tsg`) represents the TSs assigned to the server layer ODUk server layer tunnel while the `fgts-numbers` represents the fgTSes assigned to the fgOTN client layer tunnel\n\n",
+          "createdAt": "2026-10-20T16:28:15Z",
+          "updatedAt": "2026-10-21T12:59:13Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-10-21 fgOTN call**\n\n> From PR [#56](https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/56), it seems that the use of `ts-list` is and of `fgts-numbers` is **NOT** mutually exclusive: the `ts-list` (together with the `ts-list`) represents the TSs assigned to the server layer ODUk server layer tunnel while the `fgts-numbers` represents the fgTSes assigned to the fgOTN client layer tunnel\n\nThis is correct: it would be worthwhile updating the text in the draft to clarify this behavior\n\n- [ ] Update the I-D text and the description in the YANG data model to clarify this behavior",
+          "createdAt": "2026-10-21T13:00:27Z",
+          "updatedAt": "2026-10-21T13:00:27Z"
         }
       ]
     },
@@ -1244,12 +1256,13 @@
     {
       "number": 50,
       "id": "I_kwDOMSanvs8AAAABKt7XXA",
-      "title": "Add manageability considerations",
+      "title": "Add manageability/operational considerations",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/50",
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
+        "italobusi",
         "tanyanxia"
       ],
       "labels": [
@@ -1257,9 +1270,17 @@
       ],
       "body": "The guidelines for manageability considerations are outlined in [draft-ietf-opsawg-rfc5706bis](https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-rfc5706bis)",
       "createdAt": "2026-07-29T22:48:05Z",
-      "updatedAt": "2026-09-30T06:39:35Z",
+      "updatedAt": "2026-10-21T12:56:46Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-10-21 fgOTN call**\n\n- [ ] @tanyanxia review xxx and evaluate whether the boilerplate text in section 3.2 applies here and, in this case, provide a brief description of the rationale for not providing operational considerations in this document\n- [ ] @italobusi discuss with OPSAWG the actual need for the operational considerations section for the documents defining YANG data models in general",
+          "createdAt": "2026-10-21T12:56:38Z",
+          "updatedAt": "2026-10-21T12:56:38Z"
+        }
+      ]
     },
     {
       "number": 51,
@@ -3020,7 +3041,7 @@
       "labels": [],
       "body": "This appendix contains an example of an instance data tree in JSON encoding [RFC7951].\r\n\r\nThe example instantiates the \"ietf-fgotn-tunnel\" model to setup two fgOTN tunnel within the fgOTN topology shown in Figure 11 of Appendix B of [I-D.ietf-ccamp-fgotn-yang].\r\n\r\n - an 20M protected fgOTN tunnel between NE1 and NE4. The protected fgODUflex tunnel has a primary LSP, instatiating the NE1-NE2-NE4 primary TE and a secondary LSP, instantiating the NE1-NE3-NE4 secondary TE path.\r\n\r\n - an 20M unprotected fgOTN tunnel between NE2-NE4. The unprotected fgODUflex tunnel has a primary LSP, instatiating the NE2-NE4 primary TE path.",
       "createdAt": "2026-09-28T07:29:31Z",
-      "updatedAt": "2026-09-28T07:35:39Z",
+      "updatedAt": "2026-10-21T12:18:20Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "2dddcffcbce222ff48ab52036549db08415a85db",
@@ -3032,7 +3053,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs8AAAABTQZa-w",
+          "commit": {
+            "abbreviatedOid": "76e3b56"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "The JSON code is not compiling: see fixes proposed in PR #61 \r\n\r\nI would also add the JSON code for the ODU0 and ODU1 server layer tunnels\r\n\r\nNeed to add some text and include the JSON example into Appendix B\r\n",
+          "createdAt": "2026-10-20T15:18:06Z",
+          "updatedAt": "2026-10-21T12:18:20Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 57,
@@ -3100,7 +3135,7 @@
       "labels": [],
       "body": "Reworked the Security Considerations section into Markdown (.md) format as requested, and start a new pull request for review.",
       "createdAt": "2026-10-13T09:12:19Z",
-      "updatedAt": "2026-10-13T09:16:26Z",
+      "updatedAt": "2026-10-21T12:44:27Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "161337bd6548737e2a3f13a94f1e84724e3de3af",
@@ -3112,7 +3147,221 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs8AAAABTRLUFg",
+          "commit": {
+            "abbreviatedOid": "38cfe6b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "See proposed updates in PR #62 \n\nBefore merging this PR, the security considerations text needs to be moved into the kramdown version of the I-D and the \u200eSecurity Considerations.md file removed from the repository",
+          "createdAt": "2026-10-20T16:14:31Z",
+          "updatedAt": "2026-10-20T16:14:31Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 60,
+      "id": "PR_kwDOMSanvs8AAAABJlDe7g",
+      "title": "Fix JSON and other nits in PR #56",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/60",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-10-20T15:05:55Z",
+      "updatedAt": "2026-10-20T15:11:42Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "tanyanxia-patch-1",
+      "baseRefOid": "76e3b56756022b8209defff18aa62b13975dfc95",
+      "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "fix-pr-56",
+      "headRefOid": "76e3b56756022b8209defff18aa62b13975dfc95",
+      "closedAt": "2026-10-20T15:11:42Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
+    },
+    {
+      "number": 61,
+      "id": "PR_kwDOMSanvs8AAAABJlPJGw",
+      "title": "Fix JSON in PR #56",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/61",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "See also [I-D diff](https://author-tools.ietf.org/api/iddiff?url_1=https://ietf-ccamp-wg.github.io/draft-ietf-ccamp-fgotn-yang/tanyanxia-patch-1/draft-ietf-ccamp-fgotn-yang.txt&url_2=https://italobusi.github.io/draft-tan-ccamp-fgotn-yang/fix-pr-56/draft-ietf-ccamp-fgotn-yang.txt)",
+      "createdAt": "2026-10-20T15:19:09Z",
+      "updatedAt": "2026-10-21T12:20:08Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "tanyanxia-patch-1",
+      "baseRefOid": "76e3b56756022b8209defff18aa62b13975dfc95",
+      "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "fix-pr-56",
+      "headRefOid": "db2a1578806f02a9f3ceaa51c7e28ee9cd9217a6",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 62,
+      "id": "PR_kwDOMSanvs8AAAABJl9Jtg",
+      "title": "Proposed updates to PR #59",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/62",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Aligned text with the latest template in https://wiki.ietf.org/group/ops/yang-security-guidelines\n\nUpdated text to use kramdown syntax\n\nCopied text into the markdown version of the I-D\n\n---\n\nSee also [I-D Diff](https://author-tools.ietf.org/api/iddiff?url_1=https://ietf-ccamp-wg.github.io/draft-ietf-ccamp-fgotn-yang/tanyanxia-patch-2/draft-ietf-ccamp-fgotn-yang.txt&url_2=https://italobusi.github.io/draft-tan-ccamp-fgotn-yang/fix-pr-59/draft-ietf-ccamp-fgotn-yang.txt)",
+      "createdAt": "2026-10-20T16:12:22Z",
+      "updatedAt": "2026-10-21T12:44:03Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "tanyanxia-patch-2",
+      "baseRefOid": "38cfe6b5f4f948742461b2a03471216ecb192f5c",
+      "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "fix-pr-59",
+      "headRefOid": "f36f0ce22e203ae9cb0ccc26381604b9c9fa26fb",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "- [ ] @tanyanxia review the proposed changes to Security Considerations.md file\r\n- [ ] @italobusi after the merge is approved, copy the text in the Security Considerations.md file into the I-D md file; remove the Security Considerations.md file and then merge the PR",
+          "createdAt": "2026-10-21T12:44:03Z",
+          "updatedAt": "2026-10-21T12:44:03Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs8AAAABTcRwvw",
+          "commit": {
+            "abbreviatedOid": "55f9c58"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-21T12:32:43Z",
+          "updatedAt": "2026-10-21T12:32:44Z",
+          "comments": [
+            {
+              "originalPosition": 39,
+              "body": "**2026-10-21 fgOTN call**\n\n```suggestion\n> This data node specifies the fgTS information for the explicit route objects and computed path properties of fgOTN paths, under the corresponding occurrences of the tet:te-label container, as defined in {{!I-D.ietf-teas-yang-te}} (e.g., \"/te:te/te:tunnels/te:tunnel/te:primary-paths/te:primary-path/te:explicit-route-objects/te:route-object-include-exclude/te:type/te:label/te:label-hop/te:te-label/te:technology/otnt:otn/otnt:otn-label/fgotn-tnl:fgts-numbers\"). By configuring, removing or modifying the fgTS attributes, a malicious attacker may cause fgOTN traffic to be disabled or misrouted.\n```",
+              "createdAt": "2026-10-21T12:32:43Z",
+              "updatedAt": "2026-10-21T12:32:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABTcTBdA",
+          "commit": {
+            "abbreviatedOid": "55f9c58"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-21T12:34:28Z",
+          "updatedAt": "2026-10-21T12:34:28Z",
+          "comments": [
+            {
+              "originalPosition": 65,
+              "body": "**2026-10-21 fgOTN call**\n\n\n\n```suggestion\n> This data node specifies the fgTS information for the explicit route objects and computed path properties of fgOTN paths, under the corresponding occurrences of the tet:te-label container, as defined in {{!I-D.ietf-teas-yang-te}} (e.g., \"/te:te/te:tunnels/te:tunnel/te:primary-paths/te:primary-path/te:explicit-route-objects/te:route-object-include-exclude/te:type/te:label/te:label-hop/te:te-label/te:technology/otnt:otn/otnt:otn-label/fgotn-tnl:fgts-numbers\"). Unauthorized access to this data node can disclose the state information of fgOTN tunnels and LSPs.\n```",
+              "createdAt": "2026-10-21T12:34:28Z",
+              "updatedAt": "2026-10-21T12:34:28Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 63,
+      "id": "PR_kwDOMSanvs8AAAABJmPfZw",
+      "title": "Fix kramdown syntax and a nit in Appendix B",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/63",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "See also [diff with main](https://author-tools.ietf.org/api/iddiff?url_1=https://ietf-ccamp-wg.github.io/draft-ietf-ccamp-fgotn-yang/draft-ietf-ccamp-fgotn-yang.txt&url_2=https://ietf-ccamp-wg.github.io/draft-ietf-ccamp-fgotn-yang/fix-appendix-b/draft-ietf-ccamp-fgotn-yang.txt)",
+      "createdAt": "2026-10-20T16:35:15Z",
+      "updatedAt": "2026-10-21T12:45:56Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "161337bd6548737e2a3f13a94f1e84724e3de3af",
+      "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "headRefName": "fix-appendix-b",
+      "headRefOid": "1458713ce97901458fd367636892afeb2bc79c8f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 64,
+      "id": "PR_kwDOMSanvs8AAAABJmXngQ",
+      "title": "Added IANA considerations and Acknoledgements",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/64",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-10-20T16:45:56Z",
+      "updatedAt": "2026-10-21T12:47:47Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "161337bd6548737e2a3f13a94f1e84724e3de3af",
+      "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "headRefName": "iana",
+      "headRefOid": "ce1214111ae95e3e3af561d7be5c29ba2505ae7d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs8AAAABTcdamg",
+          "commit": {
+            "abbreviatedOid": "c529fc7"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-21T12:47:22Z",
+          "updatedAt": "2026-10-21T12:47:23Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "2026-10-21 fgOTN call\n\n\n```suggestion\nregistry within the \"IETF XML Registry\" group {{!RFC3688}}:\n```",
+              "createdAt": "2026-10-21T12:47:23Z",
+              "updatedAt": "2026-10-21T12:47:23Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
