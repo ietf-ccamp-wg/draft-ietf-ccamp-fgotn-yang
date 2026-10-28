@@ -321,7 +321,7 @@ Common types, identities and groupings defined in {{!I-D.ietf-ccamp-layer1-types
 ~~~~
 {: #fig-fgotn-topology-relationship title="Relationship between fgOTN topology and OTN topology model"}
 
-The entities, TE attributes and OTN attributes, such as nodes, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information. At the same time, it is necessary to extend the encoding and switching-capability enumeration values in {{?I-D.ietf-teas-rfc8776-update}} to identify that the current Tunnel Termination Point (TTP) is a termination point of an fgOTN tunnel.
+The entities, TE attributes and OTN attributes, such as nodes, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information.
 
 ## Bandwidth Augmentation
 
