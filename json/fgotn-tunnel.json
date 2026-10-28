@@ -25,7 +25,7 @@
           "te-bandwidth": {
             "ietf-otn-tunnel:otn-bandwidth": {
               "odu-type": "ietf-fgotn-types:fgODUflex",
-              "ietf-fgotn-tunnel:fgoduflex-bandwidth": "20"
+              "ietf-fgotn-tunnel:fgoduflex-bandwidth": 20
             }
           },
           "hierarchy": {
@@ -232,7 +232,7 @@
           "te-bandwidth": {
             "ietf-otn-tunnel:otn-bandwidth": {
               "odu-type": "ietf-fgotn-types:fgODUflex",
-              "ietf-fgotn-tunnel:fgoduflex-bandwidth": "20"
+              "ietf-fgotn-tunnel:fgoduflex-bandwidth": 20
             }
           },
           "hierarchy": {
