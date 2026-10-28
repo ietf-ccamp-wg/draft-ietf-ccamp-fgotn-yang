@@ -15,7 +15,7 @@ module: ietf-fgotn-tunnel
             /te:path-route-objects/te:path-route-object/te:type
             /te:label/te:label-hop/te:te-label/te:technology
             /otn-tnl:otn/otn-tnl:otn-label:
-    +--ro fgts-numbers?   string
+    +--ro fgts-numbers?   fgotn-types:ts-list
   augment /te:te/te:tunnels/te:tunnel/te:primary-paths
             /te:primary-path/te:primary-reverse-path
             /te:explicit-route-objects
@@ -23,18 +23,39 @@ module: ietf-fgotn-tunnel
             /te:label-hop/te:te-label/te:technology/otn-tnl:otn
             /otn-tnl:otn-label:
     +--rw fgts-numbers?   fgotn-types:ts-list
+  augment /te:te/te:tunnels/te:tunnel/te:primary-paths
+            /te:primary-path/te:primary-reverse-path
+            /te:computed-paths-properties/te:computed-path-properties
+            /te:path-properties/te:path-route-objects
+            /te:path-route-object/te:type/te:label/te:label-hop
+            /te:te-label/te:technology/otn-tnl:otn/otn-tnl:otn-label:
+    +--ro fgts-numbers?   fgotn-types:ts-list
   augment /te:te/te:tunnels/te:tunnel/te:secondary-paths
             /te:secondary-path/te:explicit-route-objects
             /te:route-object-include-exclude/te:type/te:label
             /te:label-hop/te:te-label/te:technology/otn-tnl:otn
             /otn-tnl:otn-label:
     +--rw fgts-numbers?   fgotn-types:ts-list
+  augment /te:te/te:tunnels/te:tunnel/te:secondary-paths
+            /te:secondary-path/te:computed-paths-properties
+            /te:computed-path-properties/te:path-properties
+            /te:path-route-objects/te:path-route-object/te:type
+            /te:label/te:label-hop/te:te-label/te:technology
+            /otn-tnl:otn/otn-tnl:otn-label:
+    +--ro fgts-numbers?   fgotn-types:ts-list
   augment /te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths
             /te:secondary-reverse-path/te:explicit-route-objects
             /te:route-object-include-exclude/te:type/te:label
             /te:label-hop/te:te-label/te:technology/otn-tnl:otn
             /otn-tnl:otn-label:
     +--rw fgts-numbers?   fgotn-types:ts-list
+  augment /te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths
+            /te:secondary-reverse-path/te:computed-paths-properties
+            /te:computed-path-properties/te:path-properties
+            /te:path-route-objects/te:path-route-object/te:type
+            /te:label/te:label-hop/te:te-label/te:technology
+            /otn-tnl:otn/otn-tnl:otn-label:
+    +--ro fgts-numbers?   fgotn-types:ts-list
   augment /te:te/te:lsps/te:lsp/te:lsp-actual-route-information
             /te:lsp-actual-route-information/te:type/te:label
             /te:label-hop/te:te-label/te:technology/otn-tnl:otn

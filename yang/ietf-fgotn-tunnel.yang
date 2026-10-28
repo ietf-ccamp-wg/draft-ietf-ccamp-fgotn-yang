@@ -124,7 +124,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-types:ts-list;
       description
         "Augment fgOTN timeslot information of this label hop";
     }
@@ -155,7 +155,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-types:ts-list;
       description
         "Augment fgOTN timeslot information of this label hop";
     }
@@ -184,7 +184,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-types:ts-list;
       description
         "Augment fgOTN timeslot information of this label hop";
     }
@@ -214,7 +214,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-types:ts-list;
       description
         "Augment fgOTN timeslot information of this label hop";
     }
