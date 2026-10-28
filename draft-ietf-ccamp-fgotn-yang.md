@@ -345,8 +345,8 @@ The model augments the label-restriction list with fgOTN technology-specific lab
     +--rw fgts-range* [odu-type odu-ts-number]
         +--rw odu-type           identityref
         +--rw odu-ts-number?     fgotnt:ts-list
-        +--rw fgts-reserved?     fgotnt:ts-list
-        +--rw fgts-unreserved?   fgotnt:ts-list
+        +--rw fgts-reserved?     fgotn-types:ts-list-or-empty
+        +--rw fgts-unreserved?   fgotn-types:ts-list-or-empty
 ~~~~
 
 The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number is used to indicate the index of server ODUk channel.
