@@ -5,12 +5,12 @@
 CCAMP Working Group                                               Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 23 April 2027                                           I. Busi
+Expires: 1 May 2027                                              I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                         20 October 2026
+                                                         28 October 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 April 2027.
+   This Internet-Draft will expire on 1 May 2027.
 
 Copyright Notice
 
@@ -1281,10 +1281,10 @@ Appendix B.  JSON Examples
 
        *  an ODU1 tunnel between NE1 and NE2;
 
-          -  two ODU0 server layer tunnels between NE2 and NE4;
+       *  two ODU0 server layer tunnels between NE2 and NE4;
 
-          -  one ODU1 server layer tunnel between NE1 and NE4 (through
-             the NE1-NE3-NE4 path)
+       *  one ODU1 server layer tunnel between NE1 and NE4 (through the
+          NE1-NE3-NE4 path)
 
    3.  The following fgOTN tunnels are setup in the network:
 
