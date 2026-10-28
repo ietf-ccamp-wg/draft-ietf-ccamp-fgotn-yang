@@ -123,11 +123,7 @@ module ietf-fgotn-tunnel {
         + "otn-tnl:otn/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
-    leaf fgts-numbers {
-      type fgotn-types:ts-list;
-      description
-        "Augment fgOTN timeslot information of this label hop";
-    }
+    uses fgotn-types:fgotn-label-hop;
   }
 
   augment "/te:te/te:tunnels/te:tunnel/te:primary-paths"
@@ -138,11 +134,7 @@ module ietf-fgotn-tunnel {
         + "/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
-    leaf fgts-numbers {
-      type fgotn-types:ts-list;
-      description
-        "Augment fgOTN timeslot information of this label hop";
-    }
+    uses fgotn-types:fgotn-label-hop;
   }
 
   augment "/te:te/te:tunnels/te:tunnel/"
@@ -154,11 +146,7 @@ module ietf-fgotn-tunnel {
         + "otn-tnl:otn/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
-    leaf fgts-numbers {
-      type fgotn-types:ts-list;
-      description
-        "Augment fgOTN timeslot information of this label hop";
-    }
+    uses fgotn-types:fgotn-label-hop;
   }
 
   augment "/te:te/te:tunnels/te:tunnel/te:secondary-paths"
@@ -168,11 +156,7 @@ module ietf-fgotn-tunnel {
         + "/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
-    leaf fgts-numbers {
-      type fgotn-types:ts-list;
-      description
-        "fgOTN timeslot information of this label hop";
-    }
+    uses fgotn-types:fgotn-label-hop;
   }
 
   augment "/te:te/te:tunnels/te:tunnel/te:secondary-paths"
@@ -183,11 +167,7 @@ module ietf-fgotn-tunnel {
         + "otn-tnl:otn/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
-    leaf fgts-numbers {
-      type fgotn-types:ts-list;
-      description
-        "Augment fgOTN timeslot information of this label hop";
-    }
+    uses fgotn-types:fgotn-label-hop;
   }
 
   augment "/te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths"
@@ -197,11 +177,7 @@ module ietf-fgotn-tunnel {
         + "/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
-    leaf fgts-numbers {
-      type fgotn-types:ts-list;
-      description
-        "fgOTN timeslot information of this label hop";
-    }
+    uses fgotn-types:fgotn-label-hop;
   }
 
   augment "/te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths"
@@ -213,11 +189,7 @@ module ietf-fgotn-tunnel {
         + "otn-tnl:otn/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
-    leaf fgts-numbers {
-      type fgotn-types:ts-list;
-      description
-        "Augment fgOTN timeslot information of this label hop";
-    }
+    uses fgotn-types:fgotn-label-hop;
   }
 
   augment "/te:te/te:lsps/te:lsp/te:lsp-actual-route-information"
@@ -226,10 +198,6 @@ module ietf-fgotn-tunnel {
         + "/otn-tnl:otn-label" {
     description
       "augmentation of fgOTN label";
-    leaf fgts-numbers {
-      type fgotn-types:ts-list;
-      description
-        "fgOTN timeslot information of this label hop";
-    }
+    uses fgotn-types:fgotn-label-hop;
   }
 }

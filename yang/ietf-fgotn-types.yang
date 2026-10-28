@@ -52,7 +52,7 @@ module ietf-fgotn-types {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-09-29 {
+  revision 2026-10-28 {
     description
       "initial version";
     reference
@@ -98,5 +98,25 @@ module ietf-fgotn-types {
     reference
       "RFC 7139: GMPLS Signaling Extensions for Control
                  of Evolving G.709 Optical Transport Networks";
+  }
+
+  grouping fgotn-label-hop {
+    description
+      "This grouping defines the additional information to be added
+       to the 'otn-label' container, defined in the 'otn-label-hop'
+       grouping of the 'ietf-layer1-types' YANG module, when used to
+       represent an fgOTN label hop.";
+    leaf fgts-numbers {
+      type fgotn-types:ts-list;
+      description
+        "The list of the fine grain Tributary Slots (fgTSs)
+         allocated to the fgOTN tunnel.
+
+         When the fgODUflex tunnel is setup over a LO-ODUj server
+         layer tunnel, the 'ts-list' (together with the tsg)
+         represents the TSs assigned to the LO-ODUj server layer
+         tunnel, while the 'fgts-numbers' represents the fgTSs
+         assigned to the fgOTN client layer tunnel.";
+    }
   }
 }
