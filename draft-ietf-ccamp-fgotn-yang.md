@@ -345,8 +345,8 @@ The model augments the label-restriction list with fgOTN technology-specific lab
     +--rw fgts-range* [odu-type odu-ts-number]
         +--rw odu-type           identityref
         +--rw odu-ts-number?     fgotnt:ts-list
-        +--rw fgts-reserved?     fgotnt:ts-list
-        +--rw fgts-unreserved?   fgotnt:ts-list
+        +--rw fgts-reserved?     fgotn-types:ts-list-or-empty
+        +--rw fgts-unreserved?   fgotn-types:ts-list-or-empty
 ~~~~
 
 The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number is used to indicate the index of server ODUk channel.
@@ -394,7 +394,7 @@ The string value fgoduflex-bandwidth is used to indicate the bandwidth of this f
 
 ## Label Augmentation
 
-The module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary-paths and secondary-paths using the fgts-numbers. The fgts-numbers is used to specify fgTS information on inter-domain ports of the routing path. When specifying the fgotn time slot in the routing constraint information, the ODU time slot must also be specified. We also augment the TE label-hop for the record route of the LSP using the fgts-numbers.
+The module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary-paths and secondary-paths using the fgts-numbers. The fgts-numbers specifies the fgTS information for the explicit route objects and computed path properties of fgOTN paths, under the corresponding occurrences of the tet:te-label container. We also augment the TE label-hop for the record route of the LSP using the fgts-numbers. When specifying the fgotn time slot in the routing constraint information, the ODU time slot must also be specified. The ts-list (together with the tsg) represents the time slots assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.
 
 # YANG Data Model for fgOTN types {#yang-types}
 
@@ -537,6 +537,12 @@ The topology examples, show how the topology changes in three different steps:
     - a workting path setup through the NE1-NE2 ODU1 tunnel and the NE2-NE4 ODU0 tunnel;
     - a protectin path setup through the NE1-NE3-NE4 ODU1 tunnel;
   - an 20M unprotected fgOTN tunnel throught the same NE2-NE4 ODU0 tunnel used by the other fgOTN tunnel.
+
+The example also instantiates the "ietf-fgotn-tunnel" model to setup two fgOTN tunnel within the fgOTN topology shown in {{fig-example}}.
+
+-an 20M protected fgOTN tunnel between NE1 and NE4. The protected fgODUflex tunnel has a primary LSP, instatiating the NE1-NE2-NE4 primary TE and a secondary LSP, instantiating the NE1-NE3-NE4 secondary TE path.
+
+-an 20M unprotected fgOTN tunnel between NE2-NE4. The unprotected fgODUflex tunnel has a primary LSP, instatiating the NE2-NE4 primary TE path.
 
 ~~~~ json
 {::include-fold json/fgotn-topology.json}
