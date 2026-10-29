@@ -5,12 +5,12 @@
 CCAMP Working Group                                               Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 3 April 2027                                            I. Busi
+Expires: 2 May 2027                                              I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                       30 September 2026
+                                                         29 October 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 April 2027.
+   This Internet-Draft will expire on 2 May 2027.
 
 Copyright Notice
 
@@ -1100,7 +1100,42 @@ Table of Contents
 
 13.  IANA Considerations
 
-   <Add any IANA considerations>
+   IANA is requested to register the following URI in the "ns" registry
+   within the "IETF XML Registry" group [RFC3688]:
+
+       URI: urn:ietf:params:xml:ns:yang:ietf-fgotn-types
+       Registrant Contact:  The IESG.
+       XML: N/A, the requested URI is an XML namespace.
+
+       URI: urn:ietf:params:xml:ns:yang:ietf-fgotn-topology
+       Registrant Contact:  The IESG.
+       XML: N/A, the requested URI is an XML namespace.
+
+       URI: urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel
+       Registrant Contact:  The IESG.
+       XML: N/A, the requested URI is an XML namespace.
+
+   IANA is requested to register the following YANG module in the "YANG
+   Module Names" registry [RFC6020] within the "YANG Parameters"
+   registry group.
+
+       name:      ietf-fgotn-types
+       Maintained by IANA?  N
+       namespace: urn:ietf:params:xml:ns:yang:ietf-fgotn-types
+       prefix:    fgotn-types
+       reference: RFC XXXX
+
+       name:      ietf-fgotn-topology
+       Maintained by IANA?  N
+       namespace: urn:ietf:params:xml:ns:yang:ietf-fgotn-topology
+       prefix:    fgotnt
+       reference: RFC XXXX
+
+       name:      ietf-fgotn-tunnel
+       Maintained by IANA?  N
+       namespace: urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel
+       prefix:    fgotn-tnl
+       reference: RFC XXXX
 
 14.  References
 
@@ -1152,6 +1187,15 @@ Table of Contents
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              DOI 10.17487/RFC3688, January 2004,
+              <https://www.rfc-editor.org/rfc/rfc3688>.
+
+   [RFC6020]  Bjorklund, M., Ed., "YANG - A Data Modeling Language for
+              the Network Configuration Protocol (NETCONF)", RFC 6020,
+              DOI 10.17487/RFC6020, October 2010,
+              <https://www.rfc-editor.org/rfc/rfc6020>.
 
    [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
               and A. Bierman, Ed., "Network Configuration Protocol
@@ -4490,6 +4534,9 @@ Appendix B.  JSON Examples
    }
 
 Acknowledgments
+
+   The authors would like to thank Adrian Farrel and Daniel King for
+   their valuable comments and suggestions on this document.
 
 Contributors
 
