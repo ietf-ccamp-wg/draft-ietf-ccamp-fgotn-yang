@@ -467,7 +467,9 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-10-29.yang"}
 
 # Manageability Considerations
 
-  \<Add any manageability considerations>
+There are no new operations or manageability requirements introduced by this document.
+
+The fgOTN YANG models are defined as technology-specific augmentations to existing OTN topology and OTN tunnel models. It inherits all NMDA management semantics, config-state separation rules, RESTCONF interfaces, notification behaviours and operational workflows from the base specifications, and does not introduce new management RPCs, notification types or deployment operational procedures.
 
 # Security Considerations
 
