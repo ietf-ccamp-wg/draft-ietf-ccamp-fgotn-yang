@@ -468,10 +468,7 @@ Table of Contents
    fgOTN topology and the model presented in this document only
    specifies technology-specific attributes/information.  The fgOTN-
    specific attributes including the fgTS, can be used to represent the
-   bandwidth and label information.  At the same time, it is necessary
-   to extend the encoding and switching-capability enumeration values in
-   [I-D.ietf-teas-rfc8776-update] to identify that the current Tunnel
-   Termination Point (TTP) is a termination point of an fgOTN tunnel.
+   bandwidth and label information.
 
 4.2.  Bandwidth Augmentation
 
@@ -502,8 +499,8 @@ Table of Contents
        +--rw fgts-range* [odu-type odu-ts-number]
            +--rw odu-type           identityref
            +--rw odu-ts-number?     fgotnt:ts-list
-           +--rw fgts-reserved?     fgotnt:ts-list
-           +--rw fgts-unreserved?   fgotnt:ts-list
+           +--rw fgts-reserved?     fgotn-types:ts-list-or-empty
+           +--rw fgts-unreserved?   fgotn-types:ts-list-or-empty
 
    The fgts-range list is used to describe the availability of fgOTN
    timeslot in the server ODUk, including the fgts-reserved and fgts-
@@ -553,21 +550,28 @@ Table of Contents
 
      augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
              /otn-tnl:otn/otn-tnl:otn-bandwidth:
-       +--rw fgoduflex-bandwidth?   string
+       +--rw fgoduflex-bandwidth?   uint8
 
-   The string value fgoduflex-bandwidth is used to indicate the
-   bandwidth of this fgOTN tunnel.
+   The fgoduflex-bandwidth leaf specifies the bandwidth of an fgOTN
+   tunnel when the ODU type is fgODUflex.  The value is expressed as an
+   integer multiplier of 10 Mbit/s, with a valid range of 1 to 119,
+   corresponding to the fine-granularity bandwidth granularities defined
+   in Table M.3 of [ITU-T_G.709].
 
 5.3.  Label Augmentation
 
    The module augments TE label-hop for the explicit route objects
    included or excluded by the path computation of the primary-paths and
-   secondary-paths using the fgts-numbers.  The fgts-numbers is used to
-   specify fgTS information on inter-domain ports of the routing path.
-   When specifying the fgotn time slot in the routing constraint
-   information, the ODU time slot must also be specified.  We also
-   augment the TE label-hop for the record route of the LSP using the
-   fgts-numbers.
+   secondary-paths using the fgts-numbers.  The fgts-numbers specifies
+   the fgTS information for the explicit route objects and computed path
+   properties of fgOTN paths, under the corresponding occurrences of the
+   tet:te-label container.  We also augment the TE label-hop for the
+   record route of the LSP using the fgts-numbers.  When specifying the
+   fgotn time slot in the routing constraint information, the ODU time
+   slot must also be specified.  The ts-list (together with the tsg)
+   represents the time slots assigned to the ODUk server-layer tunnel,
+   while the fgts-numbers represents the fgTSs assigned to the fgOTN
+   client-layer tunnel.
 
 6.  YANG Data Model for fgOTN types
 
@@ -578,7 +582,7 @@ Table of Contents
    In addition to importing [I-D.ietf-ccamp-layer1-types], this module
    references the following documents in defining its types: [RFC7139].
 
-   <CODE BEGINS> file "ietf-fgotn-types@2026-02-27.yang"
+   <CODE BEGINS> file "ietf-fgotn-types@2026-10-29.yang"
    module ietf-fgotn-types {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-types";
@@ -633,7 +637,7 @@ Table of Contents
      // RFC Ed.: update the date below with the date of RFC publication
      // and remove this note.
 
-     revision 2026-09-29 {
+     revision 2026-10-29 {
        description
          "initial version";
        reference
@@ -680,6 +684,26 @@ Table of Contents
          "RFC 7139: GMPLS Signaling Extensions for Control
                     of Evolving G.709 Optical Transport Networks";
      }
+
+     grouping fgotn-label-hop {
+       description
+         "This grouping defines the additional information to be added
+          to the 'otn-label' container, defined in the 'otn-label-hop'
+          grouping of the 'ietf-layer1-types' YANG module, when used to
+          represent an fgOTN label hop.";
+       leaf fgts-numbers {
+         type fgotn-types:ts-list;
+         description
+           "The list of the fine grain Tributary Slots (fgTSs)
+            allocated to the fgOTN tunnel.
+
+            When the fgODUflex tunnel is setup over a LO-ODUj server
+            layer tunnel, the 'ts-list' (together with the tsg)
+            represents the TSs assigned to the LO-ODUj server layer
+            tunnel, while the 'fgts-numbers' represents the fgTSs
+            assigned to the fgOTN client layer tunnel.";
+       }
+     }
    }
    <CODE ENDS>
 
@@ -719,7 +743,7 @@ Table of Contents
 
    *  "ietf-fgotn-types" as defined in Section 6 of this document
 
-   <CODE BEGINS> file "ietf-fgotn-topology@2026-07-23.yang"
+   <CODE BEGINS> file "ietf-fgotn-topology@2026-09-29.yang"
    module ietf-fgotn-topology {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-topology";
@@ -873,24 +897,52 @@ Table of Contents
                /otn-tnl:otn-label:
        +--rw fgts-numbers?   fgotn-types:ts-list
      augment /te:te/te:tunnels/te:tunnel/te:primary-paths
+               /te:primary-path/te:computed-paths-properties
+               /te:computed-path-properties/te:path-properties
+               /te:path-route-objects/te:path-route-object/te:type
+               /te:label/te:label-hop/te:te-label/te:technology
+               /otn-tnl:otn/otn-tnl:otn-label:
+       +--ro fgts-numbers?   fgotn-types:ts-list
+     augment /te:te/te:tunnels/te:tunnel/te:primary-paths
                /te:primary-path/te:primary-reverse-path
                /te:explicit-route-objects
                /te:route-object-include-exclude/te:type/te:label
                /te:label-hop/te:te-label/te:technology/otn-tnl:otn
                /otn-tnl:otn-label:
        +--rw fgts-numbers?   fgotn-types:ts-list
+     augment /te:te/te:tunnels/te:tunnel/te:primary-paths
+               /te:primary-path/te:primary-reverse-path
+               /te:computed-paths-properties/te:computed-path-properties
+               /te:path-properties/te:path-route-objects
+               /te:path-route-object/te:type/te:label/te:label-hop
+               /te:te-label/te:technology/otn-tnl:otn/otn-tnl:otn-label:
+       +--ro fgts-numbers?   fgotn-types:ts-list
      augment /te:te/te:tunnels/te:tunnel/te:secondary-paths
                /te:secondary-path/te:explicit-route-objects
                /te:route-object-include-exclude/te:type/te:label
                /te:label-hop/te:te-label/te:technology/otn-tnl:otn
                /otn-tnl:otn-label:
        +--rw fgts-numbers?   fgotn-types:ts-list
+     augment /te:te/te:tunnels/te:tunnel/te:secondary-paths
+               /te:secondary-path/te:computed-paths-properties
+               /te:computed-path-properties/te:path-properties
+               /te:path-route-objects/te:path-route-object/te:type
+               /te:label/te:label-hop/te:te-label/te:technology
+               /otn-tnl:otn/otn-tnl:otn-label:
+       +--ro fgts-numbers?   fgotn-types:ts-list
      augment /te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths
                /te:secondary-reverse-path/te:explicit-route-objects
                /te:route-object-include-exclude/te:type/te:label
                /te:label-hop/te:te-label/te:technology/otn-tnl:otn
                /otn-tnl:otn-label:
        +--rw fgts-numbers?   fgotn-types:ts-list
+     augment /te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths
+               /te:secondary-reverse-path/te:computed-paths-properties
+               /te:computed-path-properties/te:path-properties
+               /te:path-route-objects/te:path-route-object/te:type
+               /te:label/te:label-hop/te:te-label/te:technology
+               /otn-tnl:otn/otn-tnl:otn-label:
+       +--ro fgts-numbers?   fgotn-types:ts-list
      augment /te:te/te:lsps/te:lsp/te:lsp-actual-route-information
                /te:lsp-actual-route-information/te:type/te:label
                /te:label-hop/te:te-label/te:technology/otn-tnl:otn
@@ -913,7 +965,7 @@ Table of Contents
    [I-D.ietf-ccamp-otn-tunnel-model], this module references the
    following documents: [ITU-T_G.709].
 
-   <CODE BEGINS> file "ietf-fgotn-tunnel@2026-02-27.yang"
+   <CODE BEGINS> file "ietf-fgotn-tunnel@2026-10-29.yang"
    module ietf-fgotn-tunnel {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel";
@@ -984,7 +1036,7 @@ Table of Contents
      // RFC Ed.: update the date below with the date of RFC publication
      // and remove this note.
 
-     revision 2026-09-29 {
+     revision 2026-10-29 {
        description
          "initial version";
        reference
@@ -1023,11 +1075,19 @@ Table of Contents
            + "/otn-tnl:otn-label" {
        description
          "augmentation of fgOTN label";
-       leaf fgts-numbers {
-         type fgotn-types:ts-list;
-         description
-           "Augment fgOTN timeslot information of this label hop";
-       }
+       uses fgotn-types:fgotn-label-hop;
+     }
+
+     augment "/te:te/te:tunnels/te:tunnel/"
+           + "te:primary-paths/te:primary-path/"
+           + "te:computed-paths-properties/"
+           + "te:computed-path-properties/te:path-properties/"
+           + "te:path-route-objects/te:path-route-object/te:type/"
+           + "te:label/te:label-hop/te:te-label/te:technology/"
+           + "otn-tnl:otn/otn-tnl:otn-label" {
+       description
+         "augmentation of fgOTN label";
+       uses fgotn-types:fgotn-label-hop;
      }
 
      augment "/te:te/te:tunnels/te:tunnel/te:primary-paths"
@@ -1038,11 +1098,19 @@ Table of Contents
            + "/otn-tnl:otn-label" {
        description
          "augmentation of fgOTN label";
-       leaf fgts-numbers {
-         type fgotn-types:ts-list;
-         description
-           "Augment fgOTN timeslot information of this label hop";
-       }
+       uses fgotn-types:fgotn-label-hop;
+     }
+
+     augment "/te:te/te:tunnels/te:tunnel/"
+           + "te:primary-paths/te:primary-path/"
+           + "te:primary-reverse-path/te:computed-paths-properties/"
+           + "te:computed-path-properties/te:path-properties/"
+           + "te:path-route-objects/te:path-route-object/te:type/"
+           + "te:label/te:label-hop/te:te-label/te:technology/"
+           + "otn-tnl:otn/otn-tnl:otn-label" {
+       description
+         "augmentation of fgOTN label";
+       uses fgotn-types:fgotn-label-hop;
      }
 
      augment "/te:te/te:tunnels/te:tunnel/te:secondary-paths"
@@ -1052,11 +1120,18 @@ Table of Contents
            + "/otn-tnl:otn-label" {
        description
          "augmentation of fgOTN label";
-       leaf fgts-numbers {
-         type fgotn-types:ts-list;
-         description
-           "fgOTN timeslot information of this label hop";
-       }
+       uses fgotn-types:fgotn-label-hop;
+     }
+
+     augment "/te:te/te:tunnels/te:tunnel/te:secondary-paths"
+           + "/te:secondary-path/te:computed-paths-properties/"
+           + "te:computed-path-properties/te:path-properties/"
+           + "te:path-route-objects/te:path-route-object/te:type/"
+           + "te:label/te:label-hop/te:te-label/te:technology/"
+           + "otn-tnl:otn/otn-tnl:otn-label" {
+       description
+         "augmentation of fgOTN label";
+       uses fgotn-types:fgotn-label-hop;
      }
 
      augment "/te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths"
@@ -1066,11 +1141,19 @@ Table of Contents
            + "/otn-tnl:otn-label" {
        description
          "augmentation of fgOTN label";
-       leaf fgts-numbers {
-         type fgotn-types:ts-list;
-         description
-           "fgOTN timeslot information of this label hop";
-       }
+       uses fgotn-types:fgotn-label-hop;
+     }
+
+     augment "/te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths"
+           + "/te:secondary-reverse-path/"
+           + "te:computed-paths-properties/"
+           + "te:computed-path-properties/te:path-properties/"
+           + "te:path-route-objects/te:path-route-object/te:type/"
+           + "te:label/te:label-hop/te:te-label/te:technology/"
+           + "otn-tnl:otn/otn-tnl:otn-label" {
+       description
+         "augmentation of fgOTN label";
+       uses fgotn-types:fgotn-label-hop;
      }
 
      augment "/te:te/te:lsps/te:lsp/te:lsp-actual-route-information"
@@ -1079,11 +1162,7 @@ Table of Contents
            + "/otn-tnl:otn-label" {
        description
          "augmentation of fgOTN label";
-       leaf fgts-numbers {
-         type fgotn-types:ts-list;
-         description
-           "fgOTN timeslot information of this label hop";
-       }
+       uses fgotn-types:fgotn-label-hop;
      }
    }
    <CODE ENDS>
@@ -1346,13 +1425,6 @@ Table of Contents
 
 14.2.  Informative References
 
-   [I-D.ietf-teas-rfc8776-update]
-              Busi, I., Guo, A., Liu, X., Saad, T., and I. Bryskin,
-              "Common YANG Data Types for Traffic Engineering", Work in
-              Progress, Internet-Draft, draft-ietf-teas-rfc8776-update-
-              24, 12 June 2026, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-teas-rfc8776-update-24>.
-
    [RFC4252]  Ylonen, T. and C. Lonvick, Ed., "The Secure Shell (SSH)
               Authentication Protocol", RFC 4252, DOI 10.17487/RFC4252,
               January 2006, <https://www.rfc-editor.org/rfc/rfc4252>.
@@ -1471,6 +1543,18 @@ Appendix B.  JSON Examples
        *  a protectin path setup through the NE1-NE3-NE4 ODU1 tunnel; -
           an 20M unprotected fgOTN tunnel throught the same NE2-NE4 ODU0
           tunnel used by the other fgOTN tunnel.
+
+   The example also instantiates the "ietf-fgotn-tunnel" model to setup
+   two fgOTN tunnel within the fgOTN topology shown in Figure 11.
+
+   -an 20M protected fgOTN tunnel between NE1 and NE4.  The protected
+   fgODUflex tunnel has a primary LSP, instatiating the NE1-NE2-NE4
+   primary TE and a secondary LSP, instantiating the NE1-NE3-NE4
+   secondary TE path.
+
+   -an 20M unprotected fgOTN tunnel between NE2-NE4.  The unprotected
+   fgODUflex tunnel has a primary LSP, instatiating the NE2-NE4 primary
+   TE path.
 
    =============== NOTE: '\' line wrapping per RFC 8792 ================
 
