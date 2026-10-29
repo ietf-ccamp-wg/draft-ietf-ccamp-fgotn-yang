@@ -408,7 +408,7 @@ In addition to importing {{!I-D.ietf-ccamp-layer1-types}}, this module reference
 {::include yang/ietf-fgotn-types.yang}
 ~~~~
 {: #fgotn-types-yang title="fgOTN types YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-types@2026-02-27.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-types@2026-10-29.yang"}
 
 {:#fgotn-tree}
 
@@ -437,7 +437,7 @@ The "ietf-fgotn-topology" module imports the following modules:
 {::include yang/ietf-fgotn-topology.yang}
 ~~~~
 {: #fgotn-topology-yang title="fgOTN topology YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2026-07-23.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2026-09-29.yang"}
 
 # YANG Tree for fgOTN tunnel
 
@@ -463,7 +463,7 @@ In addition to importing {{!I-D.ietf-teas-yang-te}} and {{!I-D.ietf-ccamp-otn-tu
 {::include yang/ietf-fgotn-tunnel.yang}
 ~~~~
 {: #fgotn-tunnel-yang title="fgOTN tunnel YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-10-20.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-10-29.yang"}
 
 # Manageability Considerations
 

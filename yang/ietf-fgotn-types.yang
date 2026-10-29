@@ -52,7 +52,7 @@ module ietf-fgotn-types {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-10-28 {
+  revision 2026-10-29 {
     description
       "initial version";
     reference
