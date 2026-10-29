@@ -615,14 +615,14 @@ The topology examples, show how the topology changes in three different steps:
 
 1. No OTN or fgOTN tunnels are setup in the network;
 1. The following ODUk tunnels are setup as server layer tunnels to support fgOTN tunnels:
-  - an ODU1 tunnel between NE1 and NE2;
-    - two ODU0 server layer tunnels between NE2 and NE4;
-    - one ODU1 server layer tunnel between NE1 and NE4 (through the NE1-NE3-NE4 path)
+   - an ODU1 server layer tunnel between NE1 and NE2;
+   - two ODU0 server layer tunnels between NE2 and NE4;
+   - one ODU1 server layer tunnel between NE1 and NE4 (through the NE1-NE3-NE4 path)
 1. The following fgOTN tunnels are setup in the network:
-  - a 20M protected fgOTN tunnel between NE1 and NE4 with:
-    - a workting path setup through the NE1-NE2 ODU1 tunnel and the NE2-NE4 ODU0 tunnel;
-    - a protectin path setup through the NE1-NE3-NE4 ODU1 tunnel;
-  - an 20M unprotected fgOTN tunnel throught the same NE2-NE4 ODU0 tunnel used by the other fgOTN tunnel.
+   - a 20M protected fgOTN tunnel between NE1 and NE4 with:
+     - a working path setup through the NE1-NE2 ODU1 tunnel and the NE2-NE4 ODU0 tunnel;
+     - a protectin path setup through the NE1-NE3-NE4 ODU1 tunnel;
+   - a 20M unprotected fgOTN tunnel through the same NE2-NE4 ODU0 server layer tunnel used by the other fgOTN tunnel above.
 
 The example also instantiates the "ietf-fgotn-tunnel" model to setup two fgOTN tunnel within the fgOTN topology shown in {{fig-example}}.
 
