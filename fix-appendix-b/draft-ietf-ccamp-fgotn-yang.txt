@@ -1279,7 +1279,7 @@ Appendix B.  JSON Examples
    2.  The following ODUk tunnels are setup as server layer tunnels to
        support fgOTN tunnels:
 
-       *  an ODU1 tunnel between NE1 and NE2;
+       *  an ODU1 server layer tunnel between NE1 and NE2;
 
        *  two ODU0 server layer tunnels between NE2 and NE4;
 
