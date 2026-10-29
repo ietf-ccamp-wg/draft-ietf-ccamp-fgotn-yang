@@ -1,0 +1,4 @@
+module: ietf-fgotn-types
+
+  grouping fgotn-label-hop:
+    +-- fgts-numbers?   fgotn-types:ts-list
