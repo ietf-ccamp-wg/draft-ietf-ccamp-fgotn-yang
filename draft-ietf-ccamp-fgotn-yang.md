@@ -497,7 +497,7 @@ The following subtrees and data nodes have particular sensitivities/vulnerabilit
 
 - "fgotn-tnl:fgts-numbers"
 
-> This data node specifies the fgTS information on inter-domain ports of the routing path under any occurrence of the tet:te-label container, as defined in {{!I-D.ietf-teas-yang-te}} (e.g., "/te:te/te:tunnels/te:tunnel/te:primary-paths/te:primary-path/te:explicit-route-objects/te:route-object-include-exclude/te:type/te:label/te:label-hop/te:te-label/te:technology/otnt:otn/otnt:otn-label/fgotn-tnl:fgts-numbers"). By configuring, removing or modifying the fgTS attributes, a malicious attacker may cause fgOTN traffic to be disabled or misrouted.
+> This data node specifies the fgTS information for the explicit route objects and computed path properties of fgOTN paths, under the corresponding occurrences of the tet:te-label container, as defined in {{!I-D.ietf-teas-yang-te}} (e.g., "/te:te/te:tunnels/te:tunnel/te:primary-paths/te:primary-path/te:explicit-route-objects/te:route-object-include-exclude/te:type/te:label/te:label-hop/te:te-label/te:technology/otnt:otn/otnt:otn-label/fgotn-tnl:fgts-numbers"). By configuring, removing or modifying the fgTS attributes, a malicious attacker may cause fgOTN traffic to be disabled or misrouted.
 
 Some of the readable data nodes in these YANG modules may be considered sensitive or vulnerable in some network environments.
 It is thus important to control read access (e.g., via get, get-config, or notification) to these data nodes.
@@ -513,7 +513,7 @@ Specifically, the following subtrees and data nodes have particular sensitivitie
 
 - "fgotn-tnl:fgts-numbers"
 
-> This data node specifies the fgTS information on inter-domain ports of the routing path under any occurrence of the tet:te-label container, as defined in {{!I-D.ietf-teas-yang-te}} (e.g., "/te:te/te:tunnels/te:tunnel/te:primary-paths/te:primary-path/te:explicit-route-objects/te:route-object-include-exclude/te:type/te:label/te:label-hop/te:te-label/te:technology/otnt:otn/otnt:otn-label/fgotn-tnl:fgts-numbers"). Unauthorized access to this data node can disclose the state information of fgOTN tunnels and LSPs.
+> This data node specifies the fgTS information for the explicit route objects and computed path properties of fgOTN paths, under the corresponding occurrences of the tet:te-label container, as defined in {{!I-D.ietf-teas-yang-te}} (e.g., "/te:te/te:tunnels/te:tunnel/te:primary-paths/te:primary-path/te:explicit-route-objects/te:route-object-include-exclude/te:type/te:label/te:label-hop/te:te-label/te:technology/otnt:otn/otnt:otn-label/fgotn-tnl:fgts-numbers"). Unauthorized access to this data node can disclose the state information of fgOTN tunnels and LSPs.
 
 These YANG modules do not define RPC operations.
 
