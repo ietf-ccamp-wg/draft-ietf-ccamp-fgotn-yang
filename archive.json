@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-22T02:23:28.768699+00:00",
+  "timestamp": "2026-10-29T03:20:06.101605+00:00",
   "repo": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
   "labels": [
     {
@@ -3041,13 +3041,13 @@
       "labels": [],
       "body": "This appendix contains an example of an instance data tree in JSON encoding [RFC7951].\r\n\r\nThe example instantiates the \"ietf-fgotn-tunnel\" model to setup two fgOTN tunnel within the fgOTN topology shown in Figure 11 of Appendix B of [I-D.ietf-ccamp-fgotn-yang].\r\n\r\n - an 20M protected fgOTN tunnel between NE1 and NE4. The protected fgODUflex tunnel has a primary LSP, instatiating the NE1-NE2-NE4 primary TE and a secondary LSP, instantiating the NE1-NE3-NE4 secondary TE path.\r\n\r\n - an 20M unprotected fgOTN tunnel between NE2-NE4. The unprotected fgODUflex tunnel has a primary LSP, instatiating the NE2-NE4 primary TE path.",
       "createdAt": "2026-09-28T07:29:31Z",
-      "updatedAt": "2026-10-21T12:18:20Z",
+      "updatedAt": "2026-10-28T17:05:20Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "main",
-      "baseRefOid": "2dddcffcbce222ff48ab52036549db08415a85db",
+      "baseRefOid": "161337bd6548737e2a3f13a94f1e84724e3de3af",
       "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "headRefName": "tanyanxia-patch-1",
-      "headRefOid": "76e3b56756022b8209defff18aa62b13975dfc95",
+      "headRefOid": "8f0a64f0b090cc4884c412f9eb3630b4408e6c45",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -3201,19 +3201,670 @@
       "labels": [],
       "body": "See also [I-D diff](https://author-tools.ietf.org/api/iddiff?url_1=https://ietf-ccamp-wg.github.io/draft-ietf-ccamp-fgotn-yang/tanyanxia-patch-1/draft-ietf-ccamp-fgotn-yang.txt&url_2=https://italobusi.github.io/draft-tan-ccamp-fgotn-yang/fix-pr-56/draft-ietf-ccamp-fgotn-yang.txt)",
       "createdAt": "2026-10-20T15:19:09Z",
-      "updatedAt": "2026-10-21T12:20:08Z",
+      "updatedAt": "2026-10-28T22:06:26Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "tanyanxia-patch-1",
-      "baseRefOid": "76e3b56756022b8209defff18aa62b13975dfc95",
+      "baseRefOid": "8f0a64f0b090cc4884c412f9eb3630b4408e6c45",
       "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
       "headRefName": "fix-pr-56",
-      "headRefOid": "db2a1578806f02a9f3ceaa51c7e28ee9cd9217a6",
+      "headRefOid": "efb224c639228b7ca63b4dc52d2d537ce6446ea4",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUXXHEw",
+          "commit": {
+            "abbreviatedOid": "db2a157"
+          },
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T02:44:12Z",
+          "updatedAt": "2026-10-27T09:00:29Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\n\t\t\t  \"ietf-fgotn-tunnel:fgoduflex-bandwidth\": \"20\"\n```",
+              "createdAt": "2026-10-27T02:44:12Z",
+              "updatedAt": "2026-10-27T09:00:29Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "Does the \u201ccandidate-secondary-paths\u201d structure here need to be deleted?",
+              "createdAt": "2026-10-27T03:22:47Z",
+              "updatedAt": "2026-10-27T09:00:30Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\nThe entities, TE attributes and OTN attributes, such as nodes, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information.\n```",
+              "createdAt": "2026-10-27T07:54:44Z",
+              "updatedAt": "2026-10-27T09:00:30Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n        +--rw odu-ts-number?     fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-27T08:06:04Z",
+              "updatedAt": "2026-10-27T09:00:30Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n        +--rw fgts-reserved?     fgotn-types:ts-list-or-empty\n```",
+              "createdAt": "2026-10-27T08:06:28Z",
+              "updatedAt": "2026-10-27T09:00:30Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n        +--rw fgts-unreserved?   fgotn-types:ts-list-or-empty\n```",
+              "createdAt": "2026-10-27T08:07:05Z",
+              "updatedAt": "2026-10-27T09:00:30Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\nThe module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary-paths and secondary-paths using the fgts-numbers. The fgts-numbers specifies the fgTS information for the explicit route objects and computed path properties of fgOTN paths, under the corresponding occurrences of the tet:te-label container. We also augment the TE label-hop for the record route of the LSP using the fgts-numbers. When specifying the fgotn time slot in the routing constraint information, the ODU time slot must also be specified. The ts-list (together with the tsg) represents the time slots assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.\n```",
+              "createdAt": "2026-10-27T08:33:44Z",
+              "updatedAt": "2026-10-28T07:00:05Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n\nThe example also instantiates the \"ietf-fgotn-tunnel\" model to setup two fgOTN tunnel within the fgOTN topology shown in {{fig-example}}.\n\n-an 20M protected fgOTN tunnel between NE1 and NE4. The protected fgODUflex tunnel has a primary LSP, instatiating the NE1-NE2-NE4 primary TE and a secondary LSP, instantiating the NE1-NE3-NE4 secondary TE path.\n\n-an 20M unprotected fgOTN tunnel between NE2-NE4. The unprotected fgODUflex tunnel has a primary LSP, instatiating the NE2-NE4 primary TE path.\n\n```",
+              "createdAt": "2026-10-27T08:46:11Z",
+              "updatedAt": "2026-10-27T09:00:30Z"
+            },
+            {
+              "originalPosition": 3,
+              "body": "The type of fgts-numbers should be `type fgotn-types:ts-list`, which was already changed in version 02. I don't understand why the type in this PR is still `string`.",
+              "createdAt": "2026-10-27T08:59:08Z",
+              "updatedAt": "2026-10-27T09:00:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUn3W4A",
+          "commit": {
+            "abbreviatedOid": "db2a157"
+          },
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T07:01:56Z",
+          "updatedAt": "2026-10-28T07:08:10Z",
+          "comments": [
+            {
+              "originalPosition": 3,
+              "body": "```suggestion\n    +--rw fgts-numbers?   fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-28T07:01:56Z",
+              "updatedAt": "2026-10-28T07:08:10Z"
+            },
+            {
+              "originalPosition": 10,
+              "body": "```suggestion\n    +--ro fgts-numbers?   fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-28T07:02:28Z",
+              "updatedAt": "2026-10-28T07:08:10Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\n    +--rw fgts-numbers?   fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-28T07:02:46Z",
+              "updatedAt": "2026-10-28T07:08:10Z"
+            },
+            {
+              "originalPosition": 24,
+              "body": "```suggestion\n    +--ro fgts-numbers?   fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-28T07:02:59Z",
+              "updatedAt": "2026-10-28T07:08:10Z"
+            },
+            {
+              "originalPosition": 30,
+              "body": "```suggestion\n    +--rw fgts-numbers?   fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-28T07:03:11Z",
+              "updatedAt": "2026-10-28T07:08:10Z"
+            },
+            {
+              "originalPosition": 37,
+              "body": "```suggestion\n    +--ro fgts-numbers?   fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-28T07:03:24Z",
+              "updatedAt": "2026-10-28T07:08:10Z"
+            },
+            {
+              "originalPosition": 43,
+              "body": "```suggestion\n    +--rw fgts-numbers?   fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-28T07:03:40Z",
+              "updatedAt": "2026-10-28T07:08:10Z"
+            },
+            {
+              "originalPosition": 50,
+              "body": "```suggestion\n    +--ro fgts-numbers?   fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-28T07:03:54Z",
+              "updatedAt": "2026-10-28T07:08:10Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n    +--ro fgts-numbers?   fgotn-types:ts-list\n```",
+              "createdAt": "2026-10-28T07:04:13Z",
+              "updatedAt": "2026-10-28T07:08:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUn-S8g",
+          "commit": {
+            "abbreviatedOid": "db2a157"
+          },
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T07:14:01Z",
+          "updatedAt": "2026-10-28T07:42:49Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "Should `fgoduflex-bandwidth` be of type `uint8` or `string`? It was `uint8` in version -02.",
+              "createdAt": "2026-10-28T07:14:02Z",
+              "updatedAt": "2026-10-28T10:04:41Z"
+            },
+            {
+              "originalPosition": 25,
+              "body": "```suggestion\n    leaf fgts-numbers {\n      type fgotn-types:ts-list;\n      description\n        \"Augment fgOTN timeslot information of this label hop. fgts-numbers needs to be used together with ts-list. The ts-list (together with the tsg) represents the TSs assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.\";\n```",
+              "createdAt": "2026-10-28T07:32:01Z",
+              "updatedAt": "2026-10-28T07:42:49Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\nleaf fgts-numbers {\n  type fgotn-types:ts-list;\n  description\n    \"Augment fgOTN timeslot information of this label hop. fgts-numbers needs to be used together with ts-list. The ts-list (together with the tsg) represents the TSs assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.\";\n```",
+              "createdAt": "2026-10-28T07:35:39Z",
+              "updatedAt": "2026-10-28T07:42:49Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\nuses fgotn-types:fgotn-label-hop;\n```",
+              "createdAt": "2026-10-28T07:37:27Z",
+              "updatedAt": "2026-10-29T02:49:59Z"
+            },
+            {
+              "originalPosition": 48,
+              "body": "```suggestion\n    leaf fgts-numbers {\n      type fgotn-types:ts-list;\n      description\n        \"Augment fgOTN timeslot information of this label hop. fgts-numbers needs to be used together with ts-list. The ts-list (together with the tsg) represents the TSs assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.\";\n```",
+              "createdAt": "2026-10-28T07:38:45Z",
+              "updatedAt": "2026-10-28T07:42:49Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\nleaf fgts-numbers {\n  type fgotn-types:ts-list;\n  description\n    \"fgOTN timeslot information of this label hop. fgts-numbers needs to be used together with ts-list. The ts-list (together with the tsg) represents the TSs assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.\";\n```",
+              "createdAt": "2026-10-28T07:40:01Z",
+              "updatedAt": "2026-10-28T07:42:49Z"
+            },
+            {
+              "originalPosition": 70,
+              "body": "```suggestion\n    leaf fgts-numbers {\n      type fgotn-types:ts-list;\n      description\n        \"Augment fgOTN timeslot information of this label hop. fgts-numbers needs to be used together with ts-list. The ts-list (together with the tsg) represents the TSs assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.\";\n```",
+              "createdAt": "2026-10-28T07:40:31Z",
+              "updatedAt": "2026-10-28T07:42:49Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\nleaf fgts-numbers {\n  type fgotn-types:ts-list;\n  description\n    \"fgOTN timeslot information of this label hop. fgts-numbers needs to be used together with ts-list. The ts-list (together with the tsg) represents the TSs assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.\";\n```",
+              "createdAt": "2026-10-28T07:41:04Z",
+              "updatedAt": "2026-10-28T07:42:49Z"
+            },
+            {
+              "originalPosition": 93,
+              "body": "```suggestion\n    leaf fgts-numbers {\n      type fgotn-types:ta-list;\n      description\n        \"Augment fgOTN timeslot information of this label hop. fgts-numbers needs to be used together with ts-list. The ts-list (together with the tsg) represents the TSs assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.\";\n```",
+              "createdAt": "2026-10-28T07:41:33Z",
+              "updatedAt": "2026-10-28T07:42:49Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\nleaf fgts-numbers {\n  type fgotn-types:ts-list;\n  description\n    \"Augment fgOTN timeslot information of this label hop. fgts-numbers needs to be used together with ts-list. The ts-list (together with the tsg) represents the TSs assigned to the ODUk server-layer tunnel, while the fgts-numbers represents the fgTSs assigned to the fgOTN client-layer tunnel.\";\n```",
+              "createdAt": "2026-10-28T07:42:28Z",
+              "updatedAt": "2026-10-28T07:42:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUu2eAw",
+          "commit": {
+            "abbreviatedOid": "939b389"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T16:38:40Z",
+          "updatedAt": "2026-10-28T16:38:40Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "The issue is caused by TABs characters used instead of spaces\n\nShould have been fixed with 939b389de67d3d2d18fb9deb0b6b4884e2ad6007",
+              "createdAt": "2026-10-28T16:38:40Z",
+              "updatedAt": "2026-10-28T16:38:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUu3_cQ",
+          "commit": {
+            "abbreviatedOid": "939b389"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T16:40:26Z",
+          "updatedAt": "2026-10-28T16:40:27Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "It is defined in YANG so it is needed to pass JSON validation checks\n\nSee [draft-ietf-teas-yang-te-44](https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-44)\n\n```\n     |     |     +--rw candidate-secondary-paths\n     |     |        +--rw candidate-secondary-path* [secondary-path]\n     |     |           +--rw secondary-path    leafref\n     |     |           +--ro active?           boolean\n```",
+              "createdAt": "2026-10-28T16:40:26Z",
+              "updatedAt": "2026-10-28T16:40:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUvWMvg",
+          "commit": {
+            "abbreviatedOid": "8cfff53"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T17:17:24Z",
+          "updatedAt": "2026-10-28T17:17:24Z",
+          "comments": [
+            {
+              "originalPosition": 3,
+              "body": "This is due to the fact that the `tanyanxia-patch-1` branch has branched from the `main` after v01 but before v02\n\nFixed by rebasing both `tanyanxia-patch-1` and 'fix-pr-56' branches with main branch\n\nNote that the rebased has required to change the JSON code for the `fgoduflex-bandwidth` to align it with the changes to the data type done in v02",
+              "createdAt": "2026-10-28T17:17:24Z",
+              "updatedAt": "2026-10-28T17:24:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUvclVA",
+          "commit": {
+            "abbreviatedOid": "a5dd17b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T17:25:12Z",
+          "updatedAt": "2026-10-28T17:25:13Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "Fixed with 91df1779966c40494b2516aa2958d307b68dbf73",
+              "createdAt": "2026-10-28T17:25:13Z",
+              "updatedAt": "2026-10-28T17:25:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUvcwBg",
+          "commit": {
+            "abbreviatedOid": "a5dd17b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T17:25:25Z",
+          "updatedAt": "2026-10-28T17:25:25Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "Fixed with rebase",
+              "createdAt": "2026-10-28T17:25:25Z",
+              "updatedAt": "2026-10-28T17:25:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUvc3NQ",
+          "commit": {
+            "abbreviatedOid": "a5dd17b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T17:25:34Z",
+          "updatedAt": "2026-10-28T17:25:34Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "Fixed with 91df1779966c40494b2516aa2958d307b68dbf73",
+              "createdAt": "2026-10-28T17:25:34Z",
+              "updatedAt": "2026-10-28T17:25:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUvdAWQ",
+          "commit": {
+            "abbreviatedOid": "a5dd17b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T17:25:44Z",
+          "updatedAt": "2026-10-28T17:25:45Z",
+          "comments": [
+            {
+              "originalPosition": 30,
+              "body": "Fixed with rebase",
+              "createdAt": "2026-10-28T17:25:45Z",
+              "updatedAt": "2026-10-28T17:25:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUvdF5g",
+          "commit": {
+            "abbreviatedOid": "a5dd17b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T17:25:51Z",
+          "updatedAt": "2026-10-28T17:25:51Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "Fixed with 91df1779966c40494b2516aa2958d307b68dbf73",
+              "createdAt": "2026-10-28T17:25:51Z",
+              "updatedAt": "2026-10-28T17:25:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUvdOfQ",
+          "commit": {
+            "abbreviatedOid": "a5dd17b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T17:26:02Z",
+          "updatedAt": "2026-10-28T17:26:02Z",
+          "comments": [
+            {
+              "originalPosition": 43,
+              "body": "Fixed with rebase",
+              "createdAt": "2026-10-28T17:26:02Z",
+              "updatedAt": "2026-10-28T17:26:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUvdU4g",
+          "commit": {
+            "abbreviatedOid": "a5dd17b"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T17:26:10Z",
+          "updatedAt": "2026-10-28T17:26:10Z",
+          "comments": [
+            {
+              "originalPosition": 50,
+              "body": "Fixed with 91df1779966c40494b2516aa2958d307b68dbf73",
+              "createdAt": "2026-10-28T17:26:10Z",
+              "updatedAt": "2026-10-28T17:26:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUv8YTw",
+          "commit": {
+            "abbreviatedOid": "ccb53fc"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:04:53Z",
+          "updatedAt": "2026-10-28T18:04:54Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "This change is addressing issue #42 \n\nTo avoid repenting the same text, I have created a new grouping in fgotn-types and used here\n\nSee: ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:04:53Z",
+              "updatedAt": "2026-10-28T18:04:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUv8rvw",
+          "commit": {
+            "abbreviatedOid": "ccb53fc"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:05:19Z",
+          "updatedAt": "2026-10-28T18:05:19Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "See comment above and ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:05:19Z",
+              "updatedAt": "2026-10-28T18:05:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUv8xtQ",
+          "commit": {
+            "abbreviatedOid": "ccb53fc"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:05:26Z",
+          "updatedAt": "2026-10-28T18:05:26Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "See comment above and ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:05:26Z",
+              "updatedAt": "2026-10-28T18:05:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUv84RA",
+          "commit": {
+            "abbreviatedOid": "ccb53fc"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:05:34Z",
+          "updatedAt": "2026-10-28T18:05:35Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "See comment above and ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:05:34Z",
+              "updatedAt": "2026-10-28T18:05:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUv89sQ",
+          "commit": {
+            "abbreviatedOid": "ccb53fc"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:05:41Z",
+          "updatedAt": "2026-10-28T18:05:41Z",
+          "comments": [
+            {
+              "originalPosition": 70,
+              "body": "See comment above and ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:05:41Z",
+              "updatedAt": "2026-10-28T18:05:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUv9DEg",
+          "commit": {
+            "abbreviatedOid": "ccb53fc"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:05:47Z",
+          "updatedAt": "2026-10-28T18:05:48Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "See comment above and ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:05:47Z",
+              "updatedAt": "2026-10-28T18:05:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUwA38Q",
+          "commit": {
+            "abbreviatedOid": "ccb53fc"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:10:54Z",
+          "updatedAt": "2026-10-28T18:10:54Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "Fixed by rebase",
+              "createdAt": "2026-10-28T18:10:54Z",
+              "updatedAt": "2026-10-28T18:10:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUwB_JQ",
+          "commit": {
+            "abbreviatedOid": "ccb53fc"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:12:26Z",
+          "updatedAt": "2026-10-28T18:12:26Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "I understand the comment is proposing to change line 324 below\n\nSee: ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:12:26Z",
+              "updatedAt": "2026-10-28T18:12:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUwEeyg",
+          "commit": {
+            "abbreviatedOid": "db2a157"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:15:46Z",
+          "updatedAt": "2026-10-28T18:15:46Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "Fixed with rebase",
+              "createdAt": "2026-10-28T18:15:46Z",
+              "updatedAt": "2026-10-28T18:15:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUwEv1w",
+          "commit": {
+            "abbreviatedOid": "db2a157"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:16:07Z",
+          "updatedAt": "2026-10-28T18:16:08Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "See comment above and ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:16:07Z",
+              "updatedAt": "2026-10-28T18:16:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUwFAfw",
+          "commit": {
+            "abbreviatedOid": "db2a157"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:16:27Z",
+          "updatedAt": "2026-10-28T18:16:27Z",
+          "comments": [
+            {
+              "originalPosition": 93,
+              "body": "See comment above and ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:16:27Z",
+              "updatedAt": "2026-10-28T18:16:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUwFG0w",
+          "commit": {
+            "abbreviatedOid": "db2a157"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T18:16:35Z",
+          "updatedAt": "2026-10-28T18:16:35Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "See comment above and ccb53fcc9643d7d38fc41457d46274aa7ba86d14",
+              "createdAt": "2026-10-28T18:16:35Z",
+              "updatedAt": "2026-10-28T18:16:35Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 62,
@@ -3227,7 +3878,7 @@
       "labels": [],
       "body": "Aligned text with the latest template in https://wiki.ietf.org/group/ops/yang-security-guidelines\n\nUpdated text to use kramdown syntax\n\nCopied text into the markdown version of the I-D\n\n---\n\nSee also [I-D Diff](https://author-tools.ietf.org/api/iddiff?url_1=https://ietf-ccamp-wg.github.io/draft-ietf-ccamp-fgotn-yang/tanyanxia-patch-2/draft-ietf-ccamp-fgotn-yang.txt&url_2=https://italobusi.github.io/draft-tan-ccamp-fgotn-yang/fix-pr-59/draft-ietf-ccamp-fgotn-yang.txt)",
       "createdAt": "2026-10-20T16:12:22Z",
-      "updatedAt": "2026-10-21T12:44:03Z",
+      "updatedAt": "2026-10-27T09:22:06Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "tanyanxia-patch-2",
       "baseRefOid": "38cfe6b5f4f948742461b2a03471216ecb192f5c",
@@ -3242,9 +3893,9 @@
         {
           "author": "italobusi",
           "authorAssociation": "MEMBER",
-          "body": "- [ ] @tanyanxia review the proposed changes to Security Considerations.md file\r\n- [ ] @italobusi after the merge is approved, copy the text in the Security Considerations.md file into the I-D md file; remove the Security Considerations.md file and then merge the PR",
+          "body": "- [x] @tanyanxia review the proposed changes to Security Considerations.md file\r\n- [ ] @italobusi after the merge is approved, copy the text in the Security Considerations.md file into the I-D md file; remove the Security Considerations.md file and then merge the PR",
           "createdAt": "2026-10-21T12:44:03Z",
-          "updatedAt": "2026-10-21T12:44:03Z"
+          "updatedAt": "2026-10-27T09:22:06Z"
         }
       ],
       "reviews": [
@@ -3302,19 +3953,60 @@
       "labels": [],
       "body": "See also [diff with main](https://author-tools.ietf.org/api/iddiff?url_1=https://ietf-ccamp-wg.github.io/draft-ietf-ccamp-fgotn-yang/draft-ietf-ccamp-fgotn-yang.txt&url_2=https://ietf-ccamp-wg.github.io/draft-ietf-ccamp-fgotn-yang/fix-appendix-b/draft-ietf-ccamp-fgotn-yang.txt)",
       "createdAt": "2026-10-20T16:35:15Z",
-      "updatedAt": "2026-10-21T12:45:56Z",
+      "updatedAt": "2026-10-28T16:27:47Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "161337bd6548737e2a3f13a94f1e84724e3de3af",
       "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "headRefName": "fix-appendix-b",
-      "headRefOid": "1458713ce97901458fd367636892afeb2bc79c8f",
+      "headRefOid": "687db4fff14f396842d2877dec40e59488b1fa69",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUaczUg",
+          "commit": {
+            "abbreviatedOid": "1458713"
+          },
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T09:30:06Z",
+          "updatedAt": "2026-10-27T09:30:18Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\n    - an ODU1 tunnel between NE1 and NE2;\n```",
+              "createdAt": "2026-10-27T09:30:06Z",
+              "updatedAt": "2026-10-27T09:30:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABUutCFQ",
+          "commit": {
+            "abbreviatedOid": "687db4f"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T16:27:40Z",
+          "updatedAt": "2026-10-28T16:27:40Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "With kramdown syntax, better to indent 3 characters only but you are right that the last two bullets should be at the same level\n\nTherefore, I have fixed the indentation of the next two bullets: see 687db4fff14f396842d2877dec40e59488b1fa69\n",
+              "createdAt": "2026-10-28T16:27:40Z",
+              "updatedAt": "2026-10-28T16:27:40Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 64,
@@ -3362,6 +4054,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 65,
+      "id": "PR_kwDOMSanvs8AAAABLN8XYA",
+      "title": "manageability/operational considerations",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/65",
+      "state": "OPEN",
+      "author": "tanyanxia",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "A brief description for not providing operational considerations in this document.",
+      "createdAt": "2026-10-28T08:56:01Z",
+      "updatedAt": "2026-10-28T21:51:46Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "161337bd6548737e2a3f13a94f1e84724e3de3af",
+      "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "headRefName": "tanyanxia-operational-considerations",
+      "headRefOid": "504c4a27f246278f40f1966c6b54c17fb142ff44",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
