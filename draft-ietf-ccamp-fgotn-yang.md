@@ -387,10 +387,10 @@ The model augment TE bandwidth information of fgOTN tunnel.
 ~~~~ yangtree
   augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
           /otn-tnl:otn/otn-tnl:otn-bandwidth:
-    +--rw fgoduflex-bandwidth?   string
+    +--rw fgoduflex-bandwidth?   uint8
 ~~~~
 
-The string value fgoduflex-bandwidth is used to indicate the bandwidth of this fgOTN tunnel.
+The fgoduflex-bandwidth leaf specifies the bandwidth of an fgOTN tunnel when the ODU type is fgODUflex. The value is expressed as an integer multiplier of 10 Mbit/s, with a valid range of 1 to 119, corresponding to the fine-granularity bandwidth granularities defined in Table M.3 of {{ITU-T_G.709}}.
 
 ## Label Augmentation
 
